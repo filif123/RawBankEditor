@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="RawBankEditor.Forms.FMain">
+    <Position X="0.5" Y="0.5" Width="2.75" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="RawBankEditor.Forms.FMain.MoveAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="RawBankEditor.Forms.FMain.EditSoundAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="RawBankEditor.Forms.FMain.Action">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="RawBankEditor.Forms.FMain.AddSoundAction">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Struct Name="RawBankEditor.Forms.FMain.FyzSoundPos" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Struct>
+      <Class Name="RawBankEditor.Forms.FMain.ChangeAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="RawBankEditor.Forms.FMain.RemovedSoundsAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Enum Name="RawBankEditor.Forms.FMain.PropertyType" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Enum>
+      <Class Name="RawBankEditor.Forms.FMain.SoundAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="RawBankEditor.Forms.FMain.SelectedCellSoundMoveAction" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Forms\FMain.Actions.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>NvU3U/+/xjpleXjvKu+NRkM2uL8cYW1s1cttLCTqgnU=</HashCode>
+      <FileName>Forms\FMain.Actions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

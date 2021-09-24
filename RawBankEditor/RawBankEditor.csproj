@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{35052861-9E45-4C84-BA36-1B482F2DA040}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>RawBankEditor</RootNamespace>
+    <AssemblyName>RawBankEditor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Core.1.1.0.0\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.ShellExtensions, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.WindowsAPICodePack-Shell.1.1.0.0\lib\Microsoft.WindowsAPICodePack.ShellExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System">
+      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\MinButton.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\MinButton.Designer.cs">
+      <DependentUpon>MinButton.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\BankMessages.cs" />
+    <Compile Include="Entities\FileSystemElement.cs" />
+    <Compile Include="Entities\MenuItem.cs" />
+    <Compile Include="Entities\ProgressStatus.cs" />
+    <Compile Include="Forms\FAddSound.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAddSound.Designer.cs">
+      <DependentUpon>FAddSound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FMain.Actions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSearch.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSearch.Designer.cs">
+      <DependentUpon>FSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FSoundConvert.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSoundConvert.Designer.cs">
+      <DependentUpon>FSoundConvert.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\BankChecker.cs" />
+    <Compile Include="Tools\SoundUtils.cs" />
+    <Compile Include="XML\AppShortcuts.cs" />
+    <Compile Include="Entities\FyzGroup.cs" />
+    <Compile Include="Entities\FyzLanguage.cs" />
+    <Compile Include="Entities\FyzSound.cs" />
+    <Compile Include="FileConsts.cs" />
+    <Compile Include="Forms\FEditGroup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FEditGroup.Designer.cs">
+      <DependentUpon>FEditGroup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FInfoApp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FInfoApp.Designer.cs">
+      <DependentUpon>FInfoApp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FLangChoose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FLangChoose.Designer.cs">
+      <DependentUpon>FLangChoose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FMain.Designer.cs">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GlobData.cs" />
+    <Compile Include="LinkConsts.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XML\RawBankEditorSettingsNaming.cs" />
+    <Compile Include="Tools\RawBankParser.cs" />
+    <Compile Include="XML\RawBankEditorConfig.cs" />
+    <Compile Include="XML\DesktopColumns.cs" />
+    <Compile Include="XML\RawBankEditorStyle.cs" />
+    <EmbeddedResource Include="Controls\MinButton.resx">
+      <DependentUpon>MinButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAddSound.resx">
+      <DependentUpon>FAddSound.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FEditGroup.resx">
+      <DependentUpon>FEditGroup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FInfoApp.resx">
+      <DependentUpon>FInfoApp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FLangChoose.resx">
+      <DependentUpon>FLangChoose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FMain.resx">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSearch.resx">
+      <DependentUpon>FSearch.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSoundConvert.resx">
+      <DependentUpon>FSoundConvert.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="ClassDiagram1.cd" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\RawBankEdit.Entities.FyzSound.datasource" />
+    <None Include="Properties\DataSources\RawBankEditor.Entities.ExplorerElement.datasource" />
+    <None Include="Properties\DataSources\RawBankEditor.Entities.FileSystemElement.datasource" />
+    <None Include="Properties\DataSources\RawBankEditor.Entities.FyzSound.datasource" />
+    <None Include="Properties\DataSources\RawBankEditor.Entities.RawBankMessage.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\global-settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\import.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\info-app.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\redo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\save-all.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\undo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\edit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\recent-gvds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\app-settings.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\forward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\analyze.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\convert.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sound.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\correct.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\file.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\move.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj">
+      <Project>{e2064a91-6132-498f-9f22-8c3e7c5941bc}</Project>
+      <Name>ExControls</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ToolsCore\ToolsCore\ToolsCore.csproj">
+      <Project>{15B32C49-7B00-4849-9685-2F7D7438DB54}</Project>
+      <Name>ToolsCore</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
