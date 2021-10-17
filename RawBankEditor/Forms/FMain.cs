@@ -33,6 +33,8 @@ namespace RawBankEditor.Forms
         private bool programSelection;
         private bool saved = true;
 
+        private bool programmaticChange;
+
         //private ExBindingList<RawBankMessage> ActualMessages;
 
         internal static FyzLanguage CurrentLanguage { get; set; }
@@ -50,17 +52,17 @@ namespace RawBankEditor.Forms
 
             switch (GlobData.Config.DesktopMenuMode)
             {
-                case Config.DesktopMenu.TS_MS:
+                case Config.DesktopMenu.MsTs:
                     menuStripMain.Visible = true;
                     toolStripMain.Visible = true;
                     menuStripMain.Items.Remove(tscboxLanguages);
                     break;
-                case Config.DesktopMenu.MS_ONLY:
+                case Config.DesktopMenu.MsOnly:
                     menuStripMain.Visible = true;
                     toolStripMain.Visible = false;
                     menuStripMain.Items.Add(tscboxLanguages);
                     break;
-                case Config.DesktopMenu.TS_ONLY:
+                case Config.DesktopMenu.TsOnly:
                     menuStripMain.Visible = false;
                     toolStripMain.Visible = true;
                     menuStripMain.Items.Remove(tscboxLanguages);
@@ -132,7 +134,7 @@ namespace RawBankEditor.Forms
         {
             dgvErrors.DataSource = null;
 
-            if (GlobData.Config.DebugModeGUI != Config.DebugMode.APP_CRASH)
+            if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
                 try
                 {
                     GlobData.PrepareGlobalData(dirpath);
@@ -143,10 +145,10 @@ namespace RawBankEditor.Forms
 
                     switch (GlobData.Config.DebugModeGUI)
                     {
-                        case Config.DebugMode.ONLY_MESSAGE:
+                        case Config.DebugMode.OnlyMessage:
                             Utils.ShowError(exception.Message);
                             break;
-                        case Config.DebugMode.DETAILED_INFO:
+                        case Config.DebugMode.DetailedInfo:
                             Utils.ShowError(exception.ToString());
                             break;
                     }
@@ -223,7 +225,13 @@ namespace RawBankEditor.Forms
             RawBankParser.ReadFyzZvukFile(lang, bWorkerReadDat);
 
             //part 3 - merge physical files and logical data
-            RawBankParser.MergeFilesAndData(Root, lang);
+            foreach (var msg in RawBankParser.MergeFilesAndData(Root, lang))
+            {
+                Invoke((MethodInvoker) delegate
+                {
+                    GlobData.Messages.Add(msg);
+                });
+            }
         }
 
         private void bWorkerReadDat_ProgressChanged(object sender, ProgressChangedEventArgs e)
@@ -243,7 +251,7 @@ namespace RawBankEditor.Forms
         {
             tspbProgress.Visible = false;
 
-            if (GlobData.Config.DebugModeGUI != Config.DebugMode.APP_CRASH)
+            if (GlobData.Config.DebugModeGUI != Config.DebugMode.AppCrash)
                 if (e.Error != null)
                 {
                     Log.Exception(e.Error);
@@ -252,10 +260,10 @@ namespace RawBankEditor.Forms
 
                     switch (GlobData.Config.DebugModeGUI)
                     {
-                        case Config.DebugMode.ONLY_MESSAGE:
+                        case Config.DebugMode.OnlyMessage:
                             Utils.ShowError(e.Error.Message);
                             break;
-                        case Config.DebugMode.DETAILED_INFO:
+                        case Config.DebugMode.DetailedInfo:
                             Utils.ShowError(e.Error.ToString());
                             break;
                     }
@@ -263,9 +271,11 @@ namespace RawBankEditor.Forms
                     return;
                 }
 
+            programmaticChange = true;
             dgvSounds.DataSource = null;
             lboxGroups.DataSource = CurrentLanguage.Groups;
             tscboxLanguages.Enabled = true;
+            programmaticChange = false;
 
             ChangeStatusReady();
 
@@ -346,22 +356,16 @@ namespace RawBankEditor.Forms
 
         private void DoGoBack()
         {
-            DoMove();
             MoveForwardActions.Push(MoveBackActions.Pop());
+            DoMove();
             EnableGoBackForward();
         }
 
         private void DoGoForward()
         {
-            DoMove();
             MoveBackActions.Push(MoveForwardActions.Pop());
+            DoMove();
             EnableGoBackForward();
-        }
-
-        private void DoSearch()
-        {
-            var fsearch = new FSearch(this);
-            fsearch.Show(this);
         }
 
         private void DoMove()
@@ -371,6 +375,12 @@ namespace RawBankEditor.Forms
                 var action = MoveBackActions.Peek();
                 action.Execute();
             }
+        }
+
+        private void DoSearch()
+        {
+            var fsearch = new FSearch(this);
+            fsearch.Show(this);
         }
 
         private void DoAddSound()
@@ -500,6 +510,7 @@ namespace RawBankEditor.Forms
 
         private void dgvSounds_SelectionChanged(object sender, EventArgs e)
         {
+            
             var count = dgvSounds.SelectedRows.Count;
             if (count == 0 || programSelection)
                 return;
@@ -512,11 +523,12 @@ namespace RawBankEditor.Forms
                 rows[i] = row.DataBoundItem;
             }
 
-            var action = new SelectedCellSoundMoveAction(this, rows, CurrentLanguage, CurrentGroup);
-            MoveBackActions.Push(action);
-            if (MoveForwardActions.Count > 0)
-                MoveForwardActions.Clear();
-            EnableGoBackForward();
+            if (!programmaticChange)
+            {
+                var action = new SelectedCellSoundMoveAction(this, rows, CurrentLanguage, CurrentGroup);
+                MoveBackActions.Push(action);
+                EnableGoBackForward();
+            }
 
             var item = (FyzSound)dgvSounds.Rows[dgvSounds.SelectedRows[0].Index].DataBoundItem;
             if (item is not null)

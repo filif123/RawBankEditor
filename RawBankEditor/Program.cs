@@ -73,7 +73,7 @@ namespace RawBankEditor
                 Application.SetCompatibleTextRenderingDefault(false);
             }
 
-            var culture = CultureInfo.CreateSpecificCulture(GlobData.Config.Language == Config.AppLanguage.CZ ? "cs" : "sk");
+            var culture = CultureInfo.CreateSpecificCulture(GlobData.Config.Language == Config.AppLanguage.Czech ? "cs" : "sk");
 
             Thread.CurrentThread.CurrentUICulture = culture;
             Thread.CurrentThread.CurrentCulture = culture;

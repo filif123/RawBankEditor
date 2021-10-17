@@ -132,14 +132,16 @@ namespace RawBankEditor.Tools
             return new DirectoryElement(new DirectoryInfo(GlobData.AbsPathToBank));
         }
 
-        public static void MergeFilesAndData(DirectoryElement root, FyzLanguage lang)
+        public static List<RawBankMessage> MergeFilesAndData(DirectoryElement root, FyzLanguage lang)
         {
+            List<RawBankMessage> messages = new List<RawBankMessage>();
+
             //languages
             var dirEl = root.Children.FirstOrDefault(n => EqualsPathNames(n.Name, lang.Key));
             if (dirEl is not DirectoryElement dir)
             {
-                GlobData.Messages.Add(new LanguageDirMissing(lang));
-                return;
+                messages.Add(new LanguageDirMissing(lang));
+                return messages;
             }
 
             lang.Directory = dir;
@@ -183,17 +185,19 @@ namespace RawBankEditor.Tools
             {
                 if (langGroup.Directory == null)
                 {
-                    GlobData.Messages.Add(new GroupDirMissing(langGroup));
+                    messages.Add(new GroupDirMissing(langGroup));
                 }
 
                 foreach (var sound in langGroup.Sounds)
                 {
                     if (sound.File == null)
                     {
-                        GlobData.Messages.Add(new SoundFileMissing(sound));
+                        messages.Add(new SoundFileMissing(sound));
                     }
                 }
             }
+
+            return messages;
         }
 
         public static bool AddPathIsEmpty(string path)

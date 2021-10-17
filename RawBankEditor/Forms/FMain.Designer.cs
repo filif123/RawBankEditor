@@ -214,7 +214,7 @@ namespace RawBankEditor.Forms
             this.menuStripMain.Location = new System.Drawing.Point(0, 0);
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStripMain.Size = new System.Drawing.Size(1335, 30);
+            this.menuStripMain.Size = new System.Drawing.Size(1335, 28);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -230,7 +230,7 @@ namespace RawBankEditor.Forms
             this.tsmimImport,
             this.tsmimExport});
             this.tsmiFile.Name = "tsmiFile";
-            this.tsmiFile.Size = new System.Drawing.Size(62, 26);
+            this.tsmiFile.Size = new System.Drawing.Size(62, 24);
             this.tsmiFile.Text = "Súbor";
             // 
             // tsmimOpen
@@ -309,7 +309,7 @@ namespace RawBankEditor.Forms
             this.tsmimDeleteSound,
             this.tsmimMoveSounds});
             this.tsmiEdit.Name = "tsmiEdit";
-            this.tsmiEdit.Size = new System.Drawing.Size(73, 26);
+            this.tsmiEdit.Size = new System.Drawing.Size(73, 24);
             this.tsmiEdit.Text = "Upraviť";
             // 
             // tsmimUndo
@@ -375,7 +375,7 @@ namespace RawBankEditor.Forms
             this.toolStripSeparator18,
             this.tsmimSearch});
             this.tsmiShow.Name = "tsmiShow";
-            this.tsmiShow.Size = new System.Drawing.Size(81, 26);
+            this.tsmiShow.Size = new System.Drawing.Size(81, 24);
             this.tsmiShow.Text = "Zobraziť";
             // 
             // tsmimGoBack
@@ -422,7 +422,7 @@ namespace RawBankEditor.Forms
             this.tsmimAppSettings,
             this.tsmimConvertSounds});
             this.tsmiTools.Name = "tsmiTools";
-            this.tsmiTools.Size = new System.Drawing.Size(79, 26);
+            this.tsmiTools.Size = new System.Drawing.Size(79, 24);
             this.tsmiTools.Text = "Nástroje";
             // 
             // tsmimLangsSettings
@@ -475,7 +475,7 @@ namespace RawBankEditor.Forms
             this.tsmimInfoApp,
             this.tsmimUpdates});
             this.tsmiHelp.Name = "tsmiHelp";
-            this.tsmiHelp.Size = new System.Drawing.Size(87, 26);
+            this.tsmiHelp.Size = new System.Drawing.Size(87, 24);
             this.tsmiHelp.Text = "Pomocník";
             // 
             // tsmimInfoApp
@@ -508,7 +508,7 @@ namespace RawBankEditor.Forms
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitSoundsErrors);
-            this.splitContainer1.Size = new System.Drawing.Size(1329, 592);
+            this.splitContainer1.Size = new System.Drawing.Size(1329, 594);
             this.splitContainer1.SplitterDistance = 363;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 1;
@@ -527,7 +527,7 @@ namespace RawBankEditor.Forms
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(363, 592);
+            this.splitContainer2.Size = new System.Drawing.Size(363, 594);
             this.splitContainer2.SplitterDistance = 228;
             this.splitContainer2.SplitterWidth = 8;
             this.splitContainer2.TabIndex = 0;
@@ -576,7 +576,7 @@ namespace RawBankEditor.Forms
             this.toolStripGroups.Location = new System.Drawing.Point(3, 32);
             this.toolStripGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.toolStripGroups.Name = "toolStripGroups";
-            this.toolStripGroups.Size = new System.Drawing.Size(357, 31);
+            this.toolStripGroups.Size = new System.Drawing.Size(357, 27);
             this.toolStripGroups.TabIndex = 1;
             this.toolStripGroups.Text = "toolStrip2";
             // 
@@ -587,7 +587,7 @@ namespace RawBankEditor.Forms
             this.tsbAddGroup.Image = global::RawBankEditor.Properties.Resources.add;
             this.tsbAddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddGroup.Name = "tsbAddGroup";
-            this.tsbAddGroup.Size = new System.Drawing.Size(29, 28);
+            this.tsbAddGroup.Size = new System.Drawing.Size(29, 24);
             this.tsbAddGroup.Text = "Pridať skupinu";
             this.tsbAddGroup.Click += new System.EventHandler(this.tsbAddGroup_Click);
             // 
@@ -598,7 +598,7 @@ namespace RawBankEditor.Forms
             this.tsbEditGroup.Image = global::RawBankEditor.Properties.Resources.edit;
             this.tsbEditGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditGroup.Name = "tsbEditGroup";
-            this.tsbEditGroup.Size = new System.Drawing.Size(29, 28);
+            this.tsbEditGroup.Size = new System.Drawing.Size(29, 24);
             this.tsbEditGroup.Text = "Upraviť skupinu";
             this.tsbEditGroup.Click += new System.EventHandler(this.tsbEditGroup_Click);
             // 
@@ -609,7 +609,7 @@ namespace RawBankEditor.Forms
             this.tsbDeleteGroup.Image = global::RawBankEditor.Properties.Resources.delete;
             this.tsbDeleteGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeleteGroup.Name = "tsbDeleteGroup";
-            this.tsbDeleteGroup.Size = new System.Drawing.Size(29, 28);
+            this.tsbDeleteGroup.Size = new System.Drawing.Size(29, 24);
             this.tsbDeleteGroup.Text = "Odstrániť skupinu";
             this.tsbDeleteGroup.Click += new System.EventHandler(this.tsbDeleteGroup_Click);
             // 
@@ -620,9 +620,9 @@ namespace RawBankEditor.Forms
             this.lboxGroups.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lboxGroups.FormattingEnabled = true;
             this.lboxGroups.ItemHeight = 16;
-            this.lboxGroups.Location = new System.Drawing.Point(4, 67);
+            this.lboxGroups.Location = new System.Drawing.Point(4, 63);
             this.lboxGroups.Name = "lboxGroups";
-            this.lboxGroups.Size = new System.Drawing.Size(355, 157);
+            this.lboxGroups.Size = new System.Drawing.Size(355, 161);
             this.lboxGroups.TabIndex = 2;
             this.lboxGroups.SelectedIndexChanged += new System.EventHandler(this.lboxGroups_SelectedIndexChanged);
             this.lboxGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lboxGroups_KeyDown);
@@ -671,7 +671,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(363, 356);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(363, 358);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // dgvExplorer
@@ -703,7 +703,7 @@ namespace RawBankEditor.Forms
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExplorer.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvExplorer.Location = new System.Drawing.Point(4, 69);
+            this.dgvExplorer.Location = new System.Drawing.Point(4, 65);
             this.dgvExplorer.MultiSelect = false;
             this.dgvExplorer.Name = "dgvExplorer";
             this.dgvExplorer.ReadOnly = true;
@@ -719,7 +719,7 @@ namespace RawBankEditor.Forms
             this.dgvExplorer.RowHeadersWidth = 51;
             this.dgvExplorer.RowTemplate.Height = 24;
             this.dgvExplorer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExplorer.Size = new System.Drawing.Size(355, 283);
+            this.dgvExplorer.Size = new System.Drawing.Size(355, 289);
             this.dgvExplorer.TabIndex = 3;
             this.dgvExplorer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExplorer_CellClick);
             this.dgvExplorer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExplorer_CellDoubleClick);
@@ -784,7 +784,7 @@ namespace RawBankEditor.Forms
             this.toolStrip1.Location = new System.Drawing.Point(3, 32);
             this.toolStrip1.Margin = new System.Windows.Forms.Padding(2);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(357, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(357, 27);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip2";
             // 
@@ -795,14 +795,14 @@ namespace RawBankEditor.Forms
             this.tsbOpenInExplorer.Image = global::RawBankEditor.Properties.Resources.open;
             this.tsbOpenInExplorer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpenInExplorer.Name = "tsbOpenInExplorer";
-            this.tsbOpenInExplorer.Size = new System.Drawing.Size(29, 28);
+            this.tsbOpenInExplorer.Size = new System.Drawing.Size(29, 24);
             this.tsbOpenInExplorer.Text = "Otvoriť v prieskumníkovi";
             this.tsbOpenInExplorer.Click += new System.EventHandler(this.tsbOpenInExplorer_Click);
             // 
             // toolStripSeparator16
             // 
             this.toolStripSeparator16.Name = "toolStripSeparator16";
-            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator16.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbPlay
             // 
@@ -811,14 +811,14 @@ namespace RawBankEditor.Forms
             this.tsbPlay.Image = global::RawBankEditor.Properties.Resources.sound;
             this.tsbPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPlay.Name = "tsbPlay";
-            this.tsbPlay.Size = new System.Drawing.Size(29, 28);
+            this.tsbPlay.Size = new System.Drawing.Size(29, 24);
             this.tsbPlay.Text = "Prehrať zvuk";
             this.tsbPlay.Click += new System.EventHandler(this.tsbPlay_Click);
             // 
             // toolStripSeparator17
             // 
             this.toolStripSeparator17.Name = "toolStripSeparator17";
-            this.toolStripSeparator17.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator17.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbRenameFileDir
             // 
@@ -827,7 +827,7 @@ namespace RawBankEditor.Forms
             this.tsbRenameFileDir.Image = global::RawBankEditor.Properties.Resources.edit;
             this.tsbRenameFileDir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRenameFileDir.Name = "tsbRenameFileDir";
-            this.tsbRenameFileDir.Size = new System.Drawing.Size(29, 28);
+            this.tsbRenameFileDir.Size = new System.Drawing.Size(29, 24);
             this.tsbRenameFileDir.Text = "toolStripButton2";
             // 
             // tsbRemoveFileDir
@@ -837,7 +837,7 @@ namespace RawBankEditor.Forms
             this.tsbRemoveFileDir.Image = global::RawBankEditor.Properties.Resources.delete;
             this.tsbRemoveFileDir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRemoveFileDir.Name = "tsbRemoveFileDir";
-            this.tsbRemoveFileDir.Size = new System.Drawing.Size(29, 28);
+            this.tsbRemoveFileDir.Size = new System.Drawing.Size(29, 24);
             this.tsbRemoveFileDir.Text = "toolStripButton1";
             // 
             // splitSoundsErrors
@@ -854,8 +854,8 @@ namespace RawBankEditor.Forms
             // splitSoundsErrors.Panel2
             // 
             this.splitSoundsErrors.Panel2.Controls.Add(this.tableLayoutPanel4);
-            this.splitSoundsErrors.Size = new System.Drawing.Size(958, 592);
-            this.splitSoundsErrors.SplitterDistance = 405;
+            this.splitSoundsErrors.Size = new System.Drawing.Size(958, 594);
+            this.splitSoundsErrors.SplitterDistance = 406;
             this.splitSoundsErrors.SplitterWidth = 8;
             this.splitSoundsErrors.TabIndex = 1;
             // 
@@ -905,7 +905,7 @@ namespace RawBankEditor.Forms
             this.dgvSounds.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSounds.RowTemplate.Height = 24;
             this.dgvSounds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSounds.Size = new System.Drawing.Size(958, 405);
+            this.dgvSounds.Size = new System.Drawing.Size(958, 406);
             this.dgvSounds.TabIndex = 0;
             this.dgvSounds.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSounds_CellBeginEdit);
             this.dgvSounds.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSounds_CellEndEdit);
@@ -1002,7 +1002,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(958, 179);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(958, 180);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // toolStrip2
@@ -1019,7 +1019,7 @@ namespace RawBankEditor.Forms
             this.toolStrip2.Location = new System.Drawing.Point(3, 40);
             this.toolStrip2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(952, 31);
+            this.toolStrip2.Size = new System.Drawing.Size(952, 27);
             this.toolStrip2.TabIndex = 1;
             this.toolStrip2.Text = "toolStrip2";
             // 
@@ -1031,14 +1031,14 @@ namespace RawBankEditor.Forms
             this.tsbErrors.Image = ((System.Drawing.Image)(resources.GetObject("tsbErrors.Image")));
             this.tsbErrors.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbErrors.Name = "tsbErrors";
-            this.tsbErrors.Size = new System.Drawing.Size(76, 28);
+            this.tsbErrors.Size = new System.Drawing.Size(76, 24);
             this.tsbErrors.Text = "0 chýb";
             this.tsbErrors.CheckedChanged += new System.EventHandler(this.tsbErrors_CheckedChanged);
             // 
             // toolStripSeparator13
             // 
             this.toolStripSeparator13.Name = "toolStripSeparator13";
-            this.toolStripSeparator13.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator13.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbWarnings
             // 
@@ -1048,14 +1048,14 @@ namespace RawBankEditor.Forms
             this.tsbWarnings.Image = ((System.Drawing.Image)(resources.GetObject("tsbWarnings.Image")));
             this.tsbWarnings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbWarnings.Name = "tsbWarnings";
-            this.tsbWarnings.Size = new System.Drawing.Size(120, 28);
+            this.tsbWarnings.Size = new System.Drawing.Size(120, 24);
             this.tsbWarnings.Text = "0 upozornení";
             this.tsbWarnings.CheckedChanged += new System.EventHandler(this.tsbWarnings_CheckedChanged);
             // 
             // toolStripSeparator14
             // 
             this.toolStripSeparator14.Name = "toolStripSeparator14";
-            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator14.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbInfos
             // 
@@ -1065,7 +1065,7 @@ namespace RawBankEditor.Forms
             this.tsbInfos.Image = ((System.Drawing.Image)(resources.GetObject("tsbInfos.Image")));
             this.tsbInfos.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbInfos.Name = "tsbInfos";
-            this.tsbInfos.Size = new System.Drawing.Size(80, 28);
+            this.tsbInfos.Size = new System.Drawing.Size(80, 24);
             this.tsbInfos.Text = "0 správ";
             this.tsbInfos.CheckedChanged += new System.EventHandler(this.tsbInfos_CheckedChanged);
             // 
@@ -1100,7 +1100,7 @@ namespace RawBankEditor.Forms
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvErrors.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvErrors.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvErrors.Location = new System.Drawing.Point(4, 75);
+            this.dgvErrors.Location = new System.Drawing.Point(4, 71);
             this.dgvErrors.MultiSelect = false;
             this.dgvErrors.Name = "dgvErrors";
             this.dgvErrors.ReadOnly = true;
@@ -1115,7 +1115,7 @@ namespace RawBankEditor.Forms
             this.dgvErrors.RowHeadersWidth = 51;
             this.dgvErrors.RowTemplate.Height = 24;
             this.dgvErrors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvErrors.Size = new System.Drawing.Size(950, 100);
+            this.dgvErrors.Size = new System.Drawing.Size(950, 105);
             this.dgvErrors.TabIndex = 2;
             this.dgvErrors.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvErrors_CellFormatting);
             // 
@@ -1204,12 +1204,12 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel1.Controls.Add(this.splitContainer1, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.statusStripMain, 0, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 61);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 59);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1335, 624);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1335, 626);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // statusStripMain
@@ -1220,7 +1220,7 @@ namespace RawBankEditor.Forms
             this.tspbProgress,
             this.toolStripStatusLabel1,
             this.tssbErrors});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 598);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 600);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Size = new System.Drawing.Size(1335, 26);
             this.statusStripMain.SizingGrip = false;
@@ -1291,7 +1291,7 @@ namespace RawBankEditor.Forms
             this.tsbDeleteSound,
             this.toolStripSeparator15,
             this.tsbSearch});
-            this.toolStripMain.Location = new System.Drawing.Point(0, 30);
+            this.toolStripMain.Location = new System.Drawing.Point(0, 28);
             this.toolStripMain.Name = "toolStripMain";
             this.toolStripMain.Size = new System.Drawing.Size(1335, 31);
             this.toolStripMain.TabIndex = 3;
@@ -1606,6 +1606,7 @@ namespace RawBankEditor.Forms
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.menuStripMain);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripMain;
             this.Name = "FMain";
             this.Text = "RawBankEditor";

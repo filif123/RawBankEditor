@@ -13,10 +13,7 @@ namespace RawBankEditor.Entities
             Key = key;
             Name = name;
             RelativePath = relativePath;
-            Sounds = new ExBindingList<FyzSound>
-            {
-                Sortable = true
-            };
+            Sounds = new ExBindingList<FyzSound>();
         }
 
         public FyzGroup(FyzGroup original)
@@ -26,16 +23,15 @@ namespace RawBankEditor.Entities
             Name = string.Copy(original.Name);
             RelativePath = string.Copy(original.RelativePath);
             Sounds = original.Sounds;
-            Sounds.Sortable = true;
         }
 
         /// <summary>
-        ///     Kluc skupiny (v ZvukBase sa neda menit).
+        ///     Kluc skupiny (v programe ZvukBase sa neda menit).
         /// </summary>
         public string Key { get; }
 
         /// <summary>
-        ///     Nazov skupiny (v ZvukBase sa da menit).
+        ///     Nazov skupiny (v programe ZvukBase sa da menit).
         /// </summary>
         public string Name { get; }
 
