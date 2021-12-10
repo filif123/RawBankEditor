@@ -42,8 +42,8 @@ namespace RawBankEditor.Forms
             this.label2 = new System.Windows.Forms.Label();
             this.trackBarOpacity = new System.Windows.Forms.TrackBar();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
-            this.bStorno = new System.Windows.Forms.Button();
-            this.bSearch = new System.Windows.Forms.Button();
+            this.bStorno = new ExControls.ExButton();
+            this.bSearch = new ExControls.ExButton();
             this.lStatus = new System.Windows.Forms.Label();
             this.tableLayoutPanel1.SuspendLayout();
             this.exGroupBox1.SuspendLayout();
@@ -302,8 +302,8 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TrackBar trackBarOpacity;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
-        private System.Windows.Forms.Button bStorno;
-        private System.Windows.Forms.Button bSearch;
+        private ExControls.ExButton bStorno;
+        private ExControls.ExButton bSearch;
         private System.Windows.Forms.Label lStatus;
     }
 }

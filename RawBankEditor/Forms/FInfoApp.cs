@@ -1,41 +1,36 @@
-﻿using System.ComponentModel;
-using System.Diagnostics;
-using System.Drawing;
-using System.Windows.Forms;
-using ToolsCore.Tools;
+﻿using ToolsCore.Tools;
 
-namespace RawBankEditor.Forms
+namespace RawBankEditor.Forms;
+
+public partial class FInfoApp : Form
 {
-    public partial class FInfoApp : Form
+    public FInfoApp()
     {
-        public FInfoApp()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            FormUtils.SetFormFont(this);
-            this.ApplyTheme();
+        FormUtils.SetFormFont(this);
+        this.ApplyTheme();
 
-            lAppVersion.Text = Application.ProductVersion;
-            lAppName.Text = Application.ProductName;
-            lAppName.Font = new Font(lAppName.Font, FontStyle.Bold);
+        lAppVersion.Text = Application.ProductVersion;
+        lAppName.Text = Application.ProductName;
+        lAppName.Font = new Font(lAppName.Font, FontStyle.Bold);
 
-            linkWeb.Text = LinkConsts.LINK_INFO_APP;
-            linkEmail.Text = LinkConsts.EMAIL;
-        }
+        linkWeb.Text = LinkConsts.LINK_INFO_APP;
+        linkEmail.Text = LinkConsts.EMAIL;
+    }
 
-        private void linkWeb_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start(LinkConsts.LINK_INFO_APP);
-        }
+    private void linkWeb_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        Process.Start(LinkConsts.LINK_INFO_APP);
+    }
 
-        private void linkEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            Process.Start("mailto:" + LinkConsts.EMAIL);
-        }
+    private void linkEmail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        Process.Start("mailto:" + LinkConsts.EMAIL);
+    }
 
-        private void FInfoApp_HelpButtonClicked(object sender, CancelEventArgs e)
-        {
-            Process.Start(LinkConsts.LINK_INFO_APP);
-        }
+    private void FInfoApp_HelpButtonClicked(object sender, CancelEventArgs e)
+    {
+        Process.Start(LinkConsts.LINK_INFO_APP);
     }
 }

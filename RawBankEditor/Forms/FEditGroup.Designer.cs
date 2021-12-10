@@ -37,7 +37,7 @@ namespace RawBankEditor.Forms
             this.tbKey = new ExControls.ExTextBox();
             this.tbName = new ExControls.ExTextBox();
             this.tbRelativePath = new ExControls.ExTextBox();
-            this.bOK = new System.Windows.Forms.Button();
+            this.bOK = new ExControls.ExButton();
             this.exTableLayoutPanel1 = new ExControls.ExTableLayoutPanel();
             this.exTableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
@@ -186,7 +186,7 @@ namespace RawBankEditor.Forms
         private ExTextBox tbKey;
         private ExTextBox tbName;
         private ExTextBox tbRelativePath;
-        private System.Windows.Forms.Button bOK;
+        private ExControls.ExButton bOK;
         private ExTableLayoutPanel exTableLayoutPanel1;
     }
 }

@@ -80,6 +80,7 @@
     <Compile Include="Forms\FSoundConvert.Designer.cs">
       <DependentUpon>FSoundConvert.cs</DependentUpon>
     </Compile>
+    <Compile Include="GlobUsings.cs" />
     <Compile Include="Tools\BankChecker.cs" />
     <Compile Include="Tools\SoundUtils.cs" />
     <Compile Include="XML\AppShortcuts.cs" />

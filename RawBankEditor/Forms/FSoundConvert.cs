@@ -1,16 +1,14 @@
-﻿using System.Windows.Forms;
-using ToolsCore.Tools;
+﻿using ToolsCore.Tools;
 
-namespace RawBankEditor.Forms
+namespace RawBankEditor.Forms;
+
+public partial class FSoundConvert : Form
 {
-    public partial class FSoundConvert : Form
+    public FSoundConvert()
     {
-        public FSoundConvert()
-        {
-            InitializeComponent();
+        InitializeComponent();
 
-            this.ApplyTheme();
-            FormUtils.SetFormFont(this);
-        }
+        this.ApplyTheme();
+        FormUtils.SetFormFont(this);
     }
 }

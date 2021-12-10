@@ -37,7 +37,7 @@ namespace RawBankEditor.Forms
             ExControls.ExComboBoxStyle exComboBoxStyle4 = new ExControls.ExComboBoxStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.cboxLanguages = new ExControls.ExComboBox();
-            this.bOK = new System.Windows.Forms.Button();
+            this.bOK = new ExControls.ExButton();
             this.SuspendLayout();
             // 
             // label1
@@ -128,6 +128,6 @@ namespace RawBankEditor.Forms
 
         private System.Windows.Forms.Label label1;
         private ExComboBox cboxLanguages;
-        private System.Windows.Forms.Button bOK;
+        private ExControls.ExButton bOK;
     }
 }

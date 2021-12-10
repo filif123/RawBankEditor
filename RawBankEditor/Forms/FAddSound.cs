@@ -1,12 +1,9 @@
-﻿using System.Windows.Forms;
+﻿namespace RawBankEditor.Forms;
 
-namespace RawBankEditor.Forms
+public partial class FAddSound : Form
 {
-    public partial class FAddSound : Form
+    public FAddSound()
     {
-        public FAddSound()
-        {
-            InitializeComponent();
-        }
+        InitializeComponent();
     }
 }

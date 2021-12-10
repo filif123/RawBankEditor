@@ -36,8 +36,8 @@ namespace RawBankEditor.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.lboxSounds = new System.Windows.Forms.ListBox();
-            this.bSave = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bSave = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.tbRelativePath = new ExControls.ExTextBox();
             this.tbName = new ExControls.ExTextBox();
             this.tbKey = new ExControls.ExTextBox();
@@ -218,8 +218,8 @@ namespace RawBankEditor.Forms
         private ExControls.ExTextBox tbRelativePath;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ListBox lboxSounds;
-        private System.Windows.Forms.Button bSave;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bSave;
+        private ExControls.ExButton bStorno;
         private ExControls.ExRichTextBox rtbText;
     }
 }

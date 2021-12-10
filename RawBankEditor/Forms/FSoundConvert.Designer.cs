@@ -41,7 +41,7 @@ namespace RawBankEditor.Forms
             this.groupBox3 = new ExGroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tbInputFilePath = new ExTextBox();
-            this.bBrowseInput = new System.Windows.Forms.Button();
+            this.bBrowseInput = new ExControls.ExButton();
             this.pOneFile = new System.Windows.Forms.Panel();
             this.pGroups = new System.Windows.Forms.Panel();
             this.label2 = new System.Windows.Forms.Label();
@@ -52,9 +52,9 @@ namespace RawBankEditor.Forms
             this.rbToNewFolder = new ExRadioButton();
             this.pNewOutputFolder = new System.Windows.Forms.Panel();
             this.tbOutputFolderPath = new ExTextBox();
-            this.bBrowseOutputFolder = new System.Windows.Forms.Button();
-            this.bConvert = new System.Windows.Forms.Button();
-            this.bStorno = new System.Windows.Forms.Button();
+            this.bBrowseOutputFolder = new ExControls.ExButton();
+            this.bConvert = new ExControls.ExButton();
+            this.bStorno = new ExControls.ExButton();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -362,16 +362,16 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel pOneFile;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button bBrowseInput;
+        private ExControls.ExButton bBrowseInput;
         private ExTextBox tbInputFilePath;
         private ExGroupBox groupBox4;
         private System.Windows.Forms.Panel pNewOutputFolder;
-        private System.Windows.Forms.Button bBrowseOutputFolder;
+        private ExControls.ExButton bBrowseOutputFolder;
         private ExTextBox tbOutputFolderPath;
         private ExRadioButton rbToNewFolder;
         private ExRadioButton rbAdd;
         private ExRadioButton rbReplace;
-        private System.Windows.Forms.Button bConvert;
-        private System.Windows.Forms.Button bStorno;
+        private ExControls.ExButton bConvert;
+        private ExControls.ExButton bStorno;
     }
 }

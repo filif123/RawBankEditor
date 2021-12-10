@@ -1,10 +1,9 @@
-﻿namespace RawBankEditor
+﻿namespace RawBankEditor;
+
+internal static class FileConsts
 {
-    internal static class FileConsts
-    {
-        public const string FILE_FYZBANK = "FYZBANK.DAT";
-        public const string FILE_CONFIG = "CONFIG.xml";
-        public const string FILE_STYLES = "STYLES.xml";
-        public const string DIR_RAWBANK = "\\RAWBANK\\";
-    }
+    public const string FILE_FYZBANK = "FYZBANK.DAT";
+    public const string FILE_CONFIG = "CONFIG.xml";
+    public const string FILE_STYLES = "STYLES.xml";
+    public const string DIR_RAWBANK = "\\RAWBANK\\";
 }
