@@ -129,7 +129,7 @@ internal static class RawBankParser
 
     public static List<RawBankMessage> MergeFilesAndData(DirectoryElement root, FyzLanguage lang)
     {
-        List<RawBankMessage> messages = new List<RawBankMessage>();
+        var messages = new List<RawBankMessage>();
 
         //languages
         var dirEl = root.Children.FirstOrDefault(n => EqualsPathNames(n.Name, lang.Key));

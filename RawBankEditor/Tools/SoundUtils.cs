@@ -1,5 +1,5 @@
 ﻿using System.Media;
-using System.Runtime.InteropServices;
+using NAudio.Wave;
 
 namespace RawBankEditor.Tools;
 
@@ -25,6 +25,7 @@ public static class SoundUtils
                 EWAtoWAV(reader, writer);
 
                 using var player = new SoundPlayer(memoryStream);
+                
                 player.Play();
                 break;
             }
@@ -141,11 +142,11 @@ public static class SoundUtils
     private static void CheckWAV(BinaryReader reader)
     {
         if (Read4byteString(reader) != "RIFF")
-            throw new FormatException("Chybný formát WAV souboru (chýba hlavička RIFF)!");
+            throw new FormatException("Chybný formát WAV suboru (chýba hlavička RIFF)!");
         if (reader.ReadInt32() != reader.BaseStream.Length - 8)
-            throw new FormatException("Chybný formát WAV souboru (chybná dĺžka súboru)");
+            throw new FormatException("Chybný formát WAV suboru (chybná dĺžka súboru)");
         if (Read4byteString(reader) != "WAVE")
-            throw new FormatException("Chybný formát WAV souboru (nie je typu WAVE)");
+            throw new FormatException("Chybný formát WAV suboru (nie je typu WAVE)");
 
         double formatPos = -1;
         var fmtLen = 0;
@@ -163,9 +164,9 @@ public static class SoundUtils
         }
 
         if (formatPos < 0)
-            throw new FormatException("Chybný formát WAV souboru (nenalezen formát)");
+            throw new FormatException("Chybný formát WAV suboru (nenalezen formát)");
         if (fmtLen < 16)
-            throw new FormatException("Chybný formát WAV souboru (fmt chunk má délku menší než 16 bytů)");
+            throw new FormatException("Chybný formát WAV suboru (fmt chunk má délku menší než 16 bytů)");
 
         var formatTag = reader.ReadInt16();
         reader.ReadInt16(); //channels
@@ -181,7 +182,7 @@ public static class SoundUtils
             reader.ReadInt32();
             var b = new Guid(reader.ReadBytes(16));
             if (new Guid("00000001-0000-0010-8000-00AA00389B71") != b)
-                throw new FormatException("Chybný formát WAV souboru (neznámý subformát (GUID))");
+                throw new FormatException("Chybný formát WAV suboru (neznámy subformát (GUID))");
         }
     }
 
@@ -192,9 +193,6 @@ public static class SoundUtils
         return Encoding.ASCII.GetString(array, 0, array.Length);
     }
 
-    [DllImport("winmm.dll")]
-    private static extern uint mciSendString(string command, StringBuilder returnValue, int returnLength, IntPtr winHandle);
-
     /// <summary>
     ///     Vrati dlzku zvuku (.WAV|.EWA) v milisekundach (ms)
     /// </summary>
@@ -202,13 +200,32 @@ public static class SoundUtils
     /// <returns></returns>
     public static int GetSoundDuration(string fileName)
     {
-        using var fileStream = new FileStream(fileName, FileMode.Open);
-        using var reader = new BinaryReader(fileStream);
-        //time = FileLength / (Sample Rate* Channels *Bits per sample / 8)
-            
+        if (string.IsNullOrEmpty(fileName))
+            throw new ArgumentNullException(nameof(fileName));
 
+        switch (Path.GetExtension(fileName).ToUpper())
+        {
+            case EWA_EXT:
+            {
+                using var fileStream = new FileStream(fileName, FileMode.Open);
+                using var memoryStream = new MemoryStream();
+                using var reader = new BinaryReader(fileStream);
+                using var writer = new BinaryWriter(memoryStream);
 
-        return -1;
+                EWAtoWAV(reader, writer);
+                var wreader = new WaveFileReader(memoryStream);
+                var span = wreader.TotalTime;
+                return (int) span.TotalMilliseconds;
+            }
+            case WAV_EXT:
+            {
+                using var wreader = new WaveFileReader(fileName);
+                var span = wreader.TotalTime;
+                return (int) span.TotalMilliseconds;
+            }
+            default: 
+                return -1;
+        }
     }
 }
 
@@ -252,68 +269,6 @@ public class SoundReader : IDisposable
             EwaByte = (byte)(b ^ 82);
             Reader.BaseStream.Position = 0;
         }
-    }
-
-    public short ReadInt16()
-    {
-        if (!IsEwa)
-            return Reader.ReadInt16();
-
-        long pos = Reader.BaseStream.Position;
-        int val = Reader.ReadInt16();
-        return (short)(
-            (((val & 255) ^ EwaByte) - 17L * pos & 255L) |
-            (((val >> 8 & 255) ^ EwaByte) - 17L * (pos + 1L) & 255L) << 8);
-    }
-
-    public int ReadInt32()
-    {
-        if (!IsEwa)
-            return Reader.ReadInt32();
-
-        long pos = Reader.BaseStream.Position;
-        int val = Reader.ReadInt32();
-        return (int)(
-            (((val & 255) ^ EwaByte) - 17L * pos & 255L) | 
-            (((val >> 8 & 255) ^ EwaByte) - 17L * (pos + 1L) & 255L) << 8 | 
-            (((val >> 16 & 255) ^ EwaByte) - 17L * (pos + 2L) & 255L) << 16 | 
-            (((val >> 24 & 255) ^ EwaByte) - 17L * (pos + 3L) & 255L) << 24);
-    }
-
-    public byte[] ReadBytes(int count)
-    {
-        if (!IsEwa)
-            return Reader.ReadBytes(count);
-
-        long pos = Reader.BaseStream.Position;
-        byte[] vals = Reader.ReadBytes(count);
-        for (int i = 0; i < vals.Length; i++)
-        {
-            vals[i] = (byte)((ulong)(vals[i] ^ EwaByte) - (ulong)(17L * (pos + i)) & 255UL);
-        }
-
-        return vals;
-    }
-
-    public string Read4byteString()
-    {
-        var array = new byte[4];
-
-        if (IsEwa)
-        {
-            long pos = Reader.BaseStream.Position;
-            Reader.Read(array, 0, array.Length);
-            for (int i = 0; i < 4; i++)
-            {
-                array[i] = (byte)((ulong)(array[i] ^ EwaByte) - (ulong)(17L * (pos + i)) & 255UL);
-            }
-        }
-        else
-        {
-            Reader.Read(array, 0, array.Length);
-        }
-
-        return Encoding.ASCII.GetString(array, 0, array.Length);
     }
 
     /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>

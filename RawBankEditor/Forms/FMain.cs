@@ -1,4 +1,5 @@
 ﻿using ExControls;
+using ExControls.Providers;
 using RawBankEditor.Entities;
 using RawBankEditor.Properties;
 using RawBankEditor.Tools;
@@ -13,10 +14,15 @@ public partial class FMain : Form
     private readonly ShellIcon error, warning, info;
     private readonly ExBindingList<FileSystemElement> ExplorerContent = new();
 
-    private readonly Stack<MoveAction> MoveBackActions = new();
-    private readonly Stack<MoveAction> MoveForwardActions = new();
-    private readonly Stack<ChangeAction> RedoActions = new();
-    private readonly Stack<ChangeAction> UndoActions = new();
+    //private readonly Stack<MoveAction> MoveBackActions = new();
+    //private readonly Stack<MoveAction> MoveForwardActions = new();
+    //private readonly Stack<ChangeAction> RedoActions = new();
+    //private readonly Stack<ChangeAction> UndoActions = new();
+    
+    private readonly UndoRedoManager moveManager = new();
+    private readonly UndoRedoManager changeManager = new();
+
+    private MovePosition lastMovePosition;
 
     private string cellOldValue;
 
@@ -42,6 +48,9 @@ public partial class FMain : Form
 
         FormUtils.SetFormFont(this);
         menuStripMain.Renderer = new ToolStripProfessionalRenderer(new FormUtils.LightColorTable());
+
+        moveManager.ManagerEnabled = true;
+        changeManager.ManagerEnabled = true;
 
         switch (GlobData.Config.DesktopMenuMode)
         {
@@ -179,11 +188,9 @@ public partial class FMain : Form
         tspbProgress.Visible = true;
         ChangeStatus("Načítanie súborov banky");
         bWorkerReadDat.RunWorkerAsync(lang);
-
-        UndoActions.Clear();
-        RedoActions.Clear();
-        MoveBackActions.Clear();
-        MoveForwardActions.Clear();
+        
+        moveManager.Clear();
+        changeManager.Clear();
     }
 
     private void nedavneDirsClick(object sender, EventArgs e)
@@ -270,6 +277,8 @@ public partial class FMain : Form
         tscboxLanguages.Enabled = true;
         programmaticChange = false;
 
+        lastMovePosition = new MovePosition(GetSelectedRows(), CurrentLanguage, CurrentGroup);
+
         ChangeStatusReady();
 
         SwitchAddSoundButtons(true);
@@ -286,11 +295,9 @@ public partial class FMain : Form
         dgvErrors.DataSource = GlobData.Messages;
     }
 
-    private void RegisterNewAction(ChangeAction action)
+    private void RegisterNewAction(ICommand action)
     {
-        UndoActions.Push(action);
-        if (RedoActions.Count > 0)
-            RedoActions.Clear();
+        changeManager.AddCommand(action);
         EnableUndoRedo();
     }
 
@@ -312,62 +319,38 @@ public partial class FMain : Form
 
     private void DoUndo()
     {
-        if (UndoActions.Count != 0)
-        {
-            var action = UndoActions.Peek();
-            action.Undo();
-        }
-
-        RedoActions.Push(UndoActions.Pop());
-
+        changeManager.Undo();
         EnableUndoRedo();
     }
 
     private void DoRedo()
     {
-        UndoActions.Push(RedoActions.Pop());
-        if (UndoActions.Count != 0)
-        {
-            var action = UndoActions.Peek();
-            action.Redo();
-        }
-
+        changeManager.Redo();
         EnableUndoRedo();
     }
 
     private void EnableUndoRedo()
     {
-        SwitchUndoButtons(UndoActions.Count > 0);
-        SwitchRedoButtons(RedoActions.Count > 0);
+        SwitchUndoButtons(changeManager.CanUndo);
+        SwitchRedoButtons(changeManager.CanRedo);
     }
 
     private void EnableGoBackForward()
     {
-        SwitchGoBackButtons(MoveBackActions.Count > 0);
-        SwitchGoForwardButtons(MoveForwardActions.Count > 0);
+        SwitchGoBackButtons(moveManager.CanUndo);
+        SwitchGoForwardButtons(moveManager.CanRedo);
     }
 
     private void DoGoBack()
     {
-        MoveForwardActions.Push(MoveBackActions.Pop());
-        DoMove();
+        moveManager.Undo();
         EnableGoBackForward();
     }
 
     private void DoGoForward()
     {
-        MoveBackActions.Push(MoveForwardActions.Pop());
-        DoMove();
+        moveManager.Redo();
         EnableGoBackForward();
-    }
-
-    private void DoMove()
-    {
-        if (MoveBackActions.Count != 0)
-        {
-            var action = MoveBackActions.Peek();
-            action.Execute();
-        }
     }
 
     private void DoSearch()
@@ -505,23 +488,17 @@ public partial class FMain : Form
     private void dgvSounds_SelectionChanged(object sender, EventArgs e)
     {
             
-        var count = dgvSounds.SelectedRows.Count;
-        if (count == 0 || programSelection)
+        var rows = GetSelectedRows();
+        if (rows.Length == 0)
             return;
-
-        var rows = new object[count];
-
-        for (var i = 0; i < count; i++)
-        {
-            var row = dgvSounds.SelectedRows[i];
-            rows[i] = row.DataBoundItem;
-        }
 
         if (!programmaticChange)
         {
-            var action = new SelectedCellSoundMoveAction(this, rows, CurrentLanguage, CurrentGroup);
-            MoveBackActions.Push(action);
+            var newPosition = new MovePosition(rows, CurrentLanguage, CurrentGroup);
+            var action = new SelectedCellSoundMoveAction(this, lastMovePosition, newPosition);
+            moveManager.AddCommand(action);
             EnableGoBackForward();
+            lastMovePosition = newPosition;
         }
 
         var item = (FyzSound)dgvSounds.Rows[dgvSounds.SelectedRows[0].Index].DataBoundItem;
@@ -548,6 +525,23 @@ public partial class FMain : Form
                 listVExplorer.Select();
                 listVExplorer.EnsureVisible(index);
             }*/
+    }
+
+    private object[] GetSelectedRows()
+    {
+        var count = dgvSounds.SelectedRows.Count;
+        if (count == 0 || programSelection)
+            return Array.Empty<object>();
+
+        var rows = new object[count];
+
+        for (var i = 0; i < count; i++)
+        {
+            var row = dgvSounds.SelectedRows[i];
+            rows[i] = row.DataBoundItem;
+        }
+
+        return rows;
     }
 
     private void dgvSounds_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
@@ -924,7 +918,7 @@ public partial class FMain : Form
         ExplorerContent.Clear();
         explorerBack = null;
 
-        //skupina neexesistuje v suborovom systeme
+        //skupina neexistuje v suborovom systeme
         if (dir is null)
         {
             explorerBack = new BackButtonElement(CurrentDirectory);

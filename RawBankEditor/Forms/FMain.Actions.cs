@@ -1,4 +1,5 @@
-﻿using RawBankEditor.Entities;
+﻿using ExControls.Providers;
+using RawBankEditor.Entities;
 
 namespace RawBankEditor.Forms;
 
@@ -14,74 +15,62 @@ public partial class FMain
     }
 
     /// <summary>
-    ///     Vseobecna akcia
+    ///     Akcia pri akejkolvek zmene - pridanie, uprava, zmazanie
     /// </summary>
-    public abstract class Action
+    public abstract class Action : ICommand
     {
+        /// <summary>Initializes a new instance of the <see cref="Action" /> class.</summary>
         protected Action(FMain form)
         {
-            Form = form ?? throw new ArgumentNullException(nameof(form));
+            Form = form ?? throw new ArgumentNullException(nameof(form));            
         }
 
         protected FMain Form { get; }
-    }
-
-    /// <summary>
-    ///     Akcia pri pohybe - neobsahuje zmeny, okrem zmeny pozicie
-    /// </summary>
-    public abstract class MoveAction : Action
-    {
-        /// <summary>Initializes a new instance of the <see cref="MoveAction" /> class.</summary>
-        protected MoveAction(FMain form) : base(form)
-        {
-        }
-
-        public abstract void Execute();
-    }
-
-    /// <summary>
-    ///     Akcia pri akejkolvek zmene - pridanie, uprava, zmazanie
-    /// </summary>
-    public abstract class ChangeAction : Action
-    {
-        /// <summary>Initializes a new instance of the <see cref="ChangeAction" /> class.</summary>
-        protected ChangeAction(FMain form) : base(form)
-        {
-        }
-
+        
+        /// <inheritdoc />
+        public string CommandName { get; }
+        
+        /// <inheritdoc />        
         public abstract void Undo();
 
+        /// <inheritdoc />
         public abstract void Redo();
     }
 
     /// <summary>
     ///     Akcia pri zmene oznacenych buniek v tabulke so zvukmi
     /// </summary>
-    public class SelectedCellSoundMoveAction : MoveAction
+    public class SelectedCellSoundMoveAction : Action
     {
         /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
-        public SelectedCellSoundMoveAction(FMain form, object[] selected, FyzLanguage language, FyzGroup group) : base(form)
+        public SelectedCellSoundMoveAction(FMain form, MovePosition oldPosition, MovePosition newPosition) : base(form)
         {
-            SelectedItems = selected;
-            Language = language;
-            Group = group;
+            OldPosition = oldPosition;
+            NewPosition = newPosition;
         }
 
-        public object[] SelectedItems { get; }
+        public MovePosition OldPosition { get; }
 
-        public FyzLanguage Language { get; }
+        public MovePosition NewPosition { get; }
 
-        public FyzGroup Group { get; }
+        /// <inheritdoc />
+        public override void Undo() => Move(OldPosition);
 
-        public override void Execute()
+        /// <inheritdoc />
+        public override void Redo() => Move(NewPosition);
+
+        private void Move(MovePosition pos)
         {
+            if (pos?.Language is null || pos.Group is null)
+                return;
+            
             Form.programSelection = true;
-            Form.tscboxLanguages.SelectedItem = Language;
-            Form.lboxGroups.SelectedItem = Group;
+            Form.tscboxLanguages.SelectedItem = pos.Language;
+            Form.lboxGroups.SelectedItem = pos.Group;
             Form.dgvSounds.ClearSelection();
 
             foreach (DataGridViewRow r in Form.dgvSounds.Rows)
-            foreach (var s in SelectedItems)
+            foreach (var s in pos.SelectedItems)
                 if (r.DataBoundItem == s)
                     r.Selected = true;
 
@@ -89,10 +78,26 @@ public partial class FMain
         }
     }
 
+    public class MovePosition
+    {
+        public object[] SelectedItems { get; }
+
+        public FyzLanguage Language { get; }
+
+        public FyzGroup Group { get; }        
+        
+        public MovePosition(object[] selected, FyzLanguage language, FyzGroup group)
+        {
+            SelectedItems = selected;
+            Language = language;
+            Group = group;
+        }
+    }
+
     /// <summary>
     ///     Akcia pri vseobecnej praci so zvukmi
     /// </summary>
-    public abstract class SoundAction : ChangeAction
+    public abstract class SoundAction : Action
     {
         protected SoundAction(FMain form, FyzLanguage language, FyzGroup group) : base(form)
         {

@@ -21,8 +21,7 @@ public abstract class FileSystemElement
             case FileInfo fi:
                 if (fi.Extension.ToUpper() is SoundUtils.WAV_EXT or SoundUtils.EWA_EXT)
                     return new SoundFileElement(fi);
-                else
-                    return new OtherFileElement(fi);
+                return new OtherFileElement(fi);
             default:
                 return null;
         }
