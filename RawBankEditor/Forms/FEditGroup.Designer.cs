@@ -48,7 +48,7 @@ namespace RawBankEditor.Forms
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Location = new System.Drawing.Point(8, 5);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(109, 28);
+            this.label1.Size = new System.Drawing.Size(103, 28);
             this.label1.TabIndex = 0;
             this.label1.Text = "Kľúč skupiny:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -59,7 +59,7 @@ namespace RawBankEditor.Forms
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Location = new System.Drawing.Point(8, 33);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(109, 28);
+            this.label2.Size = new System.Drawing.Size(103, 28);
             this.label2.TabIndex = 1;
             this.label2.Text = "Názov skupiny:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -70,7 +70,7 @@ namespace RawBankEditor.Forms
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Location = new System.Drawing.Point(8, 61);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 28);
+            this.label3.Size = new System.Drawing.Size(103, 28);
             this.label3.TabIndex = 2;
             this.label3.Text = "Relatívna cesta:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -85,9 +85,9 @@ namespace RawBankEditor.Forms
             this.tbKey.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbKey.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbKey.HintText = null;
-            this.tbKey.Location = new System.Drawing.Point(123, 8);
+            this.tbKey.Location = new System.Drawing.Point(117, 8);
             this.tbKey.Name = "tbKey";
-            this.tbKey.Size = new System.Drawing.Size(325, 22);
+            this.tbKey.Size = new System.Drawing.Size(331, 22);
             this.tbKey.TabIndex = 3;
             // 
             // tbName
@@ -100,9 +100,9 @@ namespace RawBankEditor.Forms
             this.tbName.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbName.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbName.HintText = null;
-            this.tbName.Location = new System.Drawing.Point(123, 36);
+            this.tbName.Location = new System.Drawing.Point(117, 36);
             this.tbName.Name = "tbName";
-            this.tbName.Size = new System.Drawing.Size(325, 22);
+            this.tbName.Size = new System.Drawing.Size(331, 22);
             this.tbName.TabIndex = 4;
             // 
             // tbRelativePath
@@ -115,14 +115,14 @@ namespace RawBankEditor.Forms
             this.tbRelativePath.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbRelativePath.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbRelativePath.HintText = null;
-            this.tbRelativePath.Location = new System.Drawing.Point(123, 64);
+            this.tbRelativePath.Location = new System.Drawing.Point(117, 64);
             this.tbRelativePath.Name = "tbRelativePath";
-            this.tbRelativePath.Size = new System.Drawing.Size(325, 22);
+            this.tbRelativePath.Size = new System.Drawing.Size(331, 22);
             this.tbRelativePath.TabIndex = 5;
             // 
             // bOK
             // 
-            this.bOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.bOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bOK.Location = new System.Drawing.Point(372, 92);
             this.bOK.Name = "bOK";
             this.bOK.Size = new System.Drawing.Size(76, 36);

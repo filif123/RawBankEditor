@@ -1,22 +1,21 @@
 ﻿using ExControls;
 using RawBankEditor.Entities;
-using RawBankEditor.Tools;
 using RawBankEditor.XML;
+using ToolsCore.Entities;
+using ToolsCore.Tools;
 using ToolsCore.XML;
 
 namespace RawBankEditor;
 
 internal static class GlobData
 {
-    public static string AbsPathToBank;
-    public static string AbsPathToINISS;
-    public static ExBindingList<FyzLanguage> Languages;
+    public static RawBankProject OpenedProject;
 
     public static RawBankEditorConfig Config;
     public static Styles<RawBankEditorStyle> Styles;
     public static Style UsingStyle;
 
-    public static ExBindingList<RawBankMessage> Messages = new();
+    public static readonly ExBindingList<RawBankMessage> Messages = new();
 
     public static void PrepareGlobalData(string pathToINISS)
     {
@@ -25,8 +24,13 @@ internal static class GlobData
         if (string.IsNullOrEmpty(pathToINISS))
             throw new ArgumentNullException(nameof(pathToINISS));
 
-        AbsPathToINISS = pathToINISS;
-        AbsPathToBank = pathToINISS + FileConsts.DIR_RAWBANK;
-        Languages = new ExBindingList<FyzLanguage>(RawBankParser.ReadFyzBankFile());
+        var pathToBank = pathToINISS + FileConsts.DIR_RAWBANK;
+
+        OpenedProject = new RawBankProject
+        {
+            AbsPathToINISS = pathToINISS,
+            AbsPathToBank = pathToBank,
+            Languages = new ExBindingList<FyzLanguage>(RawBankParser.ReadFyzBankFile(pathToBank, out _))
+        };
     }
 }

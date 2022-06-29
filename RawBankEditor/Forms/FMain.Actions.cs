@@ -1,5 +1,5 @@
 ﻿using ExControls.Providers;
-using RawBankEditor.Entities;
+using ToolsCore.Entities;
 
 namespace RawBankEditor.Forms;
 
@@ -68,12 +68,22 @@ public partial class FMain
             Form.tscboxLanguages.SelectedItem = pos.Language;
             Form.lboxGroups.SelectedItem = pos.Group;
             Form.dgvSounds.ClearSelection();
+            Form.programSelection = false;
 
+            var first = true;
             foreach (DataGridViewRow r in Form.dgvSounds.Rows)
-            foreach (var s in pos.SelectedItems)
-                if (r.DataBoundItem == s)
-                    r.Selected = true;
-
+                foreach (var s in pos.SelectedItems)
+                    if (r.DataBoundItem == s)
+                    {
+                        if (first)
+                        {
+                            r.Selected = true;
+                            first = false;
+                            Form.programSelection = true;
+                        }
+                        r.Selected = true;
+                    }
+            
             Form.programSelection = false;
         }
     }
@@ -154,7 +164,7 @@ public partial class FMain
                     throw new ArgumentOutOfRangeException();
             }
 
-            Group.Sounds.ResetBindings();
+            Form.dgvSounds.ResetBindings();
         }
 
         public override void Redo()
@@ -184,7 +194,7 @@ public partial class FMain
                     throw new ArgumentOutOfRangeException();
             }
 
-            Group.Sounds.ResetBindings();
+            Form.dgvSounds.ResetBindings();
         }
     }
 
@@ -206,7 +216,7 @@ public partial class FMain
     /// </summary>
     public class RemovedSoundsAction : SoundAction
     {
-        /// <summary>Initializes a new instance of the <see cref="ChangeAction" /> class.</summary>
+        /// <summary>Initializes a new instance of the <see cref="RemovedSoundsAction" /> class.</summary>
         public RemovedSoundsAction(FMain form, FyzLanguage language, FyzGroup group) : base(form, language, group)
         {
         }
@@ -223,6 +233,8 @@ public partial class FMain
                 Group.Sounds.Insert(sound.Row, sound.Sound);
                 Form.dgvSounds.Rows[sound.Row].Selected = true;
             }
+
+            Form.dgvSounds.ResetBindings();
         }
 
         public override void Redo()
@@ -231,6 +243,8 @@ public partial class FMain
             Form.lboxGroups.SelectedItem = Group;
 
             foreach (var sound in Sounds) Group.Sounds.RemoveAt(sound.Row);
+
+            Form.dgvSounds.ResetBindings();
         }
     }
 
@@ -249,6 +263,7 @@ public partial class FMain
             Form.lboxGroups.SelectedItem = Group;
 
             Form.dgvSounds.Rows.RemoveAt(Row);
+            Form.dgvSounds.ResetBindings();
         }
 
         public override void Redo()
@@ -259,6 +274,7 @@ public partial class FMain
 
             Group.Sounds.Insert(Row, new FyzSound());
             //Form.dgvSounds.Rows[Form.dgvSounds.Rows.Count - 1].Selected = true;
+            Form.dgvSounds.ResetBindings();
         }
     }
 }

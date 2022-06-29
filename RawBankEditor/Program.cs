@@ -17,6 +17,8 @@ internal static class Program
     private static readonly string appGuid = 
         ((GuidAttribute)Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(GuidAttribute), true)[0]).Value;
 
+    public static FMain MainForm { get; private set; }
+
     /// <summary>
     ///     Hlavní vstupní bod aplikace.
     /// </summary>
@@ -110,8 +112,9 @@ internal static class Program
         RawBankEditorSettingsNaming.NameShortcutCommands(GlobData.Config.Shortcuts);
 
         Log.AppInfo($"Program spustený - v.{Application.ProductVersion} - \"{Application.ExecutablePath}\"");
-
-        Application.Run(new FMain());
+        
+        MainForm = new FMain();
+        Application.Run(MainForm);
 
         Log.AppInfo("Program sa ukončuje\r\n");
     }

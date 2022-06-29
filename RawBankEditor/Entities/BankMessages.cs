@@ -1,4 +1,7 @@
-﻿namespace RawBankEditor.Entities;
+﻿using RawBankEditor.Forms;
+using ToolsCore.Entities;
+
+namespace RawBankEditor.Entities;
 
 public abstract class RawBankMessage
 {
@@ -8,7 +11,12 @@ public abstract class RawBankMessage
 
     public abstract string ResolveMessage { get; }
 
+    /// <summary>
+    ///     Resolves the issue. WARNING! - Reset bindings after this call.
+    /// </summary>
     public abstract void Resolve();
+
+    public abstract void Show();
 }
 
 public enum MessageType
@@ -35,8 +43,14 @@ public class LanguageDirMissing : RawBankMessage
 
     public override void Resolve()
     {
-        Directory.CreateDirectory(Language.GetAbsPath());
-        Language.Directory = new DirectoryElement(Language.GetAbsPath());
+        Directory.CreateDirectory(Language.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
+        Language.Directory = new DirectoryElement(Language.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
+    }
+
+    /// <inheritdoc />
+    public override void Show()
+    {
+        throw new NotImplementedException();
     }
 }
 
@@ -57,9 +71,15 @@ public class GroupDirMissing : RawBankMessage
 
     public override void Resolve()
     {
-        Directory.CreateDirectory(Group.GetAbsPath());
-        Group.Directory = new DirectoryElement(Group.GetAbsPath());
+        Directory.CreateDirectory(Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
+        Group.Directory = new DirectoryElement(Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
     }
+
+    /// <inheritdoc />
+    public override void Show()
+    {
+        throw new NotImplementedException();
+    }    
 }
 
 public class SoundFileMissing : RawBankMessage
@@ -79,7 +99,41 @@ public class SoundFileMissing : RawBankMessage
 
     public override void Resolve()
     {
-        var grp = Sound.Group;
-        grp.Sounds.Remove(Sound);
+        Sound.Group.Sounds.Remove(Sound);
+    }
+
+    /// <inheritdoc />
+    public override void Show()
+    {
+        throw new NotImplementedException();
+    }
+}
+
+public class SoundDataMissing : RawBankMessage
+{
+    public override MessageType Type => MessageType.Error;
+
+    public override string Message => $"Zvuk {File.Name} existuje v súborovom systéme, ale nie je definovaný.";
+
+    public override string ResolveMessage => $"Pridať dáta o zvuku {File.Name}.";
+
+    public SoundFileElement File { get; }
+
+    public SoundDataMissing(SoundFileElement file)
+    {
+        File = file;
+    }
+    
+    public override void Resolve()
+    {
+        var form = new FAddSound(File);
+        if (form.ShowDialog() == DialogResult.OK) 
+            File.Parent.Group?.Add(form.NewSound);
+    }
+
+    /// <inheritdoc />
+    public override void Show()
+    {
+        throw new NotImplementedException();
     }
 }

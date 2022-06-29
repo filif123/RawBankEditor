@@ -1,4 +1,4 @@
-﻿using RawBankEditor.Entities;
+﻿using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace RawBankEditor.Forms;
@@ -29,7 +29,7 @@ public partial class FEditGroup : Form
             return;
         }
 
-        foreach (var grp in FMain.CurrentLanguage.Groups)
+        foreach (var grp in Program.MainForm.CurrentLanguage.Groups)
         {
             if (grp.Key == key)
             {
@@ -53,7 +53,7 @@ public partial class FEditGroup : Form
             }
         }
 
-        NewGroup = NewGroup == null ? new FyzGroup(FMain.CurrentLanguage, key, name, relative) : new FyzGroup(NewGroup); //TODO
+        NewGroup = NewGroup == null ? new FyzGroup(Program.MainForm.CurrentLanguage, key, name, relative) : new FyzGroup(NewGroup); //TODO
 
         DialogResult = DialogResult.OK;
     }
