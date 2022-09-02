@@ -1,45 +1,170 @@
-﻿using ToolsCore.XML;
+﻿using System.Reflection;
+using System.Xml.Serialization;
+using ToolsCore.XML;
 
 namespace RawBankEditor.XML;
 
 /// <summary>
 ///     Obsahuje zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu
 /// </summary>
-public class DesktopColumns
+public record DesktopColumns()
 {
-    /*/// <summary>
-    ///     Stĺpec Odchod
-    /// </summary>
-    [XmlElement("Odchod")] public DesktopColumn Odchod = new() { Order = 7, Visible = true, MinWidth = 60 };
-    */
-        
+    private static readonly Type ClassType = typeof(DesktopColumns);
 
+    [XmlIgnore]
+    private static readonly Dictionary<string, (string name, int order, int minWidth, bool visible)> Props = new()
+    {
+        [nameof(Key)] = ("Kľúč", 0, 150, true),
+        [nameof(Name)] = ("Názov", 1, 150, true),
+        [nameof(RelativePath)] = ("Prídavná relatívna cesta", 2, 150, true),
+        [nameof(FileName)] = ("Názov súboru", 3, 150, true),
+        [nameof(Duration)] = ("Trvanie", 4, 100, true),
+        [nameof(Text)] = ("Text hlásenia", 5, 200, true)
+    };
+
+    #region Fields
+
+    private DesktopColumn _key = InitColumn(nameof(Key));
+    private DesktopColumn _name = InitColumn(nameof(Name));
+    private DesktopColumn _relativePath = InitColumn(nameof(RelativePath));
+    private DesktopColumn _fileName = InitColumn(nameof(FileName));
+    private DesktopColumn _duration = InitColumn(nameof(Duration));
+    private DesktopColumn _text = InitColumn(nameof(Text));
+
+    #endregion
+
+    #region Properties
 
     /// <summary>
-    ///     Vráti zoznam všetkých možnźch stĺpcov pre tabuľku na pracovnej ploche programu
+    ///     
     /// </summary>
-    /// <returns></returns>
-    public List<DesktopColumn> GetValues()
+    [XmlElement("Key")]
+    public DesktopColumn Key
     {
-        return new List<DesktopColumn>();
+        get => _key ??= InitColumn(nameof(Key));
+        set
+        {
+            _key = value;
+            AssignColumnProps(ref _key, nameof(Key));
+        }
     }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    [XmlElement("Name")]
+    public DesktopColumn Name
+    {
+        get => _name ??= InitColumn(nameof(Name));
+        set
+        {
+            _name = value;
+            AssignColumnProps(ref _name, nameof(Name));
+        }
+    }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    [XmlElement("RelativePath")]
+    public DesktopColumn RelativePath
+    {
+        get => _relativePath ??= InitColumn(nameof(RelativePath));
+        set
+        {
+            _relativePath = value;
+            AssignColumnProps(ref _relativePath, nameof(RelativePath));
+        }
+    }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    [XmlElement("FileName")]
+    public DesktopColumn FileName
+    {
+        get => _fileName ??= InitColumn(nameof(FileName));
+        set
+        {
+            _fileName = value;
+            AssignColumnProps(ref _fileName, nameof(FileName));
+        }
+    }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    [XmlElement("Duration")]
+    public DesktopColumn Duration
+    {
+        get => _duration ??= InitColumn(nameof(Duration));
+        set
+        {
+            _duration = value;
+            AssignColumnProps(ref _duration, nameof(Duration));
+        }
+    }
+
+    /// <summary>
+    ///     
+    /// </summary>
+    [XmlElement("Text")]
+    public DesktopColumn Text
+    {
+        get => _text ??= InitColumn(nameof(Text));
+        set
+        {
+            _text = value;
+            AssignColumnProps(ref _text, nameof(Text));
+        }
+    }
+
+    #endregion
 
     /// <summary>
     ///     Vráti zoradený zoznam všetkých možných stĺpcov pre tabuľku na pracovnej ploche programu
     /// </summary>
     /// <returns></returns>
-    public List<DesktopColumn> GetOrderedValues()
+    public IList<DesktopColumn> GetValues()
     {
-        var order = GetValues();
-        var count = order.Count;
+        var properties = ClassType.GetProperties(BindingFlags.Instance | BindingFlags.Public);
+        var ordered = properties.Select(prop => prop.GetValue(this) as DesktopColumn).ToList();
+        return ordered.OrderBy(i => i.Order).ToList();
+    }
 
-        for (var i = 0; i < count - 1; i++)
-        for (var j = 0; j < count - i - 1; j++)
-            if (order[j].Order > order[j + 1].Order)
-            {
-                (order[j], order[j + 1]) = (order[j + 1], order[j]);
-            }
+    public void SetValues(IEnumerable<DesktopColumn> columns)
+    {
+        var index = 0;
+        foreach (var column in columns)
+        {
+            column.Order = index++;
+            ClassType.GetProperty(column.PropertyName)?.SetValue(this, column);
+        }
+    }
 
-        return order;
+    private static DesktopColumn InitColumn(string propname)
+        => new(Props[propname].name, propname, Props[propname].order, Props[propname].minWidth, Props[propname].visible);
+
+    private static void AssignColumnProps(ref DesktopColumn obj, string propname)
+    {
+        if (obj is null)
+        {
+            InitColumn(propname);
+        }
+        else
+        {
+            obj.Name = Props[propname].name;
+            obj.PropertyName = propname;
+        }
+    }
+    
+    protected DesktopColumns(DesktopColumns original)
+    {
+        Key = original.Key with { };
+        Name = original.Name with { };
+        RelativePath = original.RelativePath with { };
+        FileName = original.FileName with { };
+        Duration = original.Duration with { };
+        Text = original.Text with { };
     }
 }

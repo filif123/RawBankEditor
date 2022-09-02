@@ -43,15 +43,17 @@ namespace RawBankEditor.Forms
             this.trackBarOpacity = new System.Windows.Forms.TrackBar();
             this.bSearch = new ExControls.ExButton();
             this.bStorno = new ExControls.ExButton();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.exGroupBox1.SuspendLayout();
             this.exGroupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 15);
+            this.label1.Location = new System.Drawing.Point(2, 5);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 13);
@@ -70,10 +72,10 @@ namespace RawBankEditor.Forms
             this.tbText.HighlightColor = System.Drawing.SystemColors.Highlight;
             this.tbText.HintForeColor = System.Drawing.SystemColors.GrayText;
             this.tbText.HintText = null;
-            this.tbText.Location = new System.Drawing.Point(98, 8);
+            this.tbText.Location = new System.Drawing.Point(77, 2);
             this.tbText.Margin = new System.Windows.Forms.Padding(2);
             this.tbText.Name = "tbText";
-            this.tbText.Size = new System.Drawing.Size(326, 20);
+            this.tbText.Size = new System.Drawing.Size(339, 20);
             this.tbText.TabIndex = 1;
             this.tbText.TextChanged += new System.EventHandler(this.TbText_TextChanged);
             // 
@@ -84,7 +86,7 @@ namespace RawBankEditor.Forms
             this.exGroupBox1.Controls.Add(this.rbName);
             this.exGroupBox1.Controls.Add(this.rbKey);
             this.exGroupBox1.Controls.Add(this.rbFileName);
-            this.exGroupBox1.Location = new System.Drawing.Point(17, 43);
+            this.exGroupBox1.Location = new System.Drawing.Point(5, 26);
             this.exGroupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.exGroupBox1.Name = "exGroupBox1";
             this.exGroupBox1.Padding = new System.Windows.Forms.Padding(2);
@@ -114,7 +116,7 @@ namespace RawBankEditor.Forms
             this.rbName.Margin = new System.Windows.Forms.Padding(2);
             this.rbName.Name = "rbName";
             this.rbName.Size = new System.Drawing.Size(88, 17);
-            this.rbName.TabIndex = 2;
+            this.rbName.TabIndex = 1;
             this.rbName.TabStop = true;
             this.rbName.Text = "Názov zvuku";
             this.rbName.UseVisualStyleBackColor = true;
@@ -128,7 +130,7 @@ namespace RawBankEditor.Forms
             this.rbKey.Margin = new System.Windows.Forms.Padding(2);
             this.rbKey.Name = "rbKey";
             this.rbKey.Size = new System.Drawing.Size(80, 17);
-            this.rbKey.TabIndex = 1;
+            this.rbKey.TabIndex = 0;
             this.rbKey.TabStop = true;
             this.rbKey.Text = "Kľúč zvuku";
             this.rbKey.UseVisualStyleBackColor = true;
@@ -141,17 +143,18 @@ namespace RawBankEditor.Forms
             this.rbFileName.Margin = new System.Windows.Forms.Padding(2);
             this.rbFileName.Name = "rbFileName";
             this.rbFileName.Size = new System.Drawing.Size(151, 17);
-            this.rbFileName.TabIndex = 0;
+            this.rbFileName.TabIndex = 2;
             this.rbFileName.TabStop = true;
             this.rbFileName.Text = "Názov súboru (s príponou)";
             this.rbFileName.UseVisualStyleBackColor = true;
             // 
             // cboxIgnoreCase
             // 
+            this.cboxIgnoreCase.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboxIgnoreCase.AutoSize = true;
             this.cboxIgnoreCase.BoxBackColor = System.Drawing.Color.White;
             this.cboxIgnoreCase.HighlightColor = System.Drawing.SystemColors.Highlight;
-            this.cboxIgnoreCase.Location = new System.Drawing.Point(17, 163);
+            this.cboxIgnoreCase.Location = new System.Drawing.Point(214, 125);
             this.cboxIgnoreCase.Margin = new System.Windows.Forms.Padding(2);
             this.cboxIgnoreCase.Name = "cboxIgnoreCase";
             this.cboxIgnoreCase.Size = new System.Drawing.Size(180, 17);
@@ -160,11 +163,12 @@ namespace RawBankEditor.Forms
             // 
             // exGroupBox2
             // 
-            this.exGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.exGroupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.exGroupBox2.Controls.Add(this.label3);
             this.exGroupBox2.Controls.Add(this.label2);
             this.exGroupBox2.Controls.Add(this.trackBarOpacity);
-            this.exGroupBox2.Location = new System.Drawing.Point(228, 43);
+            this.exGroupBox2.Location = new System.Drawing.Point(213, 26);
             this.exGroupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.exGroupBox2.Name = "exGroupBox2";
             this.exGroupBox2.Padding = new System.Windows.Forms.Padding(2);
@@ -180,17 +184,18 @@ namespace RawBankEditor.Forms
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(27, 13);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 1;
             this.label3.Text = "50%";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(148, 63);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "100%";
             // 
             // trackBarOpacity
@@ -214,11 +219,11 @@ namespace RawBankEditor.Forms
             // 
             this.bSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bSearch.AutoSize = true;
-            this.bSearch.Location = new System.Drawing.Point(280, 180);
+            this.bSearch.Location = new System.Drawing.Point(277, 155);
             this.bSearch.Margin = new System.Windows.Forms.Padding(2);
             this.bSearch.Name = "bSearch";
             this.bSearch.Size = new System.Drawing.Size(79, 23);
-            this.bSearch.TabIndex = 4;
+            this.bSearch.TabIndex = 5;
             this.bSearch.Text = "Hľadať ďalší";
             this.bSearch.UseVisualStyleBackColor = true;
             this.bSearch.Click += new System.EventHandler(this.bSearch_Click);
@@ -228,14 +233,30 @@ namespace RawBankEditor.Forms
             this.bStorno.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.bStorno.AutoSize = true;
             this.bStorno.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.bStorno.Location = new System.Drawing.Point(363, 180);
+            this.bStorno.Location = new System.Drawing.Point(360, 155);
             this.bStorno.Margin = new System.Windows.Forms.Padding(2);
             this.bStorno.Name = "bStorno";
             this.bStorno.Size = new System.Drawing.Size(56, 23);
-            this.bStorno.TabIndex = 5;
+            this.bStorno.TabIndex = 6;
             this.bStorno.Text = "Zrušiť";
             this.bStorno.UseVisualStyleBackColor = true;
             this.bStorno.Click += new System.EventHandler(this.bStorno_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.cboxIgnoreCase);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Controls.Add(this.bStorno);
+            this.panel1.Controls.Add(this.bSearch);
+            this.panel1.Controls.Add(this.tbText);
+            this.panel1.Controls.Add(this.exGroupBox1);
+            this.panel1.Controls.Add(this.exGroupBox2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(8, 8);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5);
+            this.panel1.Size = new System.Drawing.Size(418, 185);
+            this.panel1.TabIndex = 6;
             // 
             // FSearch
             // 
@@ -244,18 +265,12 @@ namespace RawBankEditor.Forms
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.CancelButton = this.bStorno;
-            this.ClientSize = new System.Drawing.Size(434, 209);
-            this.Controls.Add(this.cboxIgnoreCase);
-            this.Controls.Add(this.bStorno);
-            this.Controls.Add(this.exGroupBox2);
-            this.Controls.Add(this.exGroupBox1);
-            this.Controls.Add(this.bSearch);
-            this.Controls.Add(this.tbText);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(434, 201);
+            this.Controls.Add(this.panel1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.MinimumSize = new System.Drawing.Size(450, 248);
+            this.MinimumSize = new System.Drawing.Size(450, 240);
             this.Name = "FSearch";
             this.Padding = new System.Windows.Forms.Padding(8);
             this.ShowIcon = false;
@@ -266,8 +281,9 @@ namespace RawBankEditor.Forms
             this.exGroupBox2.ResumeLayout(false);
             this.exGroupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trackBarOpacity)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -287,5 +303,6 @@ namespace RawBankEditor.Forms
         private ExControls.ExCheckBox cboxIgnoreCase;
         private ExControls.ExButton bSearch;
         private ExControls.ExButton bStorno;
+        private Panel panel1;
     }
 }

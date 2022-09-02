@@ -2,7 +2,6 @@
 
 public static class LinkConsts
 {
-    public const string LINK_INFO_APP = "http://iniss.6f.sk/";
-    public const string LINK_DOWNLOAD = "http://iniss.6f.sk/gvdeditor/gvdeditor-download/";
-    public const string EMAIL = "iniss.sk@gmail.com";
+    public const string LINK_DOWNLOAD = "http://iniss.6f.sk/docs/rawbankeditor/na-stiahnutie/";
+    public const string UPDATE = "http://iniss.6f.sk/docs/rawbankeditor/novinky/";
 }

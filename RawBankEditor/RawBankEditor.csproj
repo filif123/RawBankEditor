@@ -13,6 +13,22 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
     <LangVersion>latest</LangVersion>
+    <IsWebBootstrapper>true</IsWebBootstrapper>
+    <PublishUrl>ftp://endora.endora.cz/iniss.6f.sk/web/apps/RawBankEditor/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Web</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>http://iniss.6f.sk/apps/RawBankEditor/</InstallUrl>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>0.1.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -23,6 +39,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <DocumentationFile>
+    </DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -37,9 +55,13 @@
     <ApplicationManifest>app.manifest</ApplicationManifest>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>icon.ico</ApplicationIcon>
+    <ApplicationIcon>raw.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>RawBankEditor.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.Win32.Registry, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Win32.Registry.5.0.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
     </Reference>
@@ -68,6 +90,7 @@
       <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Security.AccessControl, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\..\packages\System.Security.AccessControl.6.0.0\lib\net461\System.Security.AccessControl.dll</HintPath>
@@ -86,13 +109,30 @@
       <DependentUpon>MinButton.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\BankMessages.cs" />
-    <Compile Include="Entities\MenuItem.cs" />
     <Compile Include="Entities\RawBankProject.cs" />
+    <Compile Include="Forms\FAddEditLanguage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAddEditLanguage.Designer.cs">
+      <DependentUpon>FAddEditLanguage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FAddSound.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FAddSound.Designer.cs">
       <DependentUpon>FAddSound.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FAfterInsertSounds.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAfterInsertSounds.Designer.cs">
+      <DependentUpon>FAfterInsertSounds.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FAppSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAppSettings.Designer.cs">
+      <DependentUpon>FAppSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FMain.Actions.cs">
       <SubType>Form</SubType>
@@ -103,27 +143,21 @@
     <Compile Include="Forms\FSearch.Designer.cs">
       <DependentUpon>FSearch.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FSoundConvert.cs">
+    <Compile Include="Forms\FSoundsMove.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FSoundConvert.Designer.cs">
-      <DependentUpon>FSoundConvert.cs</DependentUpon>
+    <Compile Include="Forms\FSoundsMove.Designer.cs">
+      <DependentUpon>FSoundsMove.cs</DependentUpon>
     </Compile>
     <Compile Include="GlobUsings.cs" />
     <Compile Include="Tools\SoundUtils.cs" />
     <Compile Include="XML\AppShortcuts.cs" />
     <Compile Include="FileConsts.cs" />
-    <Compile Include="Forms\FEditGroup.cs">
+    <Compile Include="Forms\FAddEditGroup.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FEditGroup.Designer.cs">
-      <DependentUpon>FEditGroup.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\FInfoApp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FInfoApp.Designer.cs">
-      <DependentUpon>FInfoApp.cs</DependentUpon>
+    <Compile Include="Forms\FAddEditGroup.Designer.cs">
+      <DependentUpon>FAddEditGroup.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FLangChoose.cs">
       <SubType>Form</SubType>
@@ -141,22 +175,32 @@
     <Compile Include="LinkConsts.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XML\RawBankEditorSettingsNaming.cs" />
     <Compile Include="Tools\RawBankExplorer.cs" />
     <Compile Include="XML\RawBankEditorConfig.cs" />
     <Compile Include="XML\DesktopColumns.cs" />
     <Compile Include="XML\RawBankEditorStyle.cs" />
+    <None Include="..\..\ToolsCore\ToolsCore\GlobalResources.resx">
+      <Link>GlobalResources.resx</Link>
+      <Generator>None</Generator>
+      <CustomToolNamespace>ToolsCore</CustomToolNamespace>
+    </None>
     <EmbeddedResource Include="Controls\MinButton.resx">
       <DependentUpon>MinButton.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAddEditLanguage.resx">
+      <DependentUpon>FAddEditLanguage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAfterInsertSounds.resx">
+      <DependentUpon>FAfterInsertSounds.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAppSettings.resx">
+      <DependentUpon>FAppSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FAddSound.resx">
       <DependentUpon>FAddSound.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FEditGroup.resx">
-      <DependentUpon>FEditGroup.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FInfoApp.resx">
-      <DependentUpon>FInfoApp.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FAddEditGroup.resx">
+      <DependentUpon>FAddEditGroup.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FLangChoose.resx">
       <DependentUpon>FLangChoose.cs</DependentUpon>
@@ -167,8 +211,8 @@
     <EmbeddedResource Include="Forms\FSearch.resx">
       <DependentUpon>FSearch.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FSoundConvert.resx">
-      <DependentUpon>FSoundConvert.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FSoundsMove.resx">
+      <DependentUpon>FSoundsMove.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -181,13 +225,14 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="app.manifest" />
-    <None Include="ClassDiagram1.cd" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\RawBankEdit.Entities.FyzSound.datasource" />
     <None Include="Properties\DataSources\RawBankEditor.Entities.ExplorerElement.datasource" />
     <None Include="Properties\DataSources\RawBankEditor.Entities.FileSystemElement.datasource" />
     <None Include="Properties\DataSources\RawBankEditor.Entities.FyzSound.datasource" />
     <None Include="Properties\DataSources\RawBankEditor.Entities.RawBankMessage.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.Entities.FyzGroup.datasource" />
+    <None Include="Properties\DataSources\ToolsCore.Entities.FyzSound.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -202,81 +247,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\global-settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\import.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\info-app.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\open.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\redo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\rename.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\save-all.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\undo.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\delete.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\edit.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\recent-gvds.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\app-settings.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\back.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\forward.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\export.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\analyze.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\search.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\convert.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\sound.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\correct.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\folder.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\file.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\move.png" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\..\ExControls\ExControls\ExControls.csproj">
       <Project>{e2064a91-6132-498f-9f22-8c3e7c5941bc}</Project>
       <Name>ExControls</Name>
@@ -287,8 +257,38 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
+    <Content Include="raw.ico" />
+    <None Include="Resources\convert.png" />
+    <None Include="Resources\refresh.png" />
+    <None Include="Resources\textbox.png" />
+    <None Include="Resources\wav.png" />
+    <None Include="Resources\ewa.png" />
     <None Include="Resources\raw.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>cd $(OutDir)
+mkdir lib
+move *.dll ".\lib"
+move *.pdb ".\lib"
+move *.xml ".\lib"
+rmdir "lib\cs\" /s /q
+move cs ".\lib"</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>

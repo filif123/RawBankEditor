@@ -5,7 +5,8 @@ namespace RawBankEditor.Entities;
 
 public class RawBankProject
 {
-    public string AbsPathToBank { get; set; }
-    public string AbsPathToINISS { get; set; }
-    public ExBindingList<FyzLanguage> Languages { get; set; }
+    public string AbsPathToBank { get; init; }
+    public string AbsPathToINISS { get; init; }
+    public ExBindingList<FyzLanguage> Languages { get; init; }
+    public Dictionary<FyzLanguage, List<RawBankMessage>> Messages { get; init; }
 }

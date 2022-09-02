@@ -1,5 +1,4 @@
-﻿using RawBankEditor.Entities;
-using ToolsCore.Entities;
+﻿using ToolsCore.Entities;
 using ToolsCore.Tools;
 
 namespace RawBankEditor.Forms;
@@ -9,8 +8,8 @@ public partial class FLangChoose : Form
     public FLangChoose()
     {
         InitializeComponent();
-        FormUtils.SetFormFont(this);
-        this.ApplyTheme();
+        this.ApplyThemeAndFonts();
+
         cboxLanguages.DataSource = GlobData.OpenedProject.Languages;
     }
 

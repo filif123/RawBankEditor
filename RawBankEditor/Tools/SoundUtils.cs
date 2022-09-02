@@ -1,5 +1,9 @@
 ﻿using System.Media;
+using System.Threading.Tasks;
 using NAudio.Wave;
+using RawBankEditor.Entities;
+using ToolsCore.Entities;
+using ToolsCore.Tools;
 
 namespace RawBankEditor.Tools;
 
@@ -8,62 +12,47 @@ public static class SoundUtils
     public const string EWA_EXT = ".EWA";
     public const string WAV_EXT = ".WAV";
 
+    // -1 = este nezistene
+    private const int SOUND_UNKNOWN_LENGTH = -1;
+
+    // -2 = chyba
+    private const int SOUND_ERROR = -2;
+
     public static void Play(string soundpath)
     {
         if (!File.Exists(soundpath))
             return;
-
-        switch (Path.GetExtension(soundpath).ToUpper())
+        try
         {
-            case EWA_EXT:
+            switch (Path.GetExtension(soundpath).ToUpper())
             {
-                using var fileStream = new FileStream(soundpath, FileMode.Open);
-                using var memoryStream = new MemoryStream();
-                using var reader = new BinaryReader(fileStream);
-                using var writer = new BinaryWriter(memoryStream);
+                case EWA_EXT:
+                {
+                    using var fileStream = new FileStream(soundpath, FileMode.Open);
+                    using var memoryStream = new MemoryStream();
+                    using var reader = new BinaryReader(fileStream);
+                    using var writer = new BinaryWriter(memoryStream);
 
-                EWAtoWAV(reader, writer);
+                    ConvertEWAtoWAV(reader, writer);
 
-                using var player = new SoundPlayer(memoryStream);
+                    memoryStream.Position = 0;
+                    using var player = new SoundPlayer(memoryStream);
                 
-                player.Play();
-                break;
-            }
-            case WAV_EXT:
-            {
-                using var player = new SoundPlayer(soundpath);
-                player.Play();
-                break;
+                    player.Play();
+                    break;
+                }
+                case WAV_EXT:
+                {
+                    using var player = new SoundPlayer(soundpath);
+                    player.Play();
+                    break;
+                }
             }
         }
-    }
-
-    private static void ThrowIfInvalid(string inpath, string outpath)
-    {
-        if (string.IsNullOrEmpty(inpath))
-            throw new ArgumentNullException(nameof(inpath));
-        if (string.IsNullOrEmpty(outpath))
-            throw new ArgumentNullException(nameof(outpath));
-        if (!File.Exists(inpath))
-            throw new FileNotFoundException("Input file must be exists.", inpath);
-    }
-
-    /// <summary>
-    ///     Converts .WAV audio file to .EWA encoded file.
-    /// </summary>
-    /// <param name="inpath">input file (.WAV)</param>
-    /// <param name="outpath">output file (.EWA)</param>
-    /// <param name="check">whether the format of .WAV file should be checked</param>
-    public static void WAVtoEWA(string inpath, string outpath, bool check = false)
-    {
-        ThrowIfInvalid(inpath, outpath);
-
-        using var inStream = new FileStream(inpath, FileMode.Open, FileAccess.Read);
-        using var outStream = new FileStream(outpath, FileMode.Create, FileAccess.Write);
-        using var reader = new BinaryReader(inStream);
-        using var writer = new BinaryWriter(outStream);
-
-        WAVtoEWA(reader, writer, check);
+        catch (Exception e)
+        {
+            Utils.ShowError(e.Message);
+        }
     }
 
     /// <summary>
@@ -72,43 +61,21 @@ public static class SoundUtils
     /// <param name="inpath">input file (.EWA)</param>
     /// <param name="outpath">output file (.WAV)</param>
     /// <param name="check">whether the format of .WAV file should be checked</param>
-    public static void EWAtoWAV(string inpath, string outpath, bool check = false)
+    public static void ConvertEWAtoWAV(string inpath, string outpath = null, bool check = false)
     {
-        ThrowIfInvalid(inpath, outpath);
+        if (string.IsNullOrWhiteSpace(inpath))
+            throw new ArgumentNullException(nameof(inpath));
+        if (!File.Exists(inpath))
+            throw new FileNotFoundException("Input file must be exists.", inpath);
+
+        outpath ??= Path.ChangeExtension(inpath, WAV_EXT);
 
         using var inStream = new FileStream(inpath, FileMode.Open, FileAccess.Read);
         using var outStream = new FileStream(outpath, FileMode.Create, FileAccess.Write);
         using var reader = new BinaryReader(inStream);
         using var writer = new BinaryWriter(outStream);
 
-        EWAtoWAV(reader, writer, check);
-    }
-
-    /// <summary>
-    ///     Converts .EWA stream to .WAV stream.
-    /// </summary>
-    /// <param name="instream">input stream (.WAV)</param>
-    /// <param name="outstream">output stream (.EWA)</param>
-    /// <param name="check">whether the format of .WAV stream should be checked</param>
-    public static void WAVtoEWA(BinaryReader instream, BinaryWriter outstream, bool check = false)
-    {
-        var rand = new Random();
-        var ewaByte = (byte)rand.Next(0xff + 1);
-
-        if (check)
-        {
-            instream.BaseStream.Position = 0;
-            CheckWAV(instream);
-        }
-
-        while (instream.BaseStream.Position < instream.BaseStream.Length)
-        {
-            var pos = instream.BaseStream.Position;
-            var b = instream.ReadByte();
-            b = (byte)((b + 0x11 * pos) & 0xff);
-            b = (byte)(b ^ ewaByte);
-            outstream.Write(b);
-        }
+        ConvertEWAtoWAV(reader, writer, check);
     }
 
     /// <summary>
@@ -117,7 +84,7 @@ public static class SoundUtils
     /// <param name="instream">input stream (.EWA)</param>
     /// <param name="outstream">output stream (.WAV)</param>
     /// <param name="check">whether the format of .WAV stream should be checked</param>
-    public static void EWAtoWAV(BinaryReader instream, BinaryWriter outstream, bool check = false)
+    public static void ConvertEWAtoWAV(BinaryReader instream, BinaryWriter outstream, bool check = false)
     {
         var b = instream.ReadByte();
         var ewaByte = (byte)(b ^ 82);
@@ -139,13 +106,63 @@ public static class SoundUtils
         }
     }
 
+    /// <summary>
+    ///     Converts .WAV audio file to .EWA encoded file.
+    /// </summary>
+    /// <param name="inpath">input file (.WAV)</param>
+    /// <param name="outpath">output file (.EWA)</param>
+    /// <param name="check">whether the format of .WAV file should be checked</param>
+    public static void ConvertWAVtoEWA(string inpath, string outpath = null, bool check = false)
+    {
+        if (string.IsNullOrWhiteSpace(inpath))
+            throw new ArgumentNullException(nameof(inpath));
+        if (!File.Exists(inpath))
+            throw new FileNotFoundException("Input file must be exists.", inpath);
+
+        outpath ??= Path.ChangeExtension(inpath, EWA_EXT);
+
+        using var inStream = new FileStream(inpath, FileMode.Open, FileAccess.Read);
+        using var outStream = new FileStream(outpath, FileMode.Create, FileAccess.Write);
+        using var reader = new BinaryReader(inStream);
+        using var writer = new BinaryWriter(outStream);
+
+        ConvertWAVtoEWA(reader, writer, check);
+    }
+
+    /// <summary>
+    ///     Converts .EWA stream to .WAV stream.
+    /// </summary>
+    /// <param name="instream">input stream (.WAV)</param>
+    /// <param name="outstream">output stream (.EWA)</param>
+    /// <param name="check">whether the format of .WAV stream should be checked</param>
+    public static void ConvertWAVtoEWA(BinaryReader instream, BinaryWriter outstream, bool check = false)
+    {
+        var rand = new Random();
+        var ewaByte = (byte)rand.Next(0xff + 1);
+
+        if (check)
+        {
+            instream.BaseStream.Position = 0;
+            CheckWAV(instream);
+        }
+
+        while (instream.BaseStream.Position < instream.BaseStream.Length)
+        {
+            var pos = instream.BaseStream.Position;
+            var b = instream.ReadByte();
+            b = (byte)((b + 0x11 * pos) & 0xff);
+            b = (byte)(b ^ ewaByte);
+            outstream.Write(b);
+        }
+    }
+
     private static void CheckWAV(BinaryReader reader)
     {
-        if (Read4byteString(reader) != "RIFF")
+        if (Read4ByteString(reader) != "RIFF")
             throw new FormatException("Chybný formát WAV suboru (chýba hlavička RIFF)!");
         if (reader.ReadInt32() != reader.BaseStream.Length - 8)
             throw new FormatException("Chybný formát WAV suboru (chybná dĺžka súboru)");
-        if (Read4byteString(reader) != "WAVE")
+        if (Read4ByteString(reader) != "WAVE")
             throw new FormatException("Chybný formát WAV suboru (nie je typu WAVE)");
 
         double formatPos = -1;
@@ -153,7 +170,7 @@ public static class SoundUtils
 
         while (reader.BaseStream.Length > reader.BaseStream.Position)
         {
-            if (Read4byteString(reader) == "fmt ")
+            if (Read4ByteString(reader) == "fmt ")
             {
                 fmtLen = reader.ReadInt32();
                 formatPos = reader.BaseStream.Position;
@@ -186,7 +203,7 @@ public static class SoundUtils
         }
     }
 
-    private static string Read4byteString(BinaryReader reader)
+    private static string Read4ByteString(BinaryReader reader)
     {
         var array = new byte[4];
         reader.Read(array, 0, array.Length);
@@ -196,99 +213,137 @@ public static class SoundUtils
     /// <summary>
     ///     Vrati dlzku zvuku (.WAV|.EWA) v milisekundach (ms)
     /// </summary>
-    /// <param name="fileName"></param>
+    /// <param name="file"></param>
     /// <returns></returns>
-    public static int GetSoundDuration(string fileName)
+    public static async Task<int> GetSoundDuration(SoundFileElement file)
     {
-        if (string.IsNullOrEmpty(fileName))
-            throw new ArgumentNullException(nameof(fileName));
+        if (file is null)
+            throw new ArgumentNullException(nameof(file));
 
-        switch (Path.GetExtension(fileName).ToUpper())
+        try
         {
-            case EWA_EXT:
+            var path = file.FileInfo.FullName;
+            switch (Path.GetExtension(path).ToUpper())
             {
-                using var fileStream = new FileStream(fileName, FileMode.Open);
-                using var memoryStream = new MemoryStream();
-                using var reader = new BinaryReader(fileStream);
-                using var writer = new BinaryWriter(memoryStream);
+                case EWA_EXT:
+                {
+                    return await Task.Run(() =>
+                    {
+                        try
+                        {
+                            using var fileStream = new FileStream(path, FileMode.Open);
+                            using var memoryStream = new MemoryStream();
+                            using var reader = new BinaryReader(fileStream);
+                            using var writer = new BinaryWriter(memoryStream);
 
-                EWAtoWAV(reader, writer);
-                var wreader = new WaveFileReader(memoryStream);
-                var span = wreader.TotalTime;
-                return (int) span.TotalMilliseconds;
+                            ConvertEWAtoWAV(reader, writer);
+
+                            memoryStream.Position = 0;
+                            var wreader = new WaveFileReader(memoryStream);
+                            var span = wreader.TotalTime;
+                            return (int) span.TotalMilliseconds;
+                        }
+                        catch (IOException)
+                        {
+                            return SOUND_UNKNOWN_LENGTH;
+                        }
+                    });
+
+                }
+                case WAV_EXT:
+                {
+                    return await Task.Run(() =>
+                    {
+                        try
+                        {
+                            using var wreader = new WaveFileReader(path);
+                            var span = wreader.TotalTime;
+                            return (int) span.TotalMilliseconds;
+                        }
+                        catch (IOException)
+                        {
+                            return SOUND_UNKNOWN_LENGTH;
+                        }
+                    });
+                }
+                default:
+                    return SOUND_ERROR;
             }
-            case WAV_EXT:
-            {
-                using var wreader = new WaveFileReader(fileName);
-                var span = wreader.TotalTime;
-                return (int) span.TotalMilliseconds;
-            }
-            default: 
-                return -1;
         }
-    }
-}
-
-public class SoundReader : IDisposable
-{
-    public bool IsEwa { get; }
-
-    public byte EwaByte { get; }
-
-    public string FilePath { get; }
-
-    public FileStream Stream { get; }
-
-    public BinaryReader Reader {  get; }
-
-    /// <summary>Initializes a new instance of the <see cref="T:System.Object" /> class.</summary>
-    public SoundReader(string filePath)
-    {
-        if (string.IsNullOrEmpty(filePath))
-            throw new ArgumentException(nameof(filePath));
-        if (!File.Exists(filePath))
-            throw new FileNotFoundException("File must be exists.", filePath);
-
-        string extension = Path.GetExtension(filePath).ToUpper();
-
-        IsEwa = extension switch
+        catch (FormatException)
         {
-            SoundUtils.EWA_EXT => true,
-            SoundUtils.WAV_EXT => false,
-            _ => throw new InvalidFileException(nameof(filePath))
-        };
-
-        FilePath = filePath;
-
-        Stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
-        Reader = new BinaryReader(Stream);
-
-        if (IsEwa)
+            Program.MainForm.Invoke(() =>
+            {
+                GlobData.OpenedProject.Messages[Program.MainForm.CurrentLanguage].Add(new InvalidSoundFile(file));
+            });
+            
+            return SOUND_ERROR;
+        }
+        catch (Exception)
         {
-            var b = Stream.ReadByte();
-            EwaByte = (byte)(b ^ 82);
-            Reader.BaseStream.Position = 0;
+            return SOUND_ERROR;
         }
     }
 
-    /// <summary>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</summary>
-    public void Dispose()
+    public static void ConvertSoundsLanguage(FyzLanguage lang, bool toEwa, ToolStripProgressBar bar)
     {
-        Reader.Dispose();
-        Stream.Dispose();
-    }
-}
-
-public class InvalidFileException : Exception
-{
-    private readonly string filePath;
-
-    public InvalidFileException(string filePath)
-    {
-        this.filePath = filePath;
+        foreach (var group in lang.Groups) 
+            ConvertSoundsInGroup(group, toEwa, bar);
     }
 
-    /// <summary>Gets a message that describes the current exception.</summary>
-    /// <returns>The error message that explains the reason for the exception, or an empty string ("").</returns>
-    public override string Message => string.IsNullOrEmpty(filePath) ? "" : $"File {filePath} must be a type .WAV or .EWA.";
+    public static void ConvertSoundsInGroup(FyzGroup grp, bool toEwa, ToolStripProgressBar bar)
+    {
+        ConvertSounds(grp.Sounds, toEwa, bar);
+    }
+
+    public static void ConvertSounds(IEnumerable<FyzSound> sounds, bool toEwa, ToolStripProgressBar bar)
+    {
+        var ext = toEwa ? EWA_EXT : WAV_EXT;
+        foreach (var sound in sounds)
+        {
+            if (sound.File is null || sound.File.FileInfo.Extension.EqualsIgnoreCase(ext) || File.Exists(sound.File.FileInfo.FullName))
+            {
+                bar.Value++;
+                continue;
+            }
+
+            var newPath = Path.ChangeExtension(sound.File.FileInfo.FullName, ext);
+            if (toEwa)
+                ConvertWAVtoEWA(sound.File.FileInfo.FullName, newPath);
+            else
+                ConvertEWAtoWAV(sound.File.FileInfo.FullName, newPath);
+            sound.File.FileInfo = new FileInfo(newPath);
+            sound.FileName = sound.File.FileInfo.Name;
+            bar.Value++;
+        }
+    }
+
+    public static void ConvertFiles(IEnumerable<FileSystemElement> elements, bool toEwa)
+    {
+        var ext = toEwa ? EWA_EXT : WAV_EXT;
+        foreach (var element in elements)
+        {
+            switch (element)
+            {
+                case SoundFileElement sfe:
+                    if (sfe.FileInfo is null || sfe.FileInfo.Extension.EqualsIgnoreCase(ext) || File.Exists(sfe.FileInfo.FullName))
+                        continue;
+
+                    var newPath = Path.ChangeExtension(sfe.FileInfo.FullName, ext);
+                    if (toEwa)
+                        ConvertWAVtoEWA(sfe.FileInfo.FullName, newPath);
+                    else
+                        ConvertEWAtoWAV(sfe.FileInfo.FullName, newPath);
+                    sfe.FileInfo = new FileInfo(newPath);
+                    if (sfe.Sound is not null)
+                    {
+                        sfe.Sound.FileName = sfe.FileInfo.Name;
+                    }
+                    break;
+                case DirectoryElement de:
+                    ConvertFiles(de.Children, toEwa);
+                    break;
+            }
+        }
+    }
 }

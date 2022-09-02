@@ -1,4 +1,6 @@
-﻿using RawBankEditor.Entities;
+﻿using System.Threading.Tasks;
+using RawBankEditor.Entities;
+using RawBankEditor.Forms;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -6,77 +8,102 @@ namespace RawBankEditor.Tools;
 
 internal static class RawBankExplorer
 {
-    public static DirectoryElement ExploreFileSystem() => new(new DirectoryInfo(GlobData.OpenedProject.AbsPathToBank));
+    public static DirectoryElement ExploreFileSystem() => new(GlobData.OpenedProject.AbsPathToBank);
 
-    public static List<RawBankMessage> MergeFilesAndData(DirectoryElement root, FyzLanguage lang)
+    public static void MergeFilesAndData(DirectoryElement root, FyzLanguage lang, Dictionary<FyzLanguage,List<RawBankMessage>> dict, bool onlyCheck = false)
     {
-        var messages = new List<RawBankMessage>();
+        List<RawBankMessage> messages;
+        if (onlyCheck)
+        {
+            dict[lang].Clear();
+            messages = dict[lang];
+        }
+        else
+        {
+            if (dict.ContainsKey(lang))
+                dict.Remove(lang);
+
+            messages = new List<RawBankMessage>();
+            dict.Add(lang, messages);
+        }
+        
 
         //languages
-        var dirEl = root.Children.FirstOrDefault(n => EqualsPathNames(n.Name, lang.Key));
-        if (dirEl is not DirectoryElement dir)
+        var langName = lang.RelativePath.Replace("\\", "");
+        if (root.Children.FirstOrDefault(langDir => EqualsPathNames(langDir.Name, langName)) is not DirectoryElement dir)
         {
             messages.Add(new LanguageDirMissing(lang));
-            return messages;
+            return;
         }
 
-        lang.Directory = dir;
-
-        //groups
-        foreach (var grpElement in dir.Children)
+        if (!onlyCheck)
         {
-            if (grpElement is not DirectoryElement de)
-                continue;
+            lang.Directory = dir;
 
-            foreach (var grp in lang.Groups)
+            //groups
+            foreach (var grpElement in dir.Children)
             {
-                if (!EqualsPathNames(de.Name, grp.RelativePath.Replace("\\","")))
+                if (grpElement is not DirectoryElement de)
                     continue;
 
-                grp.Directory = de;
-                de.Group = grp;
-
-                //sounds
-                foreach (var sndElement in de.Children)
+                foreach (var grp in lang.Groups)
                 {
-                    if (sndElement is not SoundFileElement sfe)
+                    if (!EqualsPathNames(de.Name, grp.RelativePath.Replace("\\","")))
                         continue;
 
-                    foreach (var snd in grp.Sounds)
+                    grp.Directory = de;
+                    de.Group = grp;
+
+                    //sounds
+                    foreach (var sndElement in de.Children)
                     {
-                        if (!RawBankParser.AddPathIsEmpty(snd.AdditionalRelativePath))
+                        if (sndElement is not SoundFileElement sfe)
+                            continue;
+
+                        foreach (var snd in grp.Sounds)
                         {
-                            snd.File = new SoundFileElement(snd.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
-                            snd.File.Sound = snd;
-                        }
-                        else if (EqualsPathNames(sfe.Name, snd.FileName))
-                        {
-                            snd.File = sfe;
-                            snd.File.Sound = snd;
+                            if (!RawBankParser.AddPathIsEmpty(snd.AdditionalRelativePath))
+                            {
+                                snd.File = new SoundFileElement(snd.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
+                                snd.File.Sound = snd;
+                            }
+                            else if (EqualsPathNames(sfe.Name, snd.FileName))
+                            {
+                                snd.File = sfe;
+                                snd.File.Sound = snd;
+                            }
                         }
                     }
                 }
             }
         }
-
+        
         //check files (link LOGICAL -> FILE)
         foreach (var langGroup in lang.Groups)
         {
-            if (langGroup.Directory == null) 
+            if (langGroup.Directory == null)
+            {
                 messages.Add(new GroupDirMissing(langGroup));
+            }
+
+            if (langGroup.Sounds.Count == 0)
+            {
+                messages.Add(new EmptyGroup(langGroup));
+                continue;
+            }
 
             foreach (var sound in langGroup.Sounds)
             {
-                if (sound.File == null) 
+                if (sound.File == null)
+                {
                     messages.Add(new SoundFileMissing(sound));
+                }
             }
         }
 
         //check files (link FILE -> LOGICAL)
         CheckDefOfFile(dir);
-        
-        return messages;
-        
+
         void CheckDefOfFile(DirectoryElement de)
         {
             foreach (var child in de.Children)
@@ -85,27 +112,62 @@ internal static class RawBankExplorer
                 {
                     CheckDefOfFile(d);
                 }
-                else if (child is SoundFileElement {Sound: null} sfe) 
+                else if (child is SoundFileElement {Sound: null} sfe)
+                {
                     messages.Add(new SoundDataMissing(sfe));
+                }
             }
         }
     }
 
     public static bool EqualsPathNames(string name1, string name2) => string.Equals(name1, name2, StringComparison.CurrentCultureIgnoreCase);
 
+    /// <summary>
+    /// Ak uz bol Dir element vytvoreny skor, nie je potrebne ho v metode GetElement() vytvarat znova (pretoze asi nebude kompletny).
+    /// </summary>
+    public static DirectoryElement AddDirHandled { get; set; }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public static bool ConvertSoundIsHandled { get; set; }
+
+    public static bool MovingSoundIsHandled { get; set; }
+
     public static FileSystemElement GetElement(string fullpath, DirectoryElement root, SearchOperation op = SearchOperation.None)
     {
+        if (root is null)
+            throw new ArgumentNullException(nameof(root));
+
         var path = Utils.GetRelativePath(fullpath, GlobData.OpenedProject.AbsPathToBank);
 
-        var direlem = root;
         var splitted = path.Split('\\');
         for (var i = 1; i < splitted.Length; i++)
         {
             var slice = splitted[i];
-            var elem = GetElem(direlem, slice);
+            var elem = GetElem(root, slice);
             if (op == SearchOperation.Delete && elem != null && i == splitted.Length - 1)
             {
-                direlem.Children.Remove(elem);
+                root.Children.Remove(elem);
+                switch (elem)
+                {
+                    case DirectoryElement dirElem:
+                        if (dirElem.Group is not null) 
+                            dirElem.Group.Directory = null;
+                        break;
+                    case SoundFileElement sfileElem:
+                        if (sfileElem.Sound is not null)
+                        {
+                            sfileElem.Parent?.Children.Remove(sfileElem);
+                            sfileElem.Sound.FileName = null;
+                            sfileElem.Sound.File = null;
+                        }
+                        sfileElem.FileInfo = null;
+                        break;
+                    case FileElement fileElem:
+                        fileElem.FileInfo = null;
+                        break;
+                }
                 return elem;
             }
 
@@ -114,28 +176,29 @@ internal static class RawBankExplorer
                 case null when op == SearchOperation.Create && i == splitted.Length - 1:
                     if (File.GetAttributes(fullpath).HasFlag(FileAttributes.Directory))
                     {
-                        var newElement = new DirectoryElement(fullpath);
-                        newElement.Parent = direlem;
-                        direlem.Children.Add(newElement);
+                        var newElement = AddDirHandled ?? new DirectoryElement(fullpath);
+                        newElement.Parent = root;
+                        root.Children.Add(newElement);
+                        if (AddDirHandled is not null) 
+                            AddDirHandled = null;
                         return newElement;
                     }
                     else
                     {
                         FileElement newElement;
-                        if (Path.GetExtension(fullpath).ToUpper() is SoundFileElement.EWA_EXT
-                            or SoundFileElement.WAV_EXT)
+                        if (Path.GetExtension(fullpath).ToUpper() is SoundFileElement.EWA_EXT or SoundFileElement.WAV_EXT)
                             newElement = new SoundFileElement(fullpath);
                         else
                             newElement = new OtherFileElement(fullpath);
 
-                        newElement.Parent = direlem;
-                        direlem.Children.Add(newElement);
+                        newElement.Parent = root;
+                        root.Children.Add(newElement);
                         return newElement;
                     }
                 case null:
                     return null;
                 case DirectoryElement de when i != splitted.Length - 1:
-                    direlem = de;
+                    root = de;
                     continue;
                 case FileElement when i != splitted.Length - 1:
                     return null;
@@ -162,29 +225,5 @@ internal static class RawBankExplorer
         None,
         Create,
         Delete
-    }
-
-    public static List<FyzSound> CheckBankWAVs(FyzLanguage lang, BackgroundWorker worker = null, bool checkDuration = false)
-    {
-        var sounds = new List<FyzSound>();
-
-        worker?.ReportProgress(0, lang.Groups.Count);
-
-        var i = 0;
-        foreach (var grp in lang.Groups)
-        {
-            foreach (var sound in grp.Sounds)
-            {
-                var path = $"{GlobData.OpenedProject.AbsPathToBank}{lang.RelativePath}{grp.RelativePath}{sound.AdditionalRelativePath}";
-                if (!File.Exists(path))
-                    //Sound has no WAV
-                    sounds.Add(sound);
-                else if (checkDuration) sound.Duration = SoundUtils.GetSoundDuration(path);
-            }
-
-            worker?.ReportProgress(++i);
-        }
-
-        return sounds;
     }
 }

@@ -3,19 +3,29 @@ using ToolsCore.Tools;
 
 namespace RawBankEditor.Forms;
 
-public partial class FAddSound : Form
+public partial class FAddEditLanguage : Form
 {
     private bool _autoChangeNameAndPath = true;
+    public FyzLanguage Language { get; private set; }
 
-    public FyzSound Sound { get; private set; }
-    private SoundFileElement File { get; }
-
-    public FAddSound(SoundFileElement file = null)
+    public FAddEditLanguage(FyzLanguage language = null)
     {
         InitializeComponent();
         this.ApplyThemeAndFonts();
 
-        File = file;
+        Language = language;
+
+        if (language != null)
+        {
+            tbKey.Text = language.Key;
+            tbName.Text = language.Name;
+            tbRelativePath.Text = language.RelativePath;
+        }
+        else
+        {
+            base.Text = "Pridať jazyk";
+
+        }
     }
 
     private void BSave_Click(object sender, EventArgs e)
@@ -24,14 +34,14 @@ public partial class FAddSound : Form
         var name = tbName.Text;
         var relative = tbRelativePath.Text;
 
-        if (string.IsNullOrWhiteSpace(key) || string.IsNullOrWhiteSpace(name))
+        if (string.IsNullOrEmpty(key) || string.IsNullOrEmpty(name) || string.IsNullOrEmpty(relative))
         {
-            Utils.ShowError("Nie sú vyplnené všetky požadované polia.");
+            Utils.ShowError("Nie sú vyplnené všetky polia.");
             DialogResult = DialogResult.None;
             return;
         }
 
-        foreach (var grp in Program.MainForm.CurrentGroup.Sounds)
+        foreach (var grp in Program.MainForm.CurrentLanguage.Groups)
         {
             if (grp.Key == key)
             {
@@ -46,23 +56,28 @@ public partial class FAddSound : Form
                 DialogResult = DialogResult.None;
                 return;
             }
+
+            if (grp.RelativePath == relative)
+            {
+                Utils.ShowError("Položka s rovnakou relatívnou cestou už existuje.");
+                DialogResult = DialogResult.None;
+                return;
+            }
         }
 
-        Sound = new FyzSound
+        if (Language != null)
         {
-            Key = key,
-            Name = name,
-            AdditionalRelativePath = relative,
-            Text = rtbText.Text
-        };
-
-        if (File is not null) 
-            File.Sound = Sound;
+            Program.MainForm.RegisterNewAction(
+                new FMain.EditLanguageAction(Program.MainForm, Language, (Language.Key, key), (Language.Name,name), (Language.RelativePath, relative)));
+        }
+        else
+        {
+            Language = new FyzLanguage(key, name, relative);
+            Program.MainForm.RegisterNewAction(new FMain.AddLanguageAction(Program.MainForm, Language));
+        }
 
         DialogResult = DialogResult.OK;
     }
-
-    private void BStorno_Click(object sender, EventArgs e) => DialogResult = DialogResult.Cancel;
 
     private void TbKey_TextChanged(object sender, EventArgs e)
     {

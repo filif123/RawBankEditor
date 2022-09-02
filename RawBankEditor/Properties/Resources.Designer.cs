@@ -61,102 +61,70 @@ namespace RawBankEditor.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Tento program slúži na úpravu binárnych súborov zvukovej banky, ktoré používa program INISS. 
+        ///Program RawBankEditor nie je oficiálna aplikácia spoločnosti CHAPS ani spoločnosti INPROP..
         /// </summary>
-        internal static System.Drawing.Bitmap add {
+        internal static string AboutAppDescription {
             get {
-                object obj = ResourceManager.GetObject("add", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("AboutAppDescription", resourceCulture);
             }
         }
         
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap analyze {
+        internal static System.Drawing.Bitmap ewa {
             get {
-                object obj = ResourceManager.GetObject("analyze", resourceCulture);
+                object obj = ResourceManager.GetObject("ewa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Naozaj si želáte previesť vybrané súbory/priečinky do formátu {0}?
+        ///Tie zvuky, ktoré sú už v tomto formáte, ostanú zachované.
+        ///
+        ///Zadaná akcia môze trvať dlhšiu dobu..
         /// </summary>
-        internal static System.Drawing.Bitmap app_settings {
+        internal static string FMain_DoConvertFiles {
             get {
-                object obj = ResourceManager.GetObject("app_settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("FMain_DoConvertFiles", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Naozaj si želáte previesť všetky zvuky v skupine do formátu {0}?
+        ///Tie zvuky, ktoré sú už v tomto formáte, ostanú zachované.
+        ///
+        ///Zadaná akcia môze trvať dlhšiu dobu..
         /// </summary>
-        internal static System.Drawing.Bitmap back {
+        internal static string FMain_DoConvertGroup {
             get {
-                object obj = ResourceManager.GetObject("back", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("FMain_DoConvertGroup", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Naozaj si želáte previesť všetky zvuky v jazyku do formátu {0}?
+        ///Tie zvuky, ktoré sú už v tomto formáte, ostanú zachované.
+        ///
+        ///Zadaná akcia môze trvať dlhšiu dobu..
         /// </summary>
-        internal static System.Drawing.Bitmap convert {
+        internal static string FMain_DoConvertLang {
             get {
-                object obj = ResourceManager.GetObject("convert", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("FMain_DoConvertLang", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized string similar to Naozaj si želáte previesť vybrané zvuky do formátu {0}?
+        ///Tie zvuky, ktoré sú už v tomto formáte, ostanú zachované.
+        ///
+        ///Zadaná akcia môze trvať dlhšiu dobu..
         /// </summary>
-        internal static System.Drawing.Bitmap correct {
+        internal static string FMain_DoConvertSounds {
             get {
-                object obj = ResourceManager.GetObject("correct", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap delete {
-            get {
-                object obj = ResourceManager.GetObject("delete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap edit {
-            get {
-                object obj = ResourceManager.GetObject("edit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap export {
-            get {
-                object obj = ResourceManager.GetObject("export", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap file {
-            get {
-                object obj = ResourceManager.GetObject("file", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ResourceManager.GetString("FMain_DoConvertSounds", resourceCulture);
             }
         }
         
@@ -172,109 +140,9 @@ namespace RawBankEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap folder {
-            get {
-                object obj = ResourceManager.GetObject("folder", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap forward {
-            get {
-                object obj = ResourceManager.GetObject("forward", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap global_settings {
-            get {
-                object obj = ResourceManager.GetObject("global_settings", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap import {
-            get {
-                object obj = ResourceManager.GetObject("import", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap info_app {
-            get {
-                object obj = ResourceManager.GetObject("info_app", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap move {
-            get {
-                object obj = ResourceManager.GetObject("move", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap open {
-            get {
-                object obj = ResourceManager.GetObject("open", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap raw {
             get {
                 object obj = ResourceManager.GetObject("raw", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap recent_gvds {
-            get {
-                object obj = ResourceManager.GetObject("recent_gvds", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap redo {
-            get {
-                object obj = ResourceManager.GetObject("redo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap rename {
-            get {
-                object obj = ResourceManager.GetObject("rename", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -318,49 +186,9 @@ namespace RawBankEditor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap save {
+        internal static System.Drawing.Bitmap wav {
             get {
-                object obj = ResourceManager.GetObject("save", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap save_all {
-            get {
-                object obj = ResourceManager.GetObject("save_all", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap search {
-            get {
-                object obj = ResourceManager.GetObject("search", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap sound {
-            get {
-                object obj = ResourceManager.GetObject("sound", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap undo {
-            get {
-                object obj = ResourceManager.GetObject("undo", resourceCulture);
+                object obj = ResourceManager.GetObject("wav", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

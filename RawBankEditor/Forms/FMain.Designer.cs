@@ -52,9 +52,6 @@ namespace RawBankEditor.Forms
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimSave = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimSaveAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsmimImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimExport = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -62,16 +59,28 @@ namespace RawBankEditor.Forms
             this.tsmimAddSound = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimDeleteSound = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimMoveSounds = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimConvertSoundsToEwa = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimConvertSoundsToWav = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator26 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimRewriteMode = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimWrapTextSoundCol = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiShow = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimGoBack = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimGoForward = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator18 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimSearch = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimShowErrors = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiTools = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimLangsSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimAddLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimEditLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimDeleteLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmimConvertLangToEwa = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmimConvertLangToWav = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsmimAppSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsmimConvertSounds = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimInfoApp = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmimUpdates = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,22 +92,34 @@ namespace RawBankEditor.Forms
             this.tsbAddGroup = new System.Windows.Forms.ToolStripButton();
             this.tsbEditGroup = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteGroup = new System.Windows.Forms.ToolStripButton();
-            this.lboxGroups = new System.Windows.Forms.ListBox();
+            this.toolStripSeparator21 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbConvertGroupToEwa = new System.Windows.Forms.ToolStripButton();
+            this.tsbConvertGroupToWav = new System.Windows.Forms.ToolStripButton();
+            this.dgvGroups = new System.Windows.Forms.DataGridView();
+            this.cGroupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cGroupRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuGroups = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmiAddGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiEditGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiDeleteGroup = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmiConvertGroupToEwa = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiConvertGroupToWav = new System.Windows.Forms.ToolStripMenuItem();
+            this.fyzGroupBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel3 = new ExControls.ExTableLayoutPanel();
             this.dgvExplorer = new System.Windows.Forms.DataGridView();
-            this.cType = new System.Windows.Forms.DataGridViewImageColumn();
-            this.cName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cFileType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cFileDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuExplorer = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.otvoriťVPrieskumníkoviToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.prehraťZvukToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiOpenInExplorer = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiPlay = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator20 = new System.Windows.Forms.ToolStripSeparator();
-            this.premenovaťSúborToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.odstrániťSúborToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiRenameFileDir = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiDeleteFileDir = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator23 = new System.Windows.Forms.ToolStripSeparator();
+            this.cmiConvertToEwaFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiConvertToWavFile = new System.Windows.Forms.ToolStripMenuItem();
             this.fileSystemElementBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.toolStripExplorer = new System.Windows.Forms.ToolStrip();
@@ -107,20 +128,25 @@ namespace RawBankEditor.Forms
             this.tsbPlay = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator17 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbRenameFileDir = new System.Windows.Forms.ToolStripButton();
-            this.tsbRemoveFileDir = new System.Windows.Forms.ToolStripButton();
+            this.tsbDeleteFileDir = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator22 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbConvertFilesToEwa = new System.Windows.Forms.ToolStripButton();
+            this.tsbConvertFilesToWav = new System.Windows.Forms.ToolStripButton();
             this.splitSoundsErrors = new System.Windows.Forms.SplitContainer();
             this.dgvSounds = new System.Windows.Forms.DataGridView();
-            this.key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.AdditionalRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.file = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.duration = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.text = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundKey = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundAdditionalRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundFileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundDuration = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSoundText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuSounds = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmiAddSound = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiDeleteSound = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiMoveSounds = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator19 = new System.Windows.Forms.ToolStripSeparator();
-            this.konvertovaťNaWAVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.konvertovaťNaEWAToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiConvertSoundsToEwa = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiConvertSoundsToWav = new System.Windows.Forms.ToolStripMenuItem();
             this.fyzSoundBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel4 = new ExControls.ExTableLayoutPanel();
             this.toolStripErrors = new System.Windows.Forms.ToolStrip();
@@ -129,15 +155,17 @@ namespace RawBankEditor.Forms
             this.tsbWarnings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator14 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbInfos = new System.Windows.Forms.ToolStripButton();
-            this.tsbSolve = new System.Windows.Forms.ToolStripButton();
-            this.tsbFindProblem = new System.Windows.Forms.ToolStripButton();
+            this.tsbResolveProblem = new System.Windows.Forms.ToolStripButton();
+            this.tsbHighlightProblem = new System.Windows.Forms.ToolStripButton();
             this.dgvErrors = new System.Windows.Forms.DataGridView();
-            this.dgvicType = new System.Windows.Forms.DataGridViewImageColumn();
-            this.messageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.resolveMessageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMsgType = new System.Windows.Forms.DataGridViewImageColumn();
+            this.cMsgCode = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.cMessage = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMsgResolve = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cMsgPath = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuErrors = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmiFindProblem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmiSolve = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiHighlightProblem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cmiResolveProblem = new System.Windows.Forms.ToolStripMenuItem();
             this.rawBankMessageBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel5 = new ExControls.ExTableLayoutPanel();
             this.mmErrors = new RawBankEditor.Controls.MinButton();
@@ -151,13 +179,11 @@ namespace RawBankEditor.Forms
             this.toolStripMain = new System.Windows.Forms.ToolStrip();
             this.tsbOpen = new System.Windows.Forms.ToolStripButton();
             this.tsbRecent = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator25 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSave = new System.Windows.Forms.ToolStripButton();
             this.tsbSaveAll = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbImport = new System.Windows.Forms.ToolStripButton();
-            this.tsbExport = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbGoBack = new System.Windows.Forms.ToolStripButton();
+            this.tsbGoBack = new System.Windows.Forms.ToolStripSplitButton();
             this.tsbGoForward = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbUndo = new System.Windows.Forms.ToolStripButton();
@@ -165,9 +191,13 @@ namespace RawBankEditor.Forms
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.tscboxLanguages = new ExControls.ExToolStripComboBox();
-            this.tsbLangsSettings = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbConvertSounds = new System.Windows.Forms.ToolStripButton();
+            this.tsbLangsSettings = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsmiAddLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiEditLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiDeleteLanguage = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsmiConvertLangToEwa = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsmiConvertLangToWav = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbAppSettings = new System.Windows.Forms.ToolStripButton();
             this.tsbInfoApp = new System.Windows.Forms.ToolStripButton();
@@ -175,10 +205,18 @@ namespace RawBankEditor.Forms
             this.tsbAddSound = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveSounds = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteSound = new System.Windows.Forms.ToolStripButton();
+            this.tsbConvertSoundsToEwa = new System.Windows.Forms.ToolStripButton();
+            this.tsbConvertSoundsToWav = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbSearch = new System.Windows.Forms.ToolStripButton();
+            this.tsbWrapTextSoundCol = new System.Windows.Forms.ToolStripButton();
+            this.tsbRewriteMode = new System.Windows.Forms.ToolStripButton();
+            this.undoActionChooser = new ExControls.ToolStripUndoRedoActionChooser();
             this.bWorkerReadDat = new System.ComponentModel.BackgroundWorker();
             this.fileSystemWatcher = new System.IO.FileSystemWatcher();
+            this.moveManager = new ExControls.Providers.BackwardForwardProvider();
+            this.changeManager = new ExControls.Providers.UndoRedoManager();
+            this.timerToCheck = new System.Windows.Forms.Timer(this.components);
             this.menuStripMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -190,7 +228,9 @@ namespace RawBankEditor.Forms
             this.splitContainer2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.toolStripGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).BeginInit();
             this.contextMenuGroups.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.fyzGroupBindingSource)).BeginInit();
             this.tableLayoutPanel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExplorer)).BeginInit();
             this.contextMenuExplorer.SuspendLayout();
@@ -229,7 +269,7 @@ namespace RawBankEditor.Forms
             this.menuStripMain.Name = "menuStripMain";
             this.menuStripMain.Padding = new System.Windows.Forms.Padding(4, 2, 0, 2);
             this.menuStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.menuStripMain.Size = new System.Drawing.Size(1001, 24);
+            this.menuStripMain.Size = new System.Drawing.Size(1095, 24);
             this.menuStripMain.TabIndex = 0;
             this.menuStripMain.Text = "menuStrip1";
             // 
@@ -240,29 +280,25 @@ namespace RawBankEditor.Forms
             this.tsmimRecent,
             this.toolStripSeparator2,
             this.tsmimSave,
-            this.tsmimSaveAll,
-            this.toolStripSeparator3,
-            this.tsmimImport,
-            this.tsmimExport});
+            this.tsmimSaveAll});
             this.tsmiFile.Name = "tsmiFile";
             this.tsmiFile.Size = new System.Drawing.Size(50, 20);
-            this.tsmiFile.Text = "Súbor";
+            this.tsmiFile.Text = "&Súbor";
             // 
             // tsmimOpen
             // 
-            this.tsmimOpen.Image = global::RawBankEditor.Properties.Resources.open;
+            this.tsmimOpen.Image = global::ToolsCore.GlobalResources.open;
             this.tsmimOpen.Name = "tsmimOpen";
             this.tsmimOpen.Size = new System.Drawing.Size(142, 22);
-            this.tsmimOpen.Tag = RawBankEditor.Entities.MainMenuItemType.OpenDir;
-            this.tsmimOpen.Text = "Otvoriť...";
-            this.tsmimOpen.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimOpen.Text = "&Otvoriť...";
+            this.tsmimOpen.Click += new System.EventHandler(this.DoOpenDir);
             // 
             // tsmimRecent
             // 
-            this.tsmimRecent.Image = global::RawBankEditor.Properties.Resources.recent_gvds;
+            this.tsmimRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
             this.tsmimRecent.Name = "tsmimRecent";
             this.tsmimRecent.Size = new System.Drawing.Size(142, 22);
-            this.tsmimRecent.Text = "Nedávne";
+            this.tsmimRecent.Text = "&Nedávne";
             // 
             // toolStripSeparator2
             // 
@@ -272,47 +308,20 @@ namespace RawBankEditor.Forms
             // tsmimSave
             // 
             this.tsmimSave.Enabled = false;
-            this.tsmimSave.Image = global::RawBankEditor.Properties.Resources.save;
+            this.tsmimSave.Image = global::ToolsCore.GlobalResources.save;
             this.tsmimSave.Name = "tsmimSave";
             this.tsmimSave.Size = new System.Drawing.Size(142, 22);
-            this.tsmimSave.Tag = RawBankEditor.Entities.MainMenuItemType.Save;
-            this.tsmimSave.Text = "Uložiť";
-            this.tsmimSave.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimSave.Text = "&Uložiť";
+            this.tsmimSave.Click += new System.EventHandler(this.DoSave);
             // 
             // tsmimSaveAll
             // 
             this.tsmimSaveAll.Enabled = false;
-            this.tsmimSaveAll.Image = global::RawBankEditor.Properties.Resources.save_all;
+            this.tsmimSaveAll.Image = global::ToolsCore.GlobalResources.save_all;
             this.tsmimSaveAll.Name = "tsmimSaveAll";
             this.tsmimSaveAll.Size = new System.Drawing.Size(142, 22);
-            this.tsmimSaveAll.Tag = RawBankEditor.Entities.MainMenuItemType.SaveAll;
-            this.tsmimSaveAll.Text = "Uložiť všetko";
-            this.tsmimSaveAll.Click += new System.EventHandler(this.MainMenuItemClicked);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(139, 6);
-            // 
-            // tsmimImport
-            // 
-            this.tsmimImport.Enabled = false;
-            this.tsmimImport.Image = global::RawBankEditor.Properties.Resources.import;
-            this.tsmimImport.Name = "tsmimImport";
-            this.tsmimImport.Size = new System.Drawing.Size(142, 22);
-            this.tsmimImport.Tag = RawBankEditor.Entities.MainMenuItemType.Import;
-            this.tsmimImport.Text = "Importovať";
-            this.tsmimImport.Click += new System.EventHandler(this.MainMenuItemClicked);
-            // 
-            // tsmimExport
-            // 
-            this.tsmimExport.Enabled = false;
-            this.tsmimExport.Image = global::RawBankEditor.Properties.Resources.export;
-            this.tsmimExport.Name = "tsmimExport";
-            this.tsmimExport.Size = new System.Drawing.Size(142, 22);
-            this.tsmimExport.Tag = RawBankEditor.Entities.MainMenuItemType.Export;
-            this.tsmimExport.Text = "Exportovať";
-            this.tsmimExport.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimSaveAll.Text = "Uložiť &všetko";
+            this.tsmimSaveAll.Click += new System.EventHandler(this.DoSaveAll);
             // 
             // tsmiEdit
             // 
@@ -322,65 +331,107 @@ namespace RawBankEditor.Forms
             this.toolStripSeparator11,
             this.tsmimAddSound,
             this.tsmimDeleteSound,
-            this.tsmimMoveSounds});
+            this.tsmimMoveSounds,
+            this.tsmimConvertSoundsToEwa,
+            this.tsmimConvertSoundsToWav,
+            this.toolStripSeparator26,
+            this.tsmimRewriteMode,
+            this.tsmimWrapTextSoundCol});
             this.tsmiEdit.Name = "tsmiEdit";
             this.tsmiEdit.Size = new System.Drawing.Size(58, 20);
-            this.tsmiEdit.Text = "Upraviť";
+            this.tsmiEdit.Text = "&Upraviť";
             // 
             // tsmimUndo
             // 
             this.tsmimUndo.Enabled = false;
-            this.tsmimUndo.Image = global::RawBankEditor.Properties.Resources.undo;
+            this.tsmimUndo.Image = global::ToolsCore.GlobalResources.undo;
             this.tsmimUndo.Name = "tsmimUndo";
-            this.tsmimUndo.Size = new System.Drawing.Size(177, 22);
-            this.tsmimUndo.Tag = RawBankEditor.Entities.MainMenuItemType.Undo;
-            this.tsmimUndo.Text = "Späť";
-            this.tsmimUndo.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimUndo.Size = new System.Drawing.Size(264, 22);
+            this.tsmimUndo.Text = "&Späť";
+            this.tsmimUndo.Click += new System.EventHandler(this.DoUndo);
             // 
             // tsmimRedo
             // 
             this.tsmimRedo.Enabled = false;
-            this.tsmimRedo.Image = global::RawBankEditor.Properties.Resources.redo;
+            this.tsmimRedo.Image = global::ToolsCore.GlobalResources.redo;
             this.tsmimRedo.Name = "tsmimRedo";
-            this.tsmimRedo.Size = new System.Drawing.Size(177, 22);
-            this.tsmimRedo.Tag = RawBankEditor.Entities.MainMenuItemType.Redo;
-            this.tsmimRedo.Text = "Znovu";
-            this.tsmimRedo.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimRedo.Size = new System.Drawing.Size(264, 22);
+            this.tsmimRedo.Text = "&Znovu";
+            this.tsmimRedo.Click += new System.EventHandler(this.DoRedo);
             // 
             // toolStripSeparator11
             // 
             this.toolStripSeparator11.Name = "toolStripSeparator11";
-            this.toolStripSeparator11.Size = new System.Drawing.Size(174, 6);
+            this.toolStripSeparator11.Size = new System.Drawing.Size(261, 6);
             // 
             // tsmimAddSound
             // 
             this.tsmimAddSound.Enabled = false;
-            this.tsmimAddSound.Image = global::RawBankEditor.Properties.Resources.add;
+            this.tsmimAddSound.Image = global::ToolsCore.GlobalResources.add;
             this.tsmimAddSound.Name = "tsmimAddSound";
-            this.tsmimAddSound.Size = new System.Drawing.Size(177, 22);
-            this.tsmimAddSound.Tag = RawBankEditor.Entities.MainMenuItemType.AddSound;
-            this.tsmimAddSound.Text = "Pridať zvuk...";
-            this.tsmimAddSound.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimAddSound.Size = new System.Drawing.Size(264, 22);
+            this.tsmimAddSound.Text = "P&ridať zvuk...";
+            this.tsmimAddSound.Click += new System.EventHandler(this.DoAddSound);
             // 
             // tsmimDeleteSound
             // 
             this.tsmimDeleteSound.Enabled = false;
-            this.tsmimDeleteSound.Image = global::RawBankEditor.Properties.Resources.delete;
+            this.tsmimDeleteSound.Image = global::ToolsCore.GlobalResources.delete;
             this.tsmimDeleteSound.Name = "tsmimDeleteSound";
-            this.tsmimDeleteSound.Size = new System.Drawing.Size(177, 22);
-            this.tsmimDeleteSound.Tag = RawBankEditor.Entities.MainMenuItemType.DeleteSounds;
-            this.tsmimDeleteSound.Text = "Odstrániť zvuky";
-            this.tsmimDeleteSound.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimDeleteSound.Size = new System.Drawing.Size(264, 22);
+            this.tsmimDeleteSound.Text = "O&dstrániť zvuky";
+            this.tsmimDeleteSound.Click += new System.EventHandler(this.DoDeleteSounds);
             // 
             // tsmimMoveSounds
             // 
             this.tsmimMoveSounds.Enabled = false;
-            this.tsmimMoveSounds.Image = global::RawBankEditor.Properties.Resources.move;
+            this.tsmimMoveSounds.Image = global::ToolsCore.GlobalResources.move;
             this.tsmimMoveSounds.Name = "tsmimMoveSounds";
-            this.tsmimMoveSounds.Size = new System.Drawing.Size(177, 22);
-            this.tsmimMoveSounds.Tag = RawBankEditor.Entities.MainMenuItemType.MoveSounds;
-            this.tsmimMoveSounds.Text = "Premiestniť zvuky...";
-            this.tsmimMoveSounds.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimMoveSounds.Size = new System.Drawing.Size(264, 22);
+            this.tsmimMoveSounds.Text = "&Premiestniť zvuky...";
+            this.tsmimMoveSounds.Click += new System.EventHandler(this.DoMoveSounds);
+            // 
+            // tsmimConvertSoundsToEwa
+            // 
+            this.tsmimConvertSoundsToEwa.Enabled = false;
+            this.tsmimConvertSoundsToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsmimConvertSoundsToEwa.Name = "tsmimConvertSoundsToEwa";
+            this.tsmimConvertSoundsToEwa.Size = new System.Drawing.Size(264, 22);
+            this.tsmimConvertSoundsToEwa.Text = "Konvertovať vybrané zvuky na .&EWA";
+            this.tsmimConvertSoundsToEwa.Click += new System.EventHandler(this.DoConvertSoundsToEwa);
+            // 
+            // tsmimConvertSoundsToWav
+            // 
+            this.tsmimConvertSoundsToWav.Enabled = false;
+            this.tsmimConvertSoundsToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsmimConvertSoundsToWav.Name = "tsmimConvertSoundsToWav";
+            this.tsmimConvertSoundsToWav.Size = new System.Drawing.Size(264, 22);
+            this.tsmimConvertSoundsToWav.Text = "Konvertovať vybrané zvuky na .&WAV";
+            this.tsmimConvertSoundsToWav.Click += new System.EventHandler(this.DoConvertSoundsToWav);
+            // 
+            // toolStripSeparator26
+            // 
+            this.toolStripSeparator26.Name = "toolStripSeparator26";
+            this.toolStripSeparator26.Size = new System.Drawing.Size(261, 6);
+            // 
+            // tsmimRewriteMode
+            // 
+            this.tsmimRewriteMode.CheckOnClick = true;
+            this.tsmimRewriteMode.Enabled = false;
+            this.tsmimRewriteMode.Image = global::ToolsCore.GlobalResources.convert;
+            this.tsmimRewriteMode.Name = "tsmimRewriteMode";
+            this.tsmimRewriteMode.Size = new System.Drawing.Size(264, 22);
+            this.tsmimRewriteMode.Text = "Prepisovací &mód";
+            this.tsmimRewriteMode.CheckedChanged += new System.EventHandler(this.RewriteModeChanged);
+            // 
+            // tsmimWrapTextSoundCol
+            // 
+            this.tsmimWrapTextSoundCol.CheckOnClick = true;
+            this.tsmimWrapTextSoundCol.Image = global::ToolsCore.GlobalResources.textbox;
+            this.tsmimWrapTextSoundCol.Name = "tsmimWrapTextSoundCol";
+            this.tsmimWrapTextSoundCol.Size = new System.Drawing.Size(264, 22);
+            this.tsmimWrapTextSoundCol.Text = "Prispôsobiť &text hlásenia v bunkách";
+            this.tsmimWrapTextSoundCol.CheckedChanged += new System.EventHandler(this.WrapSoundTextChanged);
             // 
             // tsmiShow
             // 
@@ -388,30 +439,30 @@ namespace RawBankEditor.Forms
             this.tsmimGoBack,
             this.tsmimGoForward,
             this.toolStripSeparator18,
-            this.tsmimSearch});
+            this.tsmimSearch,
+            this.toolStripSeparator3,
+            this.tsmimShowErrors});
             this.tsmiShow.Name = "tsmiShow";
             this.tsmiShow.Size = new System.Drawing.Size(63, 20);
-            this.tsmiShow.Text = "Zobraziť";
+            this.tsmiShow.Text = "Z&obraziť";
             // 
             // tsmimGoBack
             // 
             this.tsmimGoBack.Enabled = false;
-            this.tsmimGoBack.Image = global::RawBankEditor.Properties.Resources.back;
+            this.tsmimGoBack.Image = global::ToolsCore.GlobalResources.back;
             this.tsmimGoBack.Name = "tsmimGoBack";
             this.tsmimGoBack.Size = new System.Drawing.Size(152, 22);
-            this.tsmimGoBack.Tag = RawBankEditor.Entities.MainMenuItemType.GoBack;
-            this.tsmimGoBack.Text = "Prejsť späť";
-            this.tsmimGoBack.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimGoBack.Text = "Prejsť &späť";
+            this.tsmimGoBack.Click += new System.EventHandler(this.DoGoBack);
             // 
             // tsmimGoForward
             // 
             this.tsmimGoForward.Enabled = false;
-            this.tsmimGoForward.Image = global::RawBankEditor.Properties.Resources.forward;
+            this.tsmimGoForward.Image = global::ToolsCore.GlobalResources.forward;
             this.tsmimGoForward.Name = "tsmimGoForward";
             this.tsmimGoForward.Size = new System.Drawing.Size(152, 22);
-            this.tsmimGoForward.Tag = RawBankEditor.Entities.MainMenuItemType.GoForward;
-            this.tsmimGoForward.Text = "Prejsť dopredu";
-            this.tsmimGoForward.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimGoForward.Text = "Prejsť &dopredu";
+            this.tsmimGoForward.Click += new System.EventHandler(this.DoGoForward);
             // 
             // toolStripSeparator18
             // 
@@ -421,57 +472,114 @@ namespace RawBankEditor.Forms
             // tsmimSearch
             // 
             this.tsmimSearch.Enabled = false;
-            this.tsmimSearch.Image = global::RawBankEditor.Properties.Resources.search;
+            this.tsmimSearch.Image = global::ToolsCore.GlobalResources.search;
             this.tsmimSearch.Name = "tsmimSearch";
             this.tsmimSearch.Size = new System.Drawing.Size(152, 22);
-            this.tsmimSearch.Tag = RawBankEditor.Entities.MainMenuItemType.Search;
-            this.tsmimSearch.Text = "Hľadať";
-            this.tsmimSearch.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimSearch.Text = "&Hľadať";
+            this.tsmimSearch.Click += new System.EventHandler(this.DoSearch);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(149, 6);
+            // 
+            // tsmimShowErrors
+            // 
+            this.tsmimShowErrors.Checked = true;
+            this.tsmimShowErrors.CheckOnClick = true;
+            this.tsmimShowErrors.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.tsmimShowErrors.Name = "tsmimShowErrors";
+            this.tsmimShowErrors.Size = new System.Drawing.Size(152, 22);
+            this.tsmimShowErrors.Text = "Zoznam &chýb";
+            this.tsmimShowErrors.CheckedChanged += new System.EventHandler(this.TsmimShowErrors_CheckedChanged);
             // 
             // tsmiTools
             // 
             this.tsmiTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsmimLangsSettings,
             this.toolStripSeparator8,
-            this.tsmimAppSettings,
-            this.tsmimConvertSounds});
+            this.tsmimAppSettings});
             this.tsmiTools.Name = "tsmiTools";
             this.tsmiTools.Size = new System.Drawing.Size(63, 20);
-            this.tsmiTools.Text = "Nástroje";
+            this.tsmiTools.Text = "&Nástroje";
             // 
             // tsmimLangsSettings
             // 
+            this.tsmimLangsSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmimAddLanguage,
+            this.tsmimEditLanguage,
+            this.tsmimDeleteLanguage,
+            this.toolStripSeparator6,
+            this.tsmimConvertLangToEwa,
+            this.tsmimConvertLangToWav});
             this.tsmimLangsSettings.Enabled = false;
-            this.tsmimLangsSettings.Image = global::RawBankEditor.Properties.Resources.global_settings;
+            this.tsmimLangsSettings.Image = global::ToolsCore.GlobalResources.global_settings;
             this.tsmimLangsSettings.Name = "tsmimLangsSettings";
-            this.tsmimLangsSettings.Size = new System.Drawing.Size(190, 22);
-            this.tsmimLangsSettings.Tag = RawBankEditor.Entities.MainMenuItemType.LangSettings;
-            this.tsmimLangsSettings.Text = "Nastavenia jazykov";
-            this.tsmimLangsSettings.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimLangsSettings.Size = new System.Drawing.Size(188, 22);
+            this.tsmimLangsSettings.Text = "Nastavenia &jazykov";
+            // 
+            // tsmimAddLanguage
+            // 
+            this.tsmimAddLanguage.Enabled = false;
+            this.tsmimAddLanguage.Image = global::ToolsCore.GlobalResources.add;
+            this.tsmimAddLanguage.Name = "tsmimAddLanguage";
+            this.tsmimAddLanguage.Size = new System.Drawing.Size(264, 22);
+            this.tsmimAddLanguage.Text = "P&ridať jazyk...";
+            this.tsmimAddLanguage.Click += new System.EventHandler(this.DoAddLanguage);
+            // 
+            // tsmimEditLanguage
+            // 
+            this.tsmimEditLanguage.Enabled = false;
+            this.tsmimEditLanguage.Image = global::ToolsCore.GlobalResources.edit;
+            this.tsmimEditLanguage.Name = "tsmimEditLanguage";
+            this.tsmimEditLanguage.Size = new System.Drawing.Size(264, 22);
+            this.tsmimEditLanguage.Text = "&Upraviť jazyk...";
+            this.tsmimEditLanguage.Click += new System.EventHandler(this.DoEditLanguage);
+            // 
+            // tsmimDeleteLanguage
+            // 
+            this.tsmimDeleteLanguage.Enabled = false;
+            this.tsmimDeleteLanguage.Image = global::ToolsCore.GlobalResources.delete;
+            this.tsmimDeleteLanguage.Name = "tsmimDeleteLanguage";
+            this.tsmimDeleteLanguage.Size = new System.Drawing.Size(264, 22);
+            this.tsmimDeleteLanguage.Text = "O&dstrániť jazyk";
+            this.tsmimDeleteLanguage.Click += new System.EventHandler(this.DoDeleteLanguage);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(261, 6);
+            // 
+            // tsmimConvertLangToEwa
+            // 
+            this.tsmimConvertLangToEwa.Enabled = false;
+            this.tsmimConvertLangToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsmimConvertLangToEwa.Name = "tsmimConvertLangToEwa";
+            this.tsmimConvertLangToEwa.Size = new System.Drawing.Size(264, 22);
+            this.tsmimConvertLangToEwa.Text = "Konvertovať zvuky v jazyku na .&EWA";
+            this.tsmimConvertLangToEwa.Click += new System.EventHandler(this.DoConvertLangToEwa);
+            // 
+            // tsmimConvertLangToWav
+            // 
+            this.tsmimConvertLangToWav.Enabled = false;
+            this.tsmimConvertLangToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsmimConvertLangToWav.Name = "tsmimConvertLangToWav";
+            this.tsmimConvertLangToWav.Size = new System.Drawing.Size(264, 22);
+            this.tsmimConvertLangToWav.Text = "Konvertovať zvuky v jazyku na .&WAV";
+            this.tsmimConvertLangToWav.Click += new System.EventHandler(this.DoConvertLangToWav);
             // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
-            this.toolStripSeparator8.Size = new System.Drawing.Size(187, 6);
+            this.toolStripSeparator8.Size = new System.Drawing.Size(185, 6);
             // 
             // tsmimAppSettings
             // 
-            this.tsmimAppSettings.Image = global::RawBankEditor.Properties.Resources.app_settings;
+            this.tsmimAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
             this.tsmimAppSettings.Name = "tsmimAppSettings";
-            this.tsmimAppSettings.Size = new System.Drawing.Size(190, 22);
-            this.tsmimAppSettings.Tag = RawBankEditor.Entities.MainMenuItemType.AppSettings;
-            this.tsmimAppSettings.Text = "Nastavenia programu";
-            this.tsmimAppSettings.Click += new System.EventHandler(this.MainMenuItemClicked);
-            // 
-            // tsmimConvertSounds
-            // 
-            this.tsmimConvertSounds.Enabled = false;
-            this.tsmimConvertSounds.Image = global::RawBankEditor.Properties.Resources.convert;
-            this.tsmimConvertSounds.Name = "tsmimConvertSounds";
-            this.tsmimConvertSounds.Size = new System.Drawing.Size(190, 22);
-            this.tsmimConvertSounds.Tag = RawBankEditor.Entities.MainMenuItemType.ConvertSounds;
-            this.tsmimConvertSounds.Text = "Konvertovanie zvukov";
-            this.tsmimConvertSounds.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimAppSettings.Size = new System.Drawing.Size(188, 22);
+            this.tsmimAppSettings.Text = "Nastavenia &programu";
+            this.tsmimAppSettings.Click += new System.EventHandler(this.ShowAppSettings);
             // 
             // tsmiHelp
             // 
@@ -480,24 +588,22 @@ namespace RawBankEditor.Forms
             this.tsmimUpdates});
             this.tsmiHelp.Name = "tsmiHelp";
             this.tsmiHelp.Size = new System.Drawing.Size(73, 20);
-            this.tsmiHelp.Text = "Pomocník";
+            this.tsmiHelp.Text = "&Pomocník";
             // 
             // tsmimInfoApp
             // 
-            this.tsmimInfoApp.Image = global::RawBankEditor.Properties.Resources.info_app;
+            this.tsmimInfoApp.Image = global::ToolsCore.GlobalResources.info_app;
             this.tsmimInfoApp.Name = "tsmimInfoApp";
             this.tsmimInfoApp.Size = new System.Drawing.Size(222, 22);
-            this.tsmimInfoApp.Tag = RawBankEditor.Entities.MainMenuItemType.InfoApp;
-            this.tsmimInfoApp.Text = "Informácie o programe";
-            this.tsmimInfoApp.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimInfoApp.Text = "&Informácie o programe";
+            this.tsmimInfoApp.Click += new System.EventHandler(this.ShowInfoApp);
             // 
             // tsmimUpdates
             // 
             this.tsmimUpdates.Name = "tsmimUpdates";
             this.tsmimUpdates.Size = new System.Drawing.Size(222, 22);
-            this.tsmimUpdates.Tag = RawBankEditor.Entities.MainMenuItemType.UpdateNotes;
-            this.tsmimUpdates.Text = "Poznámky k aktualizáciám...";
-            this.tsmimUpdates.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmimUpdates.Text = "&Poznámky k aktualizáciám...";
+            this.tsmimUpdates.Click += new System.EventHandler(this.ShowUpdates);
             // 
             // splitContainer1
             // 
@@ -509,19 +615,21 @@ namespace RawBankEditor.Forms
             // splitContainer1.Panel1
             // 
             this.splitContainer1.Panel1.Controls.Add(this.splitContainer2);
+            this.splitContainer1.Panel1.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
             // 
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitSoundsErrors);
-            this.splitContainer1.Size = new System.Drawing.Size(997, 476);
-            this.splitContainer1.SplitterDistance = 271;
+            this.splitContainer1.Panel2.Padding = new System.Windows.Forms.Padding(0, 0, 4, 0);
+            this.splitContainer1.Size = new System.Drawing.Size(1091, 502);
+            this.splitContainer1.SplitterDistance = 296;
             this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 1;
             // 
             // splitContainer2
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Location = new System.Drawing.Point(4, 0);
             this.splitContainer2.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer2.Name = "splitContainer2";
             this.splitContainer2.Orientation = System.Windows.Forms.Orientation.Horizontal;
@@ -533,8 +641,8 @@ namespace RawBankEditor.Forms
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel3);
-            this.splitContainer2.Size = new System.Drawing.Size(271, 476);
-            this.splitContainer2.SplitterDistance = 180;
+            this.splitContainer2.Size = new System.Drawing.Size(292, 502);
+            this.splitContainer2.SplitterDistance = 186;
             this.splitContainer2.SplitterWidth = 6;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -546,7 +654,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.toolStripGroups, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.lboxGroups, 0, 2);
+            this.tableLayoutPanel2.Controls.Add(this.dgvGroups, 0, 2);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
@@ -555,7 +663,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(271, 180);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(292, 186);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
@@ -566,7 +674,7 @@ namespace RawBankEditor.Forms
             this.label1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.label1.Name = "label1";
             this.label1.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.label1.Size = new System.Drawing.Size(265, 21);
+            this.label1.Size = new System.Drawing.Size(286, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "Skupiny zvukov";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -579,11 +687,14 @@ namespace RawBankEditor.Forms
             this.toolStripGroups.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAddGroup,
             this.tsbEditGroup,
-            this.tsbDeleteGroup});
+            this.tsbDeleteGroup,
+            this.toolStripSeparator21,
+            this.tsbConvertGroupToEwa,
+            this.tsbConvertGroupToWav});
             this.toolStripGroups.Location = new System.Drawing.Point(3, 27);
             this.toolStripGroups.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.toolStripGroups.Name = "toolStripGroups";
-            this.toolStripGroups.Size = new System.Drawing.Size(265, 27);
+            this.toolStripGroups.Size = new System.Drawing.Size(286, 27);
             this.toolStripGroups.TabIndex = 1;
             this.toolStripGroups.Text = "toolStrip2";
             // 
@@ -591,7 +702,7 @@ namespace RawBankEditor.Forms
             // 
             this.tsbAddGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAddGroup.Enabled = false;
-            this.tsbAddGroup.Image = global::RawBankEditor.Properties.Resources.add;
+            this.tsbAddGroup.Image = global::ToolsCore.GlobalResources.add;
             this.tsbAddGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddGroup.Name = "tsbAddGroup";
             this.tsbAddGroup.Size = new System.Drawing.Size(24, 24);
@@ -602,7 +713,7 @@ namespace RawBankEditor.Forms
             // 
             this.tsbEditGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbEditGroup.Enabled = false;
-            this.tsbEditGroup.Image = global::RawBankEditor.Properties.Resources.edit;
+            this.tsbEditGroup.Image = global::ToolsCore.GlobalResources.edit;
             this.tsbEditGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditGroup.Name = "tsbEditGroup";
             this.tsbEditGroup.Size = new System.Drawing.Size(24, 24);
@@ -613,26 +724,79 @@ namespace RawBankEditor.Forms
             // 
             this.tsbDeleteGroup.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbDeleteGroup.Enabled = false;
-            this.tsbDeleteGroup.Image = global::RawBankEditor.Properties.Resources.delete;
+            this.tsbDeleteGroup.Image = global::ToolsCore.GlobalResources.delete;
             this.tsbDeleteGroup.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeleteGroup.Name = "tsbDeleteGroup";
             this.tsbDeleteGroup.Size = new System.Drawing.Size(24, 24);
             this.tsbDeleteGroup.Text = "Odstrániť skupinu";
             this.tsbDeleteGroup.Click += new System.EventHandler(this.DoDeleteGroup);
             // 
-            // lboxGroups
+            // toolStripSeparator21
             // 
-            this.lboxGroups.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lboxGroups.ContextMenuStrip = this.contextMenuGroups;
-            this.lboxGroups.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lboxGroups.FormattingEnabled = true;
-            this.lboxGroups.Location = new System.Drawing.Point(3, 57);
-            this.lboxGroups.Margin = new System.Windows.Forms.Padding(2);
-            this.lboxGroups.Name = "lboxGroups";
-            this.lboxGroups.Size = new System.Drawing.Size(265, 120);
-            this.lboxGroups.TabIndex = 2;
-            this.lboxGroups.SelectedIndexChanged += new System.EventHandler(this.lboxGroups_SelectedIndexChanged);
-            this.lboxGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lboxGroups_KeyDown);
+            this.toolStripSeparator21.Name = "toolStripSeparator21";
+            this.toolStripSeparator21.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbConvertGroupToEwa
+            // 
+            this.tsbConvertGroupToEwa.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertGroupToEwa.Enabled = false;
+            this.tsbConvertGroupToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsbConvertGroupToEwa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertGroupToEwa.Name = "tsbConvertGroupToEwa";
+            this.tsbConvertGroupToEwa.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertGroupToEwa.Text = "Konvertovať skupinu na .EWA";
+            this.tsbConvertGroupToEwa.Click += new System.EventHandler(this.DoConvertGroupToEwa);
+            // 
+            // tsbConvertGroupToWav
+            // 
+            this.tsbConvertGroupToWav.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertGroupToWav.Enabled = false;
+            this.tsbConvertGroupToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsbConvertGroupToWav.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertGroupToWav.Name = "tsbConvertGroupToWav";
+            this.tsbConvertGroupToWav.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertGroupToWav.Text = "Konvertovať skupinu na .WAV";
+            this.tsbConvertGroupToWav.Click += new System.EventHandler(this.DoConvertGroupToWav);
+            // 
+            // dgvGroups
+            // 
+            this.dgvGroups.AllowUserToAddRows = false;
+            this.dgvGroups.AllowUserToDeleteRows = false;
+            this.dgvGroups.AllowUserToResizeRows = false;
+            this.dgvGroups.AutoGenerateColumns = false;
+            this.dgvGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.cGroupName,
+            this.cGroupRelativePath});
+            this.dgvGroups.ContextMenuStrip = this.contextMenuGroups;
+            this.dgvGroups.DataSource = this.fyzGroupBindingSource;
+            this.dgvGroups.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvGroups.Location = new System.Drawing.Point(3, 57);
+            this.dgvGroups.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvGroups.MultiSelect = false;
+            this.dgvGroups.Name = "dgvGroups";
+            this.dgvGroups.ReadOnly = true;
+            this.dgvGroups.RowHeadersVisible = false;
+            this.dgvGroups.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvGroups.Size = new System.Drawing.Size(286, 126);
+            this.dgvGroups.TabIndex = 2;
+            this.dgvGroups.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvGroups_CellMouseDown);
+            this.dgvGroups.SelectionChanged += new System.EventHandler(this.dgvGroups_SelectionChanged);
+            this.dgvGroups.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvGroups_KeyDown);
+            // 
+            // cGroupName
+            // 
+            this.cGroupName.DataPropertyName = "Name";
+            this.cGroupName.HeaderText = "Názov";
+            this.cGroupName.Name = "cGroupName";
+            this.cGroupName.ReadOnly = true;
+            // 
+            // cGroupRelativePath
+            // 
+            this.cGroupRelativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cGroupRelativePath.DataPropertyName = "RelativePath";
+            this.cGroupRelativePath.HeaderText = "Relatívna cesta";
+            this.cGroupRelativePath.Name = "cGroupRelativePath";
+            this.cGroupRelativePath.ReadOnly = true;
             // 
             // contextMenuGroups
             // 
@@ -640,36 +804,64 @@ namespace RawBankEditor.Forms
             this.contextMenuGroups.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmiAddGroup,
             this.cmiEditGroup,
-            this.cmiDeleteGroup});
+            this.cmiDeleteGroup,
+            this.toolStripSeparator4,
+            this.cmiConvertGroupToEwa,
+            this.cmiConvertGroupToWav});
             this.contextMenuGroups.Name = "contextMenuGroups";
-            this.contextMenuGroups.Size = new System.Drawing.Size(174, 82);
+            this.contextMenuGroups.Size = new System.Drawing.Size(236, 140);
             // 
             // cmiAddGroup
             // 
             this.cmiAddGroup.Enabled = false;
-            this.cmiAddGroup.Image = global::RawBankEditor.Properties.Resources.add;
+            this.cmiAddGroup.Image = global::ToolsCore.GlobalResources.add;
             this.cmiAddGroup.Name = "cmiAddGroup";
-            this.cmiAddGroup.Size = new System.Drawing.Size(173, 26);
+            this.cmiAddGroup.Size = new System.Drawing.Size(235, 26);
             this.cmiAddGroup.Text = "Pridať skupinu...";
             this.cmiAddGroup.Click += new System.EventHandler(this.DoAddGroup);
             // 
             // cmiEditGroup
             // 
             this.cmiEditGroup.Enabled = false;
-            this.cmiEditGroup.Image = global::RawBankEditor.Properties.Resources.edit;
+            this.cmiEditGroup.Image = global::ToolsCore.GlobalResources.edit;
             this.cmiEditGroup.Name = "cmiEditGroup";
-            this.cmiEditGroup.Size = new System.Drawing.Size(173, 26);
+            this.cmiEditGroup.Size = new System.Drawing.Size(235, 26);
             this.cmiEditGroup.Text = "Upraviť skupinu...";
             this.cmiEditGroup.Click += new System.EventHandler(this.DoEditGroup);
             // 
             // cmiDeleteGroup
             // 
             this.cmiDeleteGroup.Enabled = false;
-            this.cmiDeleteGroup.Image = global::RawBankEditor.Properties.Resources.delete;
+            this.cmiDeleteGroup.Image = global::ToolsCore.GlobalResources.delete;
             this.cmiDeleteGroup.Name = "cmiDeleteGroup";
-            this.cmiDeleteGroup.Size = new System.Drawing.Size(173, 26);
+            this.cmiDeleteGroup.Size = new System.Drawing.Size(235, 26);
             this.cmiDeleteGroup.Text = "Odstrániť skupinu";
             this.cmiDeleteGroup.Click += new System.EventHandler(this.DoDeleteGroup);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(232, 6);
+            // 
+            // cmiConvertGroupToEwa
+            // 
+            this.cmiConvertGroupToEwa.Enabled = false;
+            this.cmiConvertGroupToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.cmiConvertGroupToEwa.Name = "cmiConvertGroupToEwa";
+            this.cmiConvertGroupToEwa.Size = new System.Drawing.Size(235, 26);
+            this.cmiConvertGroupToEwa.Text = "Konvertovať skupinu na .EWA";
+            // 
+            // cmiConvertGroupToWav
+            // 
+            this.cmiConvertGroupToWav.Enabled = false;
+            this.cmiConvertGroupToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.cmiConvertGroupToWav.Name = "cmiConvertGroupToWav";
+            this.cmiConvertGroupToWav.Size = new System.Drawing.Size(235, 26);
+            this.cmiConvertGroupToWav.Text = "Konvertovať skupinu na .WAV";
+            // 
+            // fyzGroupBindingSource
+            // 
+            this.fyzGroupBindingSource.DataSource = typeof(ToolsCore.Entities.FyzGroup);
             // 
             // tableLayoutPanel3
             // 
@@ -688,13 +880,14 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(271, 290);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(292, 310);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // dgvExplorer
             // 
             this.dgvExplorer.AllowUserToAddRows = false;
             this.dgvExplorer.AllowUserToDeleteRows = false;
+            this.dgvExplorer.AllowUserToOrderColumns = true;
             this.dgvExplorer.AllowUserToResizeRows = false;
             this.dgvExplorer.AutoGenerateColumns = false;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -707,9 +900,9 @@ namespace RawBankEditor.Forms
             this.dgvExplorer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvExplorer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvExplorer.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cType,
-            this.cName,
-            this.cDuration});
+            this.cFileName,
+            this.cFileType,
+            this.cFileDuration});
             this.dgvExplorer.ContextMenuStrip = this.contextMenuExplorer;
             this.dgvExplorer.DataSource = this.fileSystemElementBindingSource;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -721,11 +914,10 @@ namespace RawBankEditor.Forms
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvExplorer.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvExplorer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvExplorer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvExplorer.Location = new System.Drawing.Point(3, 59);
             this.dgvExplorer.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvExplorer.MultiSelect = false;
             this.dgvExplorer.Name = "dgvExplorer";
-            this.dgvExplorer.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -738,90 +930,119 @@ namespace RawBankEditor.Forms
             this.dgvExplorer.RowHeadersWidth = 51;
             this.dgvExplorer.RowTemplate.Height = 24;
             this.dgvExplorer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvExplorer.Size = new System.Drawing.Size(265, 228);
-            this.dgvExplorer.TabIndex = 3;
+            this.dgvExplorer.Size = new System.Drawing.Size(286, 248);
+            this.dgvExplorer.TabIndex = 2;
             this.dgvExplorer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExplorer_CellClick);
             this.dgvExplorer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvExplorer_CellDoubleClick);
+            this.dgvExplorer.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvExplorer_CellEndEdit);
             this.dgvExplorer.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvExplorer_CellFormatting);
+            this.dgvExplorer.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.DgvExplorer_CellValidating);
             this.dgvExplorer.SelectionChanged += new System.EventHandler(this.dgvExplorer_SelectionChanged);
+            this.dgvExplorer.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DgvExplorer_KeyDown);
             // 
-            // cType
+            // cFileName
             // 
-            this.cType.HeaderText = "Typ";
-            this.cType.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.cType.MinimumWidth = 50;
-            this.cType.Name = "cType";
-            this.cType.ReadOnly = true;
-            this.cType.Width = 50;
+            this.cFileName.DataPropertyName = "Name";
+            this.cFileName.HeaderText = "Názov";
+            this.cFileName.MinimumWidth = 100;
+            this.cFileName.Name = "cFileName";
+            this.cFileName.Width = 160;
             // 
-            // cName
+            // cFileType
             // 
-            this.cName.DataPropertyName = "Name";
-            this.cName.HeaderText = "Názov";
-            this.cName.MinimumWidth = 175;
-            this.cName.Name = "cName";
-            this.cName.ReadOnly = true;
-            this.cName.Width = 175;
+            this.cFileType.HeaderText = "Typ";
+            this.cFileType.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.cFileType.MinimumWidth = 50;
+            this.cFileType.Name = "cFileType";
+            this.cFileType.ReadOnly = true;
+            this.cFileType.Width = 50;
             // 
-            // cDuration
+            // cFileDuration
             // 
-            this.cDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cDuration.HeaderText = "Dĺžka";
-            this.cDuration.MinimumWidth = 6;
-            this.cDuration.Name = "cDuration";
-            this.cDuration.ReadOnly = true;
+            this.cFileDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cFileDuration.HeaderText = "Dĺžka";
+            this.cFileDuration.MinimumWidth = 6;
+            this.cFileDuration.Name = "cFileDuration";
+            this.cFileDuration.ReadOnly = true;
             // 
             // contextMenuExplorer
             // 
             this.contextMenuExplorer.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.otvoriťVPrieskumníkoviToolStripMenuItem,
-            this.prehraťZvukToolStripMenuItem,
+            this.cmiOpenInExplorer,
+            this.cmiPlay,
             this.toolStripSeparator20,
-            this.premenovaťSúborToolStripMenuItem,
-            this.odstrániťSúborToolStripMenuItem});
+            this.cmiRenameFileDir,
+            this.cmiDeleteFileDir,
+            this.toolStripSeparator23,
+            this.cmiConvertToEwaFile,
+            this.cmiConvertToWavFile});
             this.contextMenuExplorer.Name = "contextMenuExplorer";
-            this.contextMenuExplorer.Size = new System.Drawing.Size(206, 98);
+            this.contextMenuExplorer.Size = new System.Drawing.Size(229, 148);
             // 
-            // otvoriťVPrieskumníkoviToolStripMenuItem
+            // cmiOpenInExplorer
             // 
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Enabled = false;
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.folder;
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Name = "otvoriťVPrieskumníkoviToolStripMenuItem";
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Text = "Otvoriť v prieskumníkovi";
-            this.otvoriťVPrieskumníkoviToolStripMenuItem.Click += new System.EventHandler(this.DoOpenFileInExplorer);
+            this.cmiOpenInExplorer.Enabled = false;
+            this.cmiOpenInExplorer.Image = global::ToolsCore.GlobalResources.folder;
+            this.cmiOpenInExplorer.Name = "cmiOpenInExplorer";
+            this.cmiOpenInExplorer.Size = new System.Drawing.Size(228, 22);
+            this.cmiOpenInExplorer.Text = "Otvoriť v prieskumníkovi";
+            this.cmiOpenInExplorer.Click += new System.EventHandler(this.DoOpenFileInExplorer);
             // 
-            // prehraťZvukToolStripMenuItem
+            // cmiPlay
             // 
-            this.prehraťZvukToolStripMenuItem.Enabled = false;
-            this.prehraťZvukToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.sound;
-            this.prehraťZvukToolStripMenuItem.Name = "prehraťZvukToolStripMenuItem";
-            this.prehraťZvukToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.prehraťZvukToolStripMenuItem.Text = "Prehrať zvuk";
-            this.prehraťZvukToolStripMenuItem.Click += new System.EventHandler(this.DoPlayFile);
+            this.cmiPlay.Enabled = false;
+            this.cmiPlay.Image = global::ToolsCore.GlobalResources.sound;
+            this.cmiPlay.Name = "cmiPlay";
+            this.cmiPlay.ShortcutKeyDisplayString = "F5";
+            this.cmiPlay.Size = new System.Drawing.Size(228, 22);
+            this.cmiPlay.Text = "Prehrať zvuk";
+            this.cmiPlay.Click += new System.EventHandler(this.DoPlayFile);
             // 
             // toolStripSeparator20
             // 
             this.toolStripSeparator20.Name = "toolStripSeparator20";
-            this.toolStripSeparator20.Size = new System.Drawing.Size(202, 6);
+            this.toolStripSeparator20.Size = new System.Drawing.Size(225, 6);
             // 
-            // premenovaťSúborToolStripMenuItem
+            // cmiRenameFileDir
             // 
-            this.premenovaťSúborToolStripMenuItem.Enabled = false;
-            this.premenovaťSúborToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.rename;
-            this.premenovaťSúborToolStripMenuItem.Name = "premenovaťSúborToolStripMenuItem";
-            this.premenovaťSúborToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.premenovaťSúborToolStripMenuItem.Text = "Premenovať súbor";
-            this.premenovaťSúborToolStripMenuItem.Click += new System.EventHandler(this.DoRenameFile);
+            this.cmiRenameFileDir.Enabled = false;
+            this.cmiRenameFileDir.Image = global::ToolsCore.GlobalResources.rename;
+            this.cmiRenameFileDir.Name = "cmiRenameFileDir";
+            this.cmiRenameFileDir.ShortcutKeyDisplayString = "F2";
+            this.cmiRenameFileDir.Size = new System.Drawing.Size(228, 22);
+            this.cmiRenameFileDir.Text = "Premenovať súbor";
+            this.cmiRenameFileDir.Click += new System.EventHandler(this.DoRenameFile);
             // 
-            // odstrániťSúborToolStripMenuItem
+            // cmiDeleteFileDir
             // 
-            this.odstrániťSúborToolStripMenuItem.Enabled = false;
-            this.odstrániťSúborToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.delete;
-            this.odstrániťSúborToolStripMenuItem.Name = "odstrániťSúborToolStripMenuItem";
-            this.odstrániťSúborToolStripMenuItem.Size = new System.Drawing.Size(205, 22);
-            this.odstrániťSúborToolStripMenuItem.Text = "Odstrániť súbor";
-            this.odstrániťSúborToolStripMenuItem.Click += new System.EventHandler(this.DoDeleteFile);
+            this.cmiDeleteFileDir.Enabled = false;
+            this.cmiDeleteFileDir.Image = global::ToolsCore.GlobalResources.delete;
+            this.cmiDeleteFileDir.Name = "cmiDeleteFileDir";
+            this.cmiDeleteFileDir.ShortcutKeyDisplayString = "Del";
+            this.cmiDeleteFileDir.Size = new System.Drawing.Size(228, 22);
+            this.cmiDeleteFileDir.Text = "Odstrániť súbor";
+            this.cmiDeleteFileDir.Click += new System.EventHandler(this.DoDeleteFile);
+            // 
+            // toolStripSeparator23
+            // 
+            this.toolStripSeparator23.Name = "toolStripSeparator23";
+            this.toolStripSeparator23.Size = new System.Drawing.Size(225, 6);
+            // 
+            // cmiConvertToEwaFile
+            // 
+            this.cmiConvertToEwaFile.Enabled = false;
+            this.cmiConvertToEwaFile.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.cmiConvertToEwaFile.Name = "cmiConvertToEwaFile";
+            this.cmiConvertToEwaFile.Size = new System.Drawing.Size(228, 22);
+            this.cmiConvertToEwaFile.Text = "Konvertovať  súbory na .EWA";
+            // 
+            // cmiConvertToWavFile
+            // 
+            this.cmiConvertToWavFile.Enabled = false;
+            this.cmiConvertToWavFile.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.cmiConvertToWavFile.Name = "cmiConvertToWavFile";
+            this.cmiConvertToWavFile.Size = new System.Drawing.Size(228, 22);
+            this.cmiConvertToWavFile.Text = "Konvertovať  súbory na .WAV";
             // 
             // fileSystemElementBindingSource
             // 
@@ -835,8 +1056,8 @@ namespace RawBankEditor.Forms
             this.label2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.label2.Size = new System.Drawing.Size(265, 21);
-            this.label2.TabIndex = 1;
+            this.label2.Size = new System.Drawing.Size(286, 21);
+            this.label2.TabIndex = 0;
             this.label2.Text = "Prieskumník súborov";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -851,20 +1072,22 @@ namespace RawBankEditor.Forms
             this.tsbPlay,
             this.toolStripSeparator17,
             this.tsbRenameFileDir,
-            this.tsbRemoveFileDir});
+            this.tsbDeleteFileDir,
+            this.toolStripSeparator22,
+            this.tsbConvertFilesToEwa,
+            this.tsbConvertFilesToWav});
             this.toolStripExplorer.Location = new System.Drawing.Point(3, 27);
             this.toolStripExplorer.Margin = new System.Windows.Forms.Padding(2);
             this.toolStripExplorer.Name = "toolStripExplorer";
-            this.toolStripExplorer.Size = new System.Drawing.Size(265, 27);
-            this.toolStripExplorer.TabIndex = 2;
+            this.toolStripExplorer.Size = new System.Drawing.Size(286, 27);
+            this.toolStripExplorer.TabIndex = 1;
             this.toolStripExplorer.Text = "toolStrip2";
-            this.toolStripExplorer.Click += new System.EventHandler(this.DoRenameFile);
             // 
             // tsbOpenInExplorer
             // 
             this.tsbOpenInExplorer.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbOpenInExplorer.Enabled = false;
-            this.tsbOpenInExplorer.Image = global::RawBankEditor.Properties.Resources.folder;
+            this.tsbOpenInExplorer.Image = global::ToolsCore.GlobalResources.folder;
             this.tsbOpenInExplorer.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpenInExplorer.Name = "tsbOpenInExplorer";
             this.tsbOpenInExplorer.Size = new System.Drawing.Size(24, 24);
@@ -880,11 +1103,11 @@ namespace RawBankEditor.Forms
             // 
             this.tsbPlay.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbPlay.Enabled = false;
-            this.tsbPlay.Image = global::RawBankEditor.Properties.Resources.sound;
+            this.tsbPlay.Image = global::ToolsCore.GlobalResources.sound;
             this.tsbPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPlay.Name = "tsbPlay";
             this.tsbPlay.Size = new System.Drawing.Size(24, 24);
-            this.tsbPlay.Text = "Prehrať zvuk";
+            this.tsbPlay.Text = "Prehrať zvuk (F5)";
             this.tsbPlay.Click += new System.EventHandler(this.DoPlayFile);
             // 
             // toolStripSeparator17
@@ -896,22 +1119,50 @@ namespace RawBankEditor.Forms
             // 
             this.tsbRenameFileDir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbRenameFileDir.Enabled = false;
-            this.tsbRenameFileDir.Image = global::RawBankEditor.Properties.Resources.rename;
+            this.tsbRenameFileDir.Image = global::ToolsCore.GlobalResources.rename;
             this.tsbRenameFileDir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRenameFileDir.Name = "tsbRenameFileDir";
             this.tsbRenameFileDir.Size = new System.Drawing.Size(24, 24);
-            this.tsbRenameFileDir.Text = "Premenovať";
+            this.tsbRenameFileDir.Text = "Premenovať (F2)";
+            this.tsbRenameFileDir.Click += new System.EventHandler(this.DoRenameFile);
             // 
-            // tsbRemoveFileDir
+            // tsbDeleteFileDir
             // 
-            this.tsbRemoveFileDir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRemoveFileDir.Enabled = false;
-            this.tsbRemoveFileDir.Image = global::RawBankEditor.Properties.Resources.delete;
-            this.tsbRemoveFileDir.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbRemoveFileDir.Name = "tsbRemoveFileDir";
-            this.tsbRemoveFileDir.Size = new System.Drawing.Size(24, 24);
-            this.tsbRemoveFileDir.Text = "Odstrániť";
-            this.tsbRemoveFileDir.Click += new System.EventHandler(this.DoDeleteFile);
+            this.tsbDeleteFileDir.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDeleteFileDir.Enabled = false;
+            this.tsbDeleteFileDir.Image = global::ToolsCore.GlobalResources.delete;
+            this.tsbDeleteFileDir.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeleteFileDir.Name = "tsbDeleteFileDir";
+            this.tsbDeleteFileDir.Size = new System.Drawing.Size(24, 24);
+            this.tsbDeleteFileDir.Text = "Odstrániť (Del)";
+            this.tsbDeleteFileDir.Click += new System.EventHandler(this.DoDeleteFile);
+            // 
+            // toolStripSeparator22
+            // 
+            this.toolStripSeparator22.Name = "toolStripSeparator22";
+            this.toolStripSeparator22.Size = new System.Drawing.Size(6, 27);
+            // 
+            // tsbConvertFilesToEwa
+            // 
+            this.tsbConvertFilesToEwa.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertFilesToEwa.Enabled = false;
+            this.tsbConvertFilesToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsbConvertFilesToEwa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertFilesToEwa.Name = "tsbConvertFilesToEwa";
+            this.tsbConvertFilesToEwa.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertFilesToEwa.Text = "Konvertovať súbory na .EWA";
+            this.tsbConvertFilesToEwa.Click += new System.EventHandler(this.DoConvertFilesToEwa);
+            // 
+            // tsbConvertFilesToWav
+            // 
+            this.tsbConvertFilesToWav.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertFilesToWav.Enabled = false;
+            this.tsbConvertFilesToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsbConvertFilesToWav.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertFilesToWav.Name = "tsbConvertFilesToWav";
+            this.tsbConvertFilesToWav.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertFilesToWav.Text = "Konvertovať súbory na .WAV";
+            this.tsbConvertFilesToWav.Click += new System.EventHandler(this.DoConvertFilesToWav);
             // 
             // splitSoundsErrors
             // 
@@ -928,8 +1179,8 @@ namespace RawBankEditor.Forms
             // splitSoundsErrors.Panel2
             // 
             this.splitSoundsErrors.Panel2.Controls.Add(this.tableLayoutPanel4);
-            this.splitSoundsErrors.Size = new System.Drawing.Size(720, 476);
-            this.splitSoundsErrors.SplitterDistance = 324;
+            this.splitSoundsErrors.Size = new System.Drawing.Size(785, 502);
+            this.splitSoundsErrors.SplitterDistance = 339;
             this.splitSoundsErrors.SplitterWidth = 6;
             this.splitSoundsErrors.TabIndex = 1;
             // 
@@ -949,11 +1200,12 @@ namespace RawBankEditor.Forms
             this.dgvSounds.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvSounds.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSounds.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.key,
-            this.AdditionalRelativePath,
-            this.file,
-            this.duration,
-            this.text});
+            this.cSoundKey,
+            this.cSoundName,
+            this.cSoundAdditionalRelativePath,
+            this.cSoundFileName,
+            this.cSoundDuration,
+            this.cSoundText});
             this.dgvSounds.ContextMenuStrip = this.contextMenuSounds;
             this.dgvSounds.DataSource = this.fyzSoundBindingSource;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -980,61 +1232,67 @@ namespace RawBankEditor.Forms
             this.dgvSounds.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgvSounds.RowTemplate.Height = 24;
             this.dgvSounds.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSounds.Size = new System.Drawing.Size(720, 324);
+            this.dgvSounds.Size = new System.Drawing.Size(785, 339);
             this.dgvSounds.TabIndex = 0;
             this.dgvSounds.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSounds_CellBeginEdit);
             this.dgvSounds.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSounds_CellEndEdit);
-            this.dgvSounds.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvSounds_CellFormatting);
+            this.dgvSounds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvSounds_CellMouseDown);
             this.dgvSounds.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvSounds_DataError);
-            this.dgvSounds.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvSounds_RowsAdded);
             this.dgvSounds.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSounds_RowValidating);
             this.dgvSounds.SelectionChanged += new System.EventHandler(this.dgvSounds_SelectionChanged);
-            this.dgvSounds.UserAddedRow += new System.Windows.Forms.DataGridViewRowEventHandler(this.dgvSounds_UserAddedRow);
+            this.dgvSounds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DgvSounds_MouseDown);
+            this.dgvSounds.MouseUp += new System.Windows.Forms.MouseEventHandler(this.DgvSounds_MouseUp);
             // 
-            // key
+            // cSoundKey
             // 
-            this.key.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.key.DataPropertyName = "Key";
-            this.key.HeaderText = "Kľúč zvuku";
-            this.key.MinimumWidth = 6;
-            this.key.Name = "key";
-            this.key.Width = 80;
+            this.cSoundKey.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cSoundKey.DataPropertyName = "Key";
+            this.cSoundKey.HeaderText = "Kľúč zvuku";
+            this.cSoundKey.MinimumWidth = 6;
+            this.cSoundKey.Name = "cSoundKey";
+            this.cSoundKey.Width = 80;
             // 
-            // AdditionalRelativePath
+            // cSoundName
             // 
-            this.AdditionalRelativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.AdditionalRelativePath.DataPropertyName = "AdditionalRelativePath";
-            this.AdditionalRelativePath.HeaderText = "Prídavná relatívna cesta";
-            this.AdditionalRelativePath.MinimumWidth = 6;
-            this.AdditionalRelativePath.Name = "AdditionalRelativePath";
-            this.AdditionalRelativePath.Width = 95;
+            this.cSoundName.DataPropertyName = "Name";
+            this.cSoundName.HeaderText = "Názov zvuku";
+            this.cSoundName.Name = "cSoundName";
             // 
-            // file
+            // cSoundAdditionalRelativePath
             // 
-            this.file.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.file.DataPropertyName = "FileName";
-            this.file.HeaderText = "Názov súboru";
-            this.file.MinimumWidth = 6;
-            this.file.Name = "file";
-            this.file.Width = 90;
+            this.cSoundAdditionalRelativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cSoundAdditionalRelativePath.DataPropertyName = "AdditionalRelativePath";
+            this.cSoundAdditionalRelativePath.HeaderText = "Prídavná relatívna cesta";
+            this.cSoundAdditionalRelativePath.MinimumWidth = 6;
+            this.cSoundAdditionalRelativePath.Name = "cSoundAdditionalRelativePath";
+            this.cSoundAdditionalRelativePath.Width = 95;
             // 
-            // duration
+            // cSoundFileName
             // 
-            this.duration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.duration.DataPropertyName = "DurationText";
-            this.duration.HeaderText = "Trvanie";
-            this.duration.MinimumWidth = 6;
-            this.duration.Name = "duration";
-            this.duration.ReadOnly = true;
-            this.duration.Width = 68;
+            this.cSoundFileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cSoundFileName.DataPropertyName = "FileName";
+            this.cSoundFileName.HeaderText = "Názov súboru";
+            this.cSoundFileName.MinimumWidth = 6;
+            this.cSoundFileName.Name = "cSoundFileName";
+            this.cSoundFileName.Width = 90;
             // 
-            // text
+            // cSoundDuration
             // 
-            this.text.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.text.DataPropertyName = "Text";
-            this.text.HeaderText = "Text hlásenia";
-            this.text.MinimumWidth = 6;
-            this.text.Name = "text";
+            this.cSoundDuration.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cSoundDuration.DataPropertyName = "DurationText";
+            this.cSoundDuration.HeaderText = "Trvanie";
+            this.cSoundDuration.MinimumWidth = 6;
+            this.cSoundDuration.Name = "cSoundDuration";
+            this.cSoundDuration.ReadOnly = true;
+            this.cSoundDuration.Width = 68;
+            // 
+            // cSoundText
+            // 
+            this.cSoundText.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cSoundText.DataPropertyName = "Text";
+            this.cSoundText.HeaderText = "Text hlásenia";
+            this.cSoundText.MinimumWidth = 6;
+            this.cSoundText.Name = "cSoundText";
             // 
             // contextMenuSounds
             // 
@@ -1042,48 +1300,62 @@ namespace RawBankEditor.Forms
             this.contextMenuSounds.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmiAddSound,
             this.cmiDeleteSound,
+            this.cmiMoveSounds,
             this.toolStripSeparator19,
-            this.konvertovaťNaWAVToolStripMenuItem,
-            this.konvertovaťNaEWAToolStripMenuItem});
+            this.cmiConvertSoundsToEwa,
+            this.cmiConvertSoundsToWav});
             this.contextMenuSounds.Name = "contextMenuSounds";
-            this.contextMenuSounds.Size = new System.Drawing.Size(207, 114);
+            this.contextMenuSounds.Size = new System.Drawing.Size(224, 140);
             // 
             // cmiAddSound
             // 
             this.cmiAddSound.Enabled = false;
-            this.cmiAddSound.Image = global::RawBankEditor.Properties.Resources.add;
+            this.cmiAddSound.Image = global::ToolsCore.GlobalResources.add;
             this.cmiAddSound.Name = "cmiAddSound";
-            this.cmiAddSound.Size = new System.Drawing.Size(206, 26);
+            this.cmiAddSound.Size = new System.Drawing.Size(223, 26);
             this.cmiAddSound.Text = "Pridať zvuk";
+            this.cmiAddSound.Click += new System.EventHandler(this.DoAddSound);
             // 
             // cmiDeleteSound
             // 
             this.cmiDeleteSound.Enabled = false;
-            this.cmiDeleteSound.Image = global::RawBankEditor.Properties.Resources.delete;
+            this.cmiDeleteSound.Image = global::ToolsCore.GlobalResources.delete;
             this.cmiDeleteSound.Name = "cmiDeleteSound";
-            this.cmiDeleteSound.Size = new System.Drawing.Size(206, 26);
+            this.cmiDeleteSound.Size = new System.Drawing.Size(223, 26);
             this.cmiDeleteSound.Text = "Odstrániť vybrané zvuky";
+            this.cmiDeleteSound.Click += new System.EventHandler(this.DoDeleteSounds);
+            // 
+            // cmiMoveSounds
+            // 
+            this.cmiMoveSounds.Enabled = false;
+            this.cmiMoveSounds.Image = global::ToolsCore.GlobalResources.move;
+            this.cmiMoveSounds.Name = "cmiMoveSounds";
+            this.cmiMoveSounds.Size = new System.Drawing.Size(223, 26);
+            this.cmiMoveSounds.Text = "Presunúť vybrané zvuky...";
+            this.cmiMoveSounds.Click += new System.EventHandler(this.DoMoveSounds);
             // 
             // toolStripSeparator19
             // 
             this.toolStripSeparator19.Name = "toolStripSeparator19";
-            this.toolStripSeparator19.Size = new System.Drawing.Size(203, 6);
+            this.toolStripSeparator19.Size = new System.Drawing.Size(220, 6);
             // 
-            // konvertovaťNaWAVToolStripMenuItem
+            // cmiConvertSoundsToEwa
             // 
-            this.konvertovaťNaWAVToolStripMenuItem.Enabled = false;
-            this.konvertovaťNaWAVToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.convert;
-            this.konvertovaťNaWAVToolStripMenuItem.Name = "konvertovaťNaWAVToolStripMenuItem";
-            this.konvertovaťNaWAVToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
-            this.konvertovaťNaWAVToolStripMenuItem.Text = "Konvertovať na .WAV";
+            this.cmiConvertSoundsToEwa.Enabled = false;
+            this.cmiConvertSoundsToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.cmiConvertSoundsToEwa.Name = "cmiConvertSoundsToEwa";
+            this.cmiConvertSoundsToEwa.Size = new System.Drawing.Size(223, 26);
+            this.cmiConvertSoundsToEwa.Text = "Konvertovať zvuky na .EWA";
+            this.cmiConvertSoundsToEwa.Click += new System.EventHandler(this.DoConvertSoundsToEwa);
             // 
-            // konvertovaťNaEWAToolStripMenuItem
+            // cmiConvertSoundsToWav
             // 
-            this.konvertovaťNaEWAToolStripMenuItem.Enabled = false;
-            this.konvertovaťNaEWAToolStripMenuItem.Image = global::RawBankEditor.Properties.Resources.convert;
-            this.konvertovaťNaEWAToolStripMenuItem.Name = "konvertovaťNaEWAToolStripMenuItem";
-            this.konvertovaťNaEWAToolStripMenuItem.Size = new System.Drawing.Size(206, 26);
-            this.konvertovaťNaEWAToolStripMenuItem.Text = "Konvertovať na .EWA";
+            this.cmiConvertSoundsToWav.Enabled = false;
+            this.cmiConvertSoundsToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.cmiConvertSoundsToWav.Name = "cmiConvertSoundsToWav";
+            this.cmiConvertSoundsToWav.Size = new System.Drawing.Size(223, 26);
+            this.cmiConvertSoundsToWav.Text = "Konvertovať zvuky na .WAV";
+            this.cmiConvertSoundsToWav.Click += new System.EventHandler(this.DoConvertSoundsToWav);
             // 
             // fyzSoundBindingSource
             // 
@@ -1106,7 +1378,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 16F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(720, 146);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(785, 157);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // toolStripErrors
@@ -1120,12 +1392,12 @@ namespace RawBankEditor.Forms
             this.tsbWarnings,
             this.toolStripSeparator14,
             this.tsbInfos,
-            this.tsbSolve,
-            this.tsbFindProblem});
+            this.tsbResolveProblem,
+            this.tsbHighlightProblem});
             this.toolStripErrors.Location = new System.Drawing.Point(3, 33);
             this.toolStripErrors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 0);
             this.toolStripErrors.Name = "toolStripErrors";
-            this.toolStripErrors.Size = new System.Drawing.Size(714, 27);
+            this.toolStripErrors.Size = new System.Drawing.Size(779, 27);
             this.toolStripErrors.TabIndex = 1;
             this.toolStripErrors.Text = "toolStrip2";
             // 
@@ -1175,29 +1447,29 @@ namespace RawBankEditor.Forms
             this.tsbInfos.Text = "0 správ";
             this.tsbInfos.CheckedChanged += new System.EventHandler(this.tsbInfos_CheckedChanged);
             // 
-            // tsbSolve
+            // tsbResolveProblem
             // 
-            this.tsbSolve.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbSolve.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbSolve.Enabled = false;
-            this.tsbSolve.Image = global::RawBankEditor.Properties.Resources.correct;
-            this.tsbSolve.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbSolve.Name = "tsbSolve";
-            this.tsbSolve.Size = new System.Drawing.Size(24, 24);
-            this.tsbSolve.Text = "Vyriešiť";
-            this.tsbSolve.Click += new System.EventHandler(this.DoSolveProblem);
+            this.tsbResolveProblem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbResolveProblem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbResolveProblem.Enabled = false;
+            this.tsbResolveProblem.Image = global::ToolsCore.GlobalResources.correct;
+            this.tsbResolveProblem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbResolveProblem.Name = "tsbResolveProblem";
+            this.tsbResolveProblem.Size = new System.Drawing.Size(24, 24);
+            this.tsbResolveProblem.Text = "Vyriešiť";
+            this.tsbResolveProblem.Click += new System.EventHandler(this.DoSolveProblem);
             // 
-            // tsbFindProblem
+            // tsbHighlightProblem
             // 
-            this.tsbFindProblem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tsbFindProblem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFindProblem.Enabled = false;
-            this.tsbFindProblem.Image = global::RawBankEditor.Properties.Resources.analyze;
-            this.tsbFindProblem.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFindProblem.Name = "tsbFindProblem";
-            this.tsbFindProblem.Size = new System.Drawing.Size(24, 24);
-            this.tsbFindProblem.Text = "Nájsť problém";
-            this.tsbFindProblem.Click += new System.EventHandler(this.DoFindProblem);
+            this.tsbHighlightProblem.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbHighlightProblem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbHighlightProblem.Enabled = false;
+            this.tsbHighlightProblem.Image = global::ToolsCore.GlobalResources.analyze;
+            this.tsbHighlightProblem.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbHighlightProblem.Name = "tsbHighlightProblem";
+            this.tsbHighlightProblem.Size = new System.Drawing.Size(24, 24);
+            this.tsbHighlightProblem.Text = "Zvýrazniť problém";
+            this.tsbHighlightProblem.Click += new System.EventHandler(this.DoFindProblem);
             // 
             // dgvErrors
             // 
@@ -1217,9 +1489,11 @@ namespace RawBankEditor.Forms
             this.dgvErrors.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvErrors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvErrors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dgvicType,
-            this.messageDataGridViewTextBoxColumn,
-            this.resolveMessageDataGridViewTextBoxColumn});
+            this.cMsgType,
+            this.cMsgCode,
+            this.cMessage,
+            this.cMsgResolve,
+            this.cMsgPath});
             this.dgvErrors.ContextMenuStrip = this.contextMenuErrors;
             this.dgvErrors.DataSource = this.rawBankMessageBindingSource;
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -1248,65 +1522,85 @@ namespace RawBankEditor.Forms
             this.dgvErrors.RowHeadersWidth = 51;
             this.dgvErrors.RowTemplate.Height = 24;
             this.dgvErrors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvErrors.Size = new System.Drawing.Size(714, 80);
+            this.dgvErrors.Size = new System.Drawing.Size(779, 91);
             this.dgvErrors.TabIndex = 2;
+            this.dgvErrors.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvErrors_CellDoubleClick);
             this.dgvErrors.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dgvErrors_CellFormatting);
+            this.dgvErrors.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvErrors_CellMouseDown);
             // 
-            // dgvicType
+            // cMsgType
             // 
-            this.dgvicType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.dgvicType.HeaderText = "Typ";
-            this.dgvicType.MinimumWidth = 6;
-            this.dgvicType.Name = "dgvicType";
-            this.dgvicType.ReadOnly = true;
-            this.dgvicType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvicType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.dgvicType.Width = 50;
+            this.cMsgType.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cMsgType.HeaderText = "Typ";
+            this.cMsgType.MinimumWidth = 6;
+            this.cMsgType.Name = "cMsgType";
+            this.cMsgType.ReadOnly = true;
+            this.cMsgType.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cMsgType.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cMsgType.Width = 50;
             // 
-            // messageDataGridViewTextBoxColumn
+            // cMsgCode
             // 
-            this.messageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.messageDataGridViewTextBoxColumn.DataPropertyName = "Message";
-            this.messageDataGridViewTextBoxColumn.HeaderText = "Správa";
-            this.messageDataGridViewTextBoxColumn.MinimumWidth = 500;
-            this.messageDataGridViewTextBoxColumn.Name = "messageDataGridViewTextBoxColumn";
-            this.messageDataGridViewTextBoxColumn.ReadOnly = true;
-            this.messageDataGridViewTextBoxColumn.Width = 500;
+            this.cMsgCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cMsgCode.DataPropertyName = "Code";
+            this.cMsgCode.HeaderText = "Kód";
+            this.cMsgCode.Name = "cMsgCode";
+            this.cMsgCode.ReadOnly = true;
+            this.cMsgCode.Width = 32;
             // 
-            // resolveMessageDataGridViewTextBoxColumn
+            // cMessage
             // 
-            this.resolveMessageDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.resolveMessageDataGridViewTextBoxColumn.DataPropertyName = "ResolveMessage";
-            this.resolveMessageDataGridViewTextBoxColumn.HeaderText = "Riešenie";
-            this.resolveMessageDataGridViewTextBoxColumn.MinimumWidth = 150;
-            this.resolveMessageDataGridViewTextBoxColumn.Name = "resolveMessageDataGridViewTextBoxColumn";
-            this.resolveMessageDataGridViewTextBoxColumn.ReadOnly = true;
+            this.cMessage.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cMessage.DataPropertyName = "Message";
+            this.cMessage.HeaderText = "Správa";
+            this.cMessage.MinimumWidth = 450;
+            this.cMessage.Name = "cMessage";
+            this.cMessage.ReadOnly = true;
+            this.cMessage.Width = 450;
+            // 
+            // cMsgResolve
+            // 
+            this.cMsgResolve.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cMsgResolve.DataPropertyName = "ResolveMessage";
+            this.cMsgResolve.HeaderText = "Riešenie";
+            this.cMsgResolve.MinimumWidth = 150;
+            this.cMsgResolve.Name = "cMsgResolve";
+            this.cMsgResolve.ReadOnly = true;
+            this.cMsgResolve.Width = 150;
+            // 
+            // cMsgPath
+            // 
+            this.cMsgPath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cMsgPath.DataPropertyName = "Path";
+            this.cMsgPath.HeaderText = "Cesta";
+            this.cMsgPath.Name = "cMsgPath";
+            this.cMsgPath.ReadOnly = true;
             // 
             // contextMenuErrors
             // 
             this.contextMenuErrors.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cmiFindProblem,
-            this.cmiSolve});
+            this.cmiHighlightProblem,
+            this.cmiResolveProblem});
             this.contextMenuErrors.Name = "contextMenuErrors";
-            this.contextMenuErrors.Size = new System.Drawing.Size(139, 48);
+            this.contextMenuErrors.Size = new System.Drawing.Size(160, 48);
             // 
-            // cmiFindProblem
+            // cmiHighlightProblem
             // 
-            this.cmiFindProblem.Enabled = false;
-            this.cmiFindProblem.Image = global::RawBankEditor.Properties.Resources.analyze;
-            this.cmiFindProblem.Name = "cmiFindProblem";
-            this.cmiFindProblem.Size = new System.Drawing.Size(138, 22);
-            this.cmiFindProblem.Text = "Nájsť chybu";
-            this.cmiFindProblem.Click += new System.EventHandler(this.DoFindProblem);
+            this.cmiHighlightProblem.Enabled = false;
+            this.cmiHighlightProblem.Image = global::ToolsCore.GlobalResources.analyze;
+            this.cmiHighlightProblem.Name = "cmiHighlightProblem";
+            this.cmiHighlightProblem.Size = new System.Drawing.Size(159, 22);
+            this.cmiHighlightProblem.Text = "Zvýrazniť chybu";
+            this.cmiHighlightProblem.Click += new System.EventHandler(this.DoFindProblem);
             // 
-            // cmiSolve
+            // cmiResolveProblem
             // 
-            this.cmiSolve.Enabled = false;
-            this.cmiSolve.Image = global::RawBankEditor.Properties.Resources.correct;
-            this.cmiSolve.Name = "cmiSolve";
-            this.cmiSolve.Size = new System.Drawing.Size(138, 22);
-            this.cmiSolve.Text = "Vyriešiť";
-            this.cmiSolve.Click += new System.EventHandler(this.DoSolveProblem);
+            this.cmiResolveProblem.Enabled = false;
+            this.cmiResolveProblem.Image = global::ToolsCore.GlobalResources.correct;
+            this.cmiResolveProblem.Name = "cmiResolveProblem";
+            this.cmiResolveProblem.Size = new System.Drawing.Size(159, 22);
+            this.cmiResolveProblem.Text = "Vyriešiť";
+            this.cmiResolveProblem.Click += new System.EventHandler(this.DoSolveProblem);
             // 
             // rawBankMessageBindingSource
             // 
@@ -1327,7 +1621,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 1;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(714, 25);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(779, 25);
             this.tableLayoutPanel5.TabIndex = 3;
             // 
             // mmErrors
@@ -1336,7 +1630,7 @@ namespace RawBankEditor.Forms
             this.mmErrors.HoverColor = System.Drawing.SystemColors.Highlight;
             this.mmErrors.IconColor = System.Drawing.SystemColors.ControlDark;
             this.mmErrors.IconHoverColor = System.Drawing.Color.White;
-            this.mmErrors.Location = new System.Drawing.Point(700, 2);
+            this.mmErrors.Location = new System.Drawing.Point(765, 2);
             this.mmErrors.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.mmErrors.Name = "mmErrors";
             this.mmErrors.Size = new System.Drawing.Size(12, 13);
@@ -1352,8 +1646,8 @@ namespace RawBankEditor.Forms
             this.label3.Margin = new System.Windows.Forms.Padding(2);
             this.label3.Name = "label3";
             this.label3.Padding = new System.Windows.Forms.Padding(0, 4, 0, 4);
-            this.label3.Size = new System.Drawing.Size(353, 21);
-            this.label3.TabIndex = 0;
+            this.label3.Size = new System.Drawing.Size(385, 21);
+            this.label3.TabIndex = 1;
             this.label3.Text = "Zoznam chýb";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -1371,7 +1665,7 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1001, 506);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1095, 532);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // statusStripMain
@@ -1382,10 +1676,10 @@ namespace RawBankEditor.Forms
             this.tspbProgress,
             this.toolStripStatusLabel1,
             this.tssbErrors});
-            this.statusStripMain.Location = new System.Drawing.Point(0, 480);
+            this.statusStripMain.Location = new System.Drawing.Point(0, 506);
             this.statusStripMain.Name = "statusStripMain";
             this.statusStripMain.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStripMain.Size = new System.Drawing.Size(1001, 26);
+            this.statusStripMain.Size = new System.Drawing.Size(1095, 26);
             this.statusStripMain.SizingGrip = false;
             this.statusStripMain.TabIndex = 2;
             this.statusStripMain.Text = "statusStrip1";
@@ -1407,12 +1701,12 @@ namespace RawBankEditor.Forms
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(825, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(919, 21);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // tssbErrors
             // 
-            this.tssbErrors.Image = global::RawBankEditor.Properties.Resources.correct;
+            this.tssbErrors.Image = global::ToolsCore.GlobalResources.correct;
             this.tssbErrors.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tssbErrors.Name = "tssbErrors";
             this.tssbErrors.ShowDropDownArrow = false;
@@ -1426,12 +1720,10 @@ namespace RawBankEditor.Forms
             this.toolStripMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbOpen,
             this.tsbRecent,
+            this.toolStripSeparator25,
             this.tsbSave,
             this.tsbSaveAll,
             this.toolStripSeparator1,
-            this.tsbImport,
-            this.tsbExport,
-            this.toolStripSeparator5,
             this.tsbGoBack,
             this.tsbGoForward,
             this.toolStripSeparator9,
@@ -1441,8 +1733,6 @@ namespace RawBankEditor.Forms
             this.toolStripLabel1,
             this.tscboxLanguages,
             this.tsbLangsSettings,
-            this.toolStripSeparator6,
-            this.tsbConvertSounds,
             this.toolStripSeparator7,
             this.tsbAppSettings,
             this.tsbInfoApp,
@@ -1450,57 +1740,64 @@ namespace RawBankEditor.Forms
             this.tsbAddSound,
             this.tsbMoveSounds,
             this.tsbDeleteSound,
+            this.tsbConvertSoundsToEwa,
+            this.tsbConvertSoundsToWav,
             this.toolStripSeparator15,
-            this.tsbSearch});
+            this.tsbSearch,
+            this.tsbWrapTextSoundCol,
+            this.tsbRewriteMode});
             this.toolStripMain.Location = new System.Drawing.Point(0, 24);
             this.toolStripMain.Name = "toolStripMain";
-            this.toolStripMain.Size = new System.Drawing.Size(1001, 27);
-            this.toolStripMain.TabIndex = 3;
+            this.toolStripMain.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.toolStripMain.Size = new System.Drawing.Size(1095, 27);
+            this.toolStripMain.TabIndex = 1;
             this.toolStripMain.Text = "toolStrip1";
             // 
             // tsbOpen
             // 
             this.tsbOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbOpen.Image = global::RawBankEditor.Properties.Resources.open;
+            this.tsbOpen.Image = global::ToolsCore.GlobalResources.open;
             this.tsbOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbOpen.Name = "tsbOpen";
             this.tsbOpen.Size = new System.Drawing.Size(24, 24);
-            this.tsbOpen.Tag = RawBankEditor.Entities.MainMenuItemType.OpenDir;
             this.tsbOpen.Text = "Otvoriť";
-            this.tsbOpen.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbOpen.Click += new System.EventHandler(this.DoOpenDir);
             // 
             // tsbRecent
             // 
             this.tsbRecent.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbRecent.Image = global::RawBankEditor.Properties.Resources.recent_gvds;
+            this.tsbRecent.Image = global::ToolsCore.GlobalResources.recent_gvds;
             this.tsbRecent.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRecent.Name = "tsbRecent";
             this.tsbRecent.Size = new System.Drawing.Size(33, 24);
             this.tsbRecent.Text = "Nedávne";
             // 
+            // toolStripSeparator25
+            // 
+            this.toolStripSeparator25.Name = "toolStripSeparator25";
+            this.toolStripSeparator25.Size = new System.Drawing.Size(6, 27);
+            // 
             // tsbSave
             // 
             this.tsbSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbSave.Enabled = false;
-            this.tsbSave.Image = global::RawBankEditor.Properties.Resources.save;
+            this.tsbSave.Image = global::ToolsCore.GlobalResources.save;
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(24, 24);
-            this.tsbSave.Tag = RawBankEditor.Entities.MainMenuItemType.Save;
             this.tsbSave.Text = "Uložiť";
-            this.tsbSave.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbSave.Click += new System.EventHandler(this.DoSave);
             // 
             // tsbSaveAll
             // 
             this.tsbSaveAll.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbSaveAll.Enabled = false;
-            this.tsbSaveAll.Image = global::RawBankEditor.Properties.Resources.save_all;
+            this.tsbSaveAll.Image = global::ToolsCore.GlobalResources.save_all;
             this.tsbSaveAll.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSaveAll.Name = "tsbSaveAll";
             this.tsbSaveAll.Size = new System.Drawing.Size(24, 24);
-            this.tsbSaveAll.Tag = RawBankEditor.Entities.MainMenuItemType.SaveAll;
             this.tsbSaveAll.Text = "Uložiť všetko";
-            this.tsbSaveAll.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbSaveAll.Click += new System.EventHandler(this.DoSaveAll);
             // 
             // toolStripSeparator1
             // 
@@ -1508,58 +1805,28 @@ namespace RawBankEditor.Forms
             this.toolStripSeparator1.Padding = new System.Windows.Forms.Padding(0, 3, 0, 3);
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
-            // tsbImport
-            // 
-            this.tsbImport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbImport.Enabled = false;
-            this.tsbImport.Image = global::RawBankEditor.Properties.Resources.import;
-            this.tsbImport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbImport.Name = "tsbImport";
-            this.tsbImport.Size = new System.Drawing.Size(24, 24);
-            this.tsbImport.Tag = RawBankEditor.Entities.MainMenuItemType.Import;
-            this.tsbImport.Text = "Importovať";
-            this.tsbImport.Click += new System.EventHandler(this.MainMenuItemClicked);
-            // 
-            // tsbExport
-            // 
-            this.tsbExport.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbExport.Enabled = false;
-            this.tsbExport.Image = global::RawBankEditor.Properties.Resources.export;
-            this.tsbExport.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExport.Name = "tsbExport";
-            this.tsbExport.Size = new System.Drawing.Size(24, 24);
-            this.tsbExport.Tag = RawBankEditor.Entities.MainMenuItemType.Export;
-            this.tsbExport.Text = "Expotovať";
-            this.tsbExport.Click += new System.EventHandler(this.MainMenuItemClicked);
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 27);
-            // 
             // tsbGoBack
             // 
             this.tsbGoBack.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbGoBack.DropDownButtonWidth = 15;
             this.tsbGoBack.Enabled = false;
-            this.tsbGoBack.Image = global::RawBankEditor.Properties.Resources.back;
+            this.tsbGoBack.Image = global::ToolsCore.GlobalResources.back;
             this.tsbGoBack.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGoBack.Name = "tsbGoBack";
-            this.tsbGoBack.Size = new System.Drawing.Size(24, 24);
-            this.tsbGoBack.Tag = RawBankEditor.Entities.MainMenuItemType.GoBack;
+            this.tsbGoBack.Size = new System.Drawing.Size(40, 24);
             this.tsbGoBack.Text = "Prejsť späť";
-            this.tsbGoBack.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbGoBack.ButtonClick += new System.EventHandler(this.DoGoBack);
             // 
             // tsbGoForward
             // 
             this.tsbGoForward.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbGoForward.Enabled = false;
-            this.tsbGoForward.Image = global::RawBankEditor.Properties.Resources.forward;
+            this.tsbGoForward.Image = global::ToolsCore.GlobalResources.forward;
             this.tsbGoForward.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbGoForward.Name = "tsbGoForward";
             this.tsbGoForward.Size = new System.Drawing.Size(24, 24);
-            this.tsbGoForward.Tag = RawBankEditor.Entities.MainMenuItemType.GoForward;
             this.tsbGoForward.Text = "Prejsť dopredu";
-            this.tsbGoForward.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbGoForward.Click += new System.EventHandler(this.DoGoForward);
             // 
             // toolStripSeparator9
             // 
@@ -1570,25 +1837,23 @@ namespace RawBankEditor.Forms
             // 
             this.tsbUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbUndo.Enabled = false;
-            this.tsbUndo.Image = global::RawBankEditor.Properties.Resources.undo;
+            this.tsbUndo.Image = global::ToolsCore.GlobalResources.undo;
             this.tsbUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbUndo.Name = "tsbUndo";
             this.tsbUndo.Size = new System.Drawing.Size(24, 24);
-            this.tsbUndo.Tag = RawBankEditor.Entities.MainMenuItemType.Undo;
             this.tsbUndo.Text = "Späť";
-            this.tsbUndo.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbUndo.Click += new System.EventHandler(this.DoUndo);
             // 
             // tsbRedo
             // 
             this.tsbRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbRedo.Enabled = false;
-            this.tsbRedo.Image = global::RawBankEditor.Properties.Resources.redo;
+            this.tsbRedo.Image = global::ToolsCore.GlobalResources.redo;
             this.tsbRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRedo.Name = "tsbRedo";
             this.tsbRedo.Size = new System.Drawing.Size(24, 24);
-            this.tsbRedo.Tag = RawBankEditor.Entities.MainMenuItemType.Redo;
             this.tsbRedo.Text = "Znovu";
-            this.tsbRedo.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbRedo.Click += new System.EventHandler(this.DoRedo);
             // 
             // toolStripSeparator10
             // 
@@ -1608,37 +1873,76 @@ namespace RawBankEditor.Forms
             this.tscboxLanguages.Enabled = false;
             this.tscboxLanguages.FlatStyle = System.Windows.Forms.FlatStyle.Standard;
             this.tscboxLanguages.Name = "tscboxLanguages";
-            this.tscboxLanguages.Size = new System.Drawing.Size(114, 24);
+            this.tscboxLanguages.Size = new System.Drawing.Size(130, 24);
             this.tscboxLanguages.SelectedIndexChanged += new System.EventHandler(this.tscboxLanguages_SelectedIndexChanged);
             // 
             // tsbLangsSettings
             // 
             this.tsbLangsSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbLangsSettings.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsmiAddLanguage,
+            this.tsmiEditLanguage,
+            this.tsmiDeleteLanguage,
+            this.toolStripSeparator5,
+            this.tsmiConvertLangToEwa,
+            this.tsmiConvertLangToWav});
             this.tsbLangsSettings.Enabled = false;
-            this.tsbLangsSettings.Image = global::RawBankEditor.Properties.Resources.global_settings;
+            this.tsbLangsSettings.Image = global::ToolsCore.GlobalResources.global_settings;
             this.tsbLangsSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLangsSettings.Margin = new System.Windows.Forms.Padding(5, 1, 0, 2);
             this.tsbLangsSettings.Name = "tsbLangsSettings";
-            this.tsbLangsSettings.Size = new System.Drawing.Size(24, 24);
-            this.tsbLangsSettings.Tag = RawBankEditor.Entities.MainMenuItemType.LangSettings;
+            this.tsbLangsSettings.Size = new System.Drawing.Size(33, 24);
             this.tsbLangsSettings.Text = "Nastavenie jazykov";
-            this.tsbLangsSettings.Click += new System.EventHandler(this.MainMenuItemClicked);
             // 
-            // toolStripSeparator6
+            // tsmiAddLanguage
             // 
-            this.toolStripSeparator6.Name = "toolStripSeparator6";
-            this.toolStripSeparator6.Size = new System.Drawing.Size(6, 27);
+            this.tsmiAddLanguage.Enabled = false;
+            this.tsmiAddLanguage.Image = global::ToolsCore.GlobalResources.add;
+            this.tsmiAddLanguage.Name = "tsmiAddLanguage";
+            this.tsmiAddLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiAddLanguage.Text = "Pridať jazyk";
+            this.tsmiAddLanguage.Click += new System.EventHandler(this.DoAddLanguage);
             // 
-            // tsbConvertSounds
+            // tsmiEditLanguage
             // 
-            this.tsbConvertSounds.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbConvertSounds.Enabled = false;
-            this.tsbConvertSounds.Image = global::RawBankEditor.Properties.Resources.convert;
-            this.tsbConvertSounds.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbConvertSounds.Name = "tsbConvertSounds";
-            this.tsbConvertSounds.Size = new System.Drawing.Size(24, 24);
-            this.tsbConvertSounds.Tag = RawBankEditor.Entities.MainMenuItemType.ConvertSounds;
-            this.tsbConvertSounds.Text = "Konvertovanie zvukov";
-            this.tsbConvertSounds.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsmiEditLanguage.Enabled = false;
+            this.tsmiEditLanguage.Image = global::ToolsCore.GlobalResources.edit;
+            this.tsmiEditLanguage.Name = "tsmiEditLanguage";
+            this.tsmiEditLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiEditLanguage.Text = "Upraviť jazyk";
+            this.tsmiEditLanguage.Click += new System.EventHandler(this.DoEditLanguage);
+            // 
+            // tsmiDeleteLanguage
+            // 
+            this.tsmiDeleteLanguage.Enabled = false;
+            this.tsmiDeleteLanguage.Image = global::ToolsCore.GlobalResources.delete;
+            this.tsmiDeleteLanguage.Name = "tsmiDeleteLanguage";
+            this.tsmiDeleteLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiDeleteLanguage.Text = "Odstrániť jazyk";
+            this.tsmiDeleteLanguage.Click += new System.EventHandler(this.DoDeleteLanguage);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(265, 6);
+            // 
+            // tsmiConvertLangToEwa
+            // 
+            this.tsmiConvertLangToEwa.Enabled = false;
+            this.tsmiConvertLangToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsmiConvertLangToEwa.Name = "tsmiConvertLangToEwa";
+            this.tsmiConvertLangToEwa.Size = new System.Drawing.Size(268, 26);
+            this.tsmiConvertLangToEwa.Text = "Konvertovať zvuky v jazyku na .EWA";
+            this.tsmiConvertLangToEwa.Click += new System.EventHandler(this.DoConvertLangToEwa);
+            // 
+            // tsmiConvertLangToWav
+            // 
+            this.tsmiConvertLangToWav.Enabled = false;
+            this.tsmiConvertLangToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsmiConvertLangToWav.Name = "tsmiConvertLangToWav";
+            this.tsmiConvertLangToWav.Size = new System.Drawing.Size(268, 26);
+            this.tsmiConvertLangToWav.Text = "Konvertovať zvuky v jazyku na .WAV";
+            this.tsmiConvertLangToWav.Click += new System.EventHandler(this.DoConvertLangToWav);
             // 
             // toolStripSeparator7
             // 
@@ -1648,24 +1952,22 @@ namespace RawBankEditor.Forms
             // tsbAppSettings
             // 
             this.tsbAppSettings.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAppSettings.Image = global::RawBankEditor.Properties.Resources.app_settings;
+            this.tsbAppSettings.Image = global::ToolsCore.GlobalResources.app_settings;
             this.tsbAppSettings.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAppSettings.Name = "tsbAppSettings";
             this.tsbAppSettings.Size = new System.Drawing.Size(24, 24);
-            this.tsbAppSettings.Tag = RawBankEditor.Entities.MainMenuItemType.AppSettings;
             this.tsbAppSettings.Text = "Nastavenia programu";
-            this.tsbAppSettings.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbAppSettings.Click += new System.EventHandler(this.ShowAppSettings);
             // 
             // tsbInfoApp
             // 
             this.tsbInfoApp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbInfoApp.Image = global::RawBankEditor.Properties.Resources.info_app;
+            this.tsbInfoApp.Image = global::ToolsCore.GlobalResources.info_app;
             this.tsbInfoApp.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbInfoApp.Name = "tsbInfoApp";
             this.tsbInfoApp.Size = new System.Drawing.Size(24, 24);
-            this.tsbInfoApp.Tag = RawBankEditor.Entities.MainMenuItemType.InfoApp;
             this.tsbInfoApp.Text = "Informácie o programe";
-            this.tsbInfoApp.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbInfoApp.Click += new System.EventHandler(this.ShowInfoApp);
             // 
             // toolStripSeparator12
             // 
@@ -1676,37 +1978,56 @@ namespace RawBankEditor.Forms
             // 
             this.tsbAddSound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbAddSound.Enabled = false;
-            this.tsbAddSound.Image = global::RawBankEditor.Properties.Resources.add;
+            this.tsbAddSound.Image = global::ToolsCore.GlobalResources.add;
             this.tsbAddSound.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddSound.Name = "tsbAddSound";
             this.tsbAddSound.Size = new System.Drawing.Size(24, 24);
-            this.tsbAddSound.Tag = RawBankEditor.Entities.MainMenuItemType.AddSound;
             this.tsbAddSound.Text = "Pridať zvuk";
-            this.tsbAddSound.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbAddSound.Click += new System.EventHandler(this.DoAddSound);
             // 
             // tsbMoveSounds
             // 
             this.tsbMoveSounds.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbMoveSounds.Enabled = false;
-            this.tsbMoveSounds.Image = global::RawBankEditor.Properties.Resources.move;
+            this.tsbMoveSounds.Image = global::ToolsCore.GlobalResources.move;
             this.tsbMoveSounds.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbMoveSounds.Name = "tsbMoveSounds";
             this.tsbMoveSounds.Size = new System.Drawing.Size(24, 24);
-            this.tsbMoveSounds.Tag = RawBankEditor.Entities.MainMenuItemType.MoveSounds;
             this.tsbMoveSounds.Text = "Premiestniť zvuky";
-            this.tsbMoveSounds.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbMoveSounds.Click += new System.EventHandler(this.DoMoveSounds);
             // 
             // tsbDeleteSound
             // 
             this.tsbDeleteSound.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbDeleteSound.Enabled = false;
-            this.tsbDeleteSound.Image = global::RawBankEditor.Properties.Resources.delete;
+            this.tsbDeleteSound.Image = global::ToolsCore.GlobalResources.delete;
             this.tsbDeleteSound.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDeleteSound.Name = "tsbDeleteSound";
             this.tsbDeleteSound.Size = new System.Drawing.Size(24, 24);
-            this.tsbDeleteSound.Tag = RawBankEditor.Entities.MainMenuItemType.DeleteSounds;
             this.tsbDeleteSound.Text = "Odstrániť zvuk";
-            this.tsbDeleteSound.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbDeleteSound.Click += new System.EventHandler(this.DoDeleteSounds);
+            // 
+            // tsbConvertSoundsToEwa
+            // 
+            this.tsbConvertSoundsToEwa.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertSoundsToEwa.Enabled = false;
+            this.tsbConvertSoundsToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
+            this.tsbConvertSoundsToEwa.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertSoundsToEwa.Name = "tsbConvertSoundsToEwa";
+            this.tsbConvertSoundsToEwa.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertSoundsToEwa.Text = "Konvertovať vybrané zvuky na .EWA";
+            this.tsbConvertSoundsToEwa.Click += new System.EventHandler(this.DoConvertSoundsToEwa);
+            // 
+            // tsbConvertSoundsToWav
+            // 
+            this.tsbConvertSoundsToWav.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbConvertSoundsToWav.Enabled = false;
+            this.tsbConvertSoundsToWav.Image = global::RawBankEditor.Properties.Resources.wav;
+            this.tsbConvertSoundsToWav.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbConvertSoundsToWav.Name = "tsbConvertSoundsToWav";
+            this.tsbConvertSoundsToWav.Size = new System.Drawing.Size(24, 24);
+            this.tsbConvertSoundsToWav.Text = "Konvertovať vybrané zvuky na .WAV";
+            this.tsbConvertSoundsToWav.Click += new System.EventHandler(this.DoConvertSoundsToWav);
             // 
             // toolStripSeparator15
             // 
@@ -1717,13 +2038,44 @@ namespace RawBankEditor.Forms
             // 
             this.tsbSearch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbSearch.Enabled = false;
-            this.tsbSearch.Image = global::RawBankEditor.Properties.Resources.search;
+            this.tsbSearch.Image = global::ToolsCore.GlobalResources.search;
             this.tsbSearch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbSearch.Name = "tsbSearch";
             this.tsbSearch.Size = new System.Drawing.Size(24, 24);
-            this.tsbSearch.Tag = RawBankEditor.Entities.MainMenuItemType.Search;
             this.tsbSearch.Text = "Hľadať";
-            this.tsbSearch.Click += new System.EventHandler(this.MainMenuItemClicked);
+            this.tsbSearch.Click += new System.EventHandler(this.DoSearch);
+            // 
+            // tsbWrapTextSoundCol
+            // 
+            this.tsbWrapTextSoundCol.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbWrapTextSoundCol.CheckOnClick = true;
+            this.tsbWrapTextSoundCol.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbWrapTextSoundCol.Image = global::ToolsCore.GlobalResources.textbox;
+            this.tsbWrapTextSoundCol.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbWrapTextSoundCol.Margin = new System.Windows.Forms.Padding(0, 1, 4, 2);
+            this.tsbWrapTextSoundCol.Name = "tsbWrapTextSoundCol";
+            this.tsbWrapTextSoundCol.Size = new System.Drawing.Size(24, 24);
+            this.tsbWrapTextSoundCol.Text = "Prispôsobiť text hlásenia v bunkách";
+            this.tsbWrapTextSoundCol.CheckedChanged += new System.EventHandler(this.WrapSoundTextChanged);
+            // 
+            // tsbRewriteMode
+            // 
+            this.tsbRewriteMode.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbRewriteMode.CheckOnClick = true;
+            this.tsbRewriteMode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbRewriteMode.Enabled = false;
+            this.tsbRewriteMode.Image = global::ToolsCore.GlobalResources.convert;
+            this.tsbRewriteMode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbRewriteMode.Name = "tsbRewriteMode";
+            this.tsbRewriteMode.Size = new System.Drawing.Size(24, 24);
+            this.tsbRewriteMode.Text = "Prepisovací mód";
+            this.tsbRewriteMode.CheckedChanged += new System.EventHandler(this.RewriteModeChanged);
+            // 
+            // undoActionChooser
+            // 
+            this.undoActionChooser.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
+            this.undoActionChooser.Name = "undoActionChooser";
+            this.undoActionChooser.Size = new System.Drawing.Size(2, 31);
             // 
             // bWorkerReadDat
             // 
@@ -1742,11 +2094,26 @@ namespace RawBankEditor.Forms
             this.fileSystemWatcher.Deleted += new System.IO.FileSystemEventHandler(this.fileSystemWatcher_Deleted);
             this.fileSystemWatcher.Renamed += new System.IO.RenamedEventHandler(this.fileSystemWatcher_Renamed);
             // 
+            // moveManager
+            // 
+            this.moveManager.ManagerEnabled = true;
+            this.moveManager.CommandAdded += new System.EventHandler<ExControls.Providers.BackwardForwardAddedCommandEventArgs>(this.MoveManager_CommandAdded);
+            // 
+            // changeManager
+            // 
+            this.changeManager.ManagerEnabled = true;
+            this.changeManager.UndoRedoStateChanged += new System.EventHandler<ExControls.Providers.UndoRedoStateEventArgs>(this.ChangeManager_UndoRedoStateChanged);
+            // 
+            // timerToCheck
+            // 
+            this.timerToCheck.Interval = 1000;
+            this.timerToCheck.Tick += new System.EventHandler(this.TimerToCheck_Tick);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1001, 557);
+            this.ClientSize = new System.Drawing.Size(1095, 583);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.toolStripMain);
             this.Controls.Add(this.menuStripMain);
@@ -1772,7 +2139,9 @@ namespace RawBankEditor.Forms
             this.tableLayoutPanel2.PerformLayout();
             this.toolStripGroups.ResumeLayout(false);
             this.toolStripGroups.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvGroups)).EndInit();
             this.contextMenuGroups.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.fyzGroupBindingSource)).EndInit();
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvExplorer)).EndInit();
@@ -1831,10 +2200,6 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem tsmimRecent;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem tsmimSave;
-        private System.Windows.Forms.ToolStripMenuItem tsmimSaveAll;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
-        private System.Windows.Forms.ToolStripMenuItem tsmimImport;
-        private System.Windows.Forms.ToolStripMenuItem tsmimExport;
         private System.Windows.Forms.ToolStripMenuItem tsmiTools;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
@@ -1842,12 +2207,6 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripButton tsbDeleteGroup;
         private System.Windows.Forms.ToolStripMenuItem tsmimInfoApp;
         private System.Windows.Forms.ToolStripButton tsbSave;
-        private System.Windows.Forms.ToolStripButton tsbSaveAll;
-        private System.Windows.Forms.ToolStripButton tsbImport;
-        private System.Windows.Forms.ToolStripButton tsbExport;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
-        private System.Windows.Forms.ToolStripButton tsbLangsSettings;
         private System.Windows.Forms.ToolStripButton tsbInfoApp;
         private System.Windows.Forms.ToolStripStatusLabel tsslStatus;
         private System.Windows.Forms.ToolStripProgressBar tspbProgress;
@@ -1862,10 +2221,8 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripMenuItem cmiDeleteGroup;
         private System.Windows.Forms.ContextMenuStrip contextMenuSounds;
         private System.Windows.Forms.ToolStrip toolStripExplorer;
-        private System.Windows.Forms.ToolStripButton tsbGoBack;
         private System.Windows.Forms.ToolStripButton tsbGoForward;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton tsbUndo;
         private System.Windows.Forms.ToolStripButton tsbRedo;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator10;
         private System.Windows.Forms.ToolStripMenuItem tsmimUndo;
@@ -1882,9 +2239,8 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripButton tsbAddSound;
         private System.Windows.Forms.ToolStripButton tsbDeleteSound;
         private System.Windows.Forms.ToolStripButton tsbAddGroup;
-        private System.Windows.Forms.ToolStripMenuItem tsmimConvertSounds;
         private System.Windows.Forms.BindingSource fyzSoundBindingSource;
-        private System.Windows.Forms.ToolStripButton tsbConvertSounds;
+        private System.Windows.Forms.ToolStripButton tsbConvertSoundsToEwa;
         private System.Windows.Forms.ToolStripMenuItem cmiAddSound;
         private System.Windows.Forms.ToolStripMenuItem cmiDeleteSound;
         private System.IO.FileSystemWatcher fileSystemWatcher;
@@ -1897,7 +2253,7 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripButton tsbInfos;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator14;
-        private System.Windows.Forms.DataGridView dgvErrors;
+        internal System.Windows.Forms.DataGridView dgvErrors;
         private System.Windows.Forms.ToolStripButton tsbOpenInExplorer;
         private System.Windows.Forms.ToolStripButton tsbPlay;
         private ExTableLayoutPanel tableLayoutPanel5;
@@ -1909,41 +2265,92 @@ namespace RawBankEditor.Forms
         private System.Windows.Forms.ToolStripButton tsbSearch;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator18;
         private System.Windows.Forms.ToolStripMenuItem tsmimSearch;
-        private System.Windows.Forms.DataGridView dgvExplorer;
+        internal System.Windows.Forms.DataGridView dgvExplorer;
         private System.Windows.Forms.ToolStripButton tsbMoveSounds;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.BindingSource fileSystemElementBindingSource;
         private System.Windows.Forms.ToolStripButton tsbRenameFileDir;
-        private System.Windows.Forms.ToolStripButton tsbRemoveFileDir;
+        private System.Windows.Forms.ToolStripButton tsbDeleteFileDir;
         private System.Windows.Forms.BindingSource rawBankMessageBindingSource;
         private System.Windows.Forms.ToolStripDropDownButton tssbErrors;
-        private System.Windows.Forms.DataGridViewTextBoxColumn key;
-        private System.Windows.Forms.DataGridViewTextBoxColumn AdditionalRelativePath;
-        private System.Windows.Forms.DataGridViewTextBoxColumn file;
-        private System.Windows.Forms.DataGridViewTextBoxColumn duration;
-        private System.Windows.Forms.DataGridViewTextBoxColumn text;
-        private System.Windows.Forms.DataGridViewImageColumn dgvicType;
-        private System.Windows.Forms.DataGridViewTextBoxColumn messageDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn resolveMessageDataGridViewTextBoxColumn;
         private ToolStripSeparator toolStripSeparator19;
-        private ToolStripMenuItem konvertovaťNaWAVToolStripMenuItem;
-        private ToolStripMenuItem konvertovaťNaEWAToolStripMenuItem;
-        internal ListBox lboxGroups;
+        private ToolStripMenuItem cmiConvertSoundsToWav;
+        private ToolStripMenuItem cmiConvertSoundsToEwa;
+        internal DataGridView dgvGroups;
         internal DataGridView dgvSounds;
-        private DataGridViewImageColumn cType;
-        private DataGridViewTextBoxColumn cName;
-        private DataGridViewTextBoxColumn cDuration;
         private ContextMenuStrip contextMenuExplorer;
-        private ToolStripMenuItem otvoriťVPrieskumníkoviToolStripMenuItem;
-        private ToolStripMenuItem prehraťZvukToolStripMenuItem;
+        private ToolStripMenuItem cmiOpenInExplorer;
+        private ToolStripMenuItem cmiPlay;
         private ToolStripSeparator toolStripSeparator20;
-        private ToolStripMenuItem premenovaťSúborToolStripMenuItem;
-        private ToolStripMenuItem odstrániťSúborToolStripMenuItem;
+        private ToolStripMenuItem cmiRenameFileDir;
+        private ToolStripMenuItem cmiDeleteFileDir;
         private ContextMenuStrip contextMenuErrors;
-        private ToolStripMenuItem cmiFindProblem;
-        private ToolStripMenuItem cmiSolve;
-        private ToolStripButton tsbSolve;
-        private ToolStripButton tsbFindProblem;
+        private ToolStripMenuItem cmiHighlightProblem;
+        private ToolStripMenuItem cmiResolveProblem;
+        private ToolStripButton tsbResolveProblem;
+        private ToolStripButton tsbHighlightProblem;
+        private BindingSource fyzGroupBindingSource;
+        private ToolStripSeparator toolStripSeparator4;
+        private ToolStripMenuItem cmiConvertGroupToWav;
+        private ToolStripMenuItem cmiConvertGroupToEwa;
+        private ToolStripSeparator toolStripSeparator21;
+        private ToolStripButton tsbConvertGroupToEwa;
+        private ToolStripButton tsbConvertGroupToWav;
+        private ToolStripButton tsbConvertSoundsToWav;
+        private ToolStripSeparator toolStripSeparator22;
+        private ToolStripButton tsbConvertFilesToEwa;
+        private ToolStripButton tsbConvertFilesToWav;
+        private ToolStripSeparator toolStripSeparator23;
+        private ToolStripMenuItem cmiConvertToEwaFile;
+        private ToolStripMenuItem cmiConvertToWavFile;
+        private ExControls.Providers.BackwardForwardProvider moveManager;
+        internal ExControls.Providers.UndoRedoManager changeManager;
+        private ToolStripMenuItem tsmimSaveAll;
+        private ToolStripButton tsbSaveAll;
+        private ToolStripSeparator toolStripSeparator25;
+        private DataGridViewTextBoxColumn cGroupName;
+        private DataGridViewTextBoxColumn cGroupRelativePath;
+        private Timer timerToCheck;
+        private ToolStripSeparator toolStripSeparator26;
+        private ToolStripMenuItem tsmimRewriteMode;
+        private ToolStripButton tsbRewriteMode;
+        private ToolStripMenuItem tsmimAddLanguage;
+        private ToolStripMenuItem tsmimEditLanguage;
+        private ToolStripMenuItem tsmimDeleteLanguage;
+        private ToolStripDropDownButton tsbLangsSettings;
+        private ToolStripMenuItem tsmiAddLanguage;
+        private ToolStripMenuItem tsmiEditLanguage;
+        private ToolStripMenuItem tsmiDeleteLanguage;
+        private DataGridViewTextBoxColumn cSoundKey;
+        private DataGridViewTextBoxColumn cSoundName;
+        private DataGridViewTextBoxColumn cSoundAdditionalRelativePath;
+        private DataGridViewTextBoxColumn cSoundFileName;
+        private DataGridViewTextBoxColumn cSoundDuration;
+        private DataGridViewTextBoxColumn cSoundText;
+        private ToolStripSeparator toolStripSeparator3;
+        private ToolStripMenuItem tsmimShowErrors;
+        private ToolStripMenuItem tsmimConvertLangToEwa;
+        private ToolStripMenuItem tsmimConvertLangToWav;
+        private ToolStripSeparator toolStripSeparator5;
+        private ToolStripMenuItem tsmiConvertLangToEwa;
+        private ToolStripMenuItem tsmiConvertLangToWav;
+        private ToolStripMenuItem tsmimConvertSoundsToEwa;
+        private ToolStripMenuItem tsmimConvertSoundsToWav;
+        private ToolStripMenuItem cmiMoveSounds;
+        private DataGridViewImageColumn cMsgType;
+        private DataGridViewLinkColumn cMsgCode;
+        private DataGridViewTextBoxColumn cMessage;
+        private DataGridViewTextBoxColumn cMsgResolve;
+        private DataGridViewTextBoxColumn cMsgPath;
+        private DataGridViewImageColumn cFileType;
+        private DataGridViewTextBoxColumn cFileName;
+        private DataGridViewTextBoxColumn cFileDuration;
+        private ToolStripButton tsbWrapTextSoundCol;
+        private ToolStripMenuItem tsmimWrapTextSoundCol;
+        private ToolStripSeparator toolStripSeparator6;
+        private ToolStripSplitButton tsbGoBack;
+        private ToolStripUndoRedoActionChooser undoActionChooser;
+        private ToolStripButton tsbUndo;
     }
 }
 
