@@ -31,6 +31,13 @@ public partial class FAddSound : Form
             return;
         }
 
+        if (!string.IsNullOrEmpty(relative) && (!relative.EndsWith("\\") || string.IsNullOrWhiteSpace(relative)))
+        {
+            Utils.ShowError("Prídavná relatívna cesta musí končiť '\\' a nesmie obsahovať iba prázdne znaky.");
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         foreach (var grp in Program.MainForm.CurrentGroup.Sounds)
         {
             if (grp.Key == key)

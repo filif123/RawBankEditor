@@ -1,6 +1,4 @@
-﻿using System.Threading.Tasks;
-using RawBankEditor.Entities;
-using RawBankEditor.Forms;
+﻿using RawBankEditor.Entities;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 
@@ -10,9 +8,9 @@ internal static class RawBankExplorer
 {
     public static DirectoryElement ExploreFileSystem() => new(GlobData.OpenedProject.AbsPathToBank);
 
-    public static void MergeFilesAndData(DirectoryElement root, FyzLanguage lang, Dictionary<FyzLanguage,List<RawBankMessage>> dict, bool onlyCheck = false)
+    public static void MergeFilesAndData(DirectoryElement root, FyzLanguage lang, Dictionary<FyzLanguage,List<IRawBankMessage>> dict, bool onlyCheck = false)
     {
-        List<RawBankMessage> messages;
+        List<IRawBankMessage> messages;
         if (onlyCheck)
         {
             dict[lang].Clear();
@@ -23,7 +21,7 @@ internal static class RawBankExplorer
             if (dict.ContainsKey(lang))
                 dict.Remove(lang);
 
-            messages = new List<RawBankMessage>();
+            messages = new List<IRawBankMessage>();
             dict.Add(lang, messages);
         }
         
@@ -62,10 +60,9 @@ internal static class RawBankExplorer
 
                         foreach (var snd in grp.Sounds)
                         {
-                            if (!RawBankParser.AddPathIsEmpty(snd.AdditionalRelativePath))
+                            if (!RawBankParser.AdditionalPathIsEmpty(snd.AdditionalRelativePath))
                             {
-                                snd.File = new SoundFileElement(snd.GetAbsPath(GlobData.OpenedProject.AbsPathToBank));
-                                snd.File.Sound = snd;
+                                snd.File = new SoundFileElement(snd.GetAbsPath(GlobData.OpenedProject.AbsPathToBank)) { Sound = snd };
                             }
                             else if (EqualsPathNames(sfe.Name, snd.FileName))
                             {
@@ -123,7 +120,7 @@ internal static class RawBankExplorer
     public static bool EqualsPathNames(string name1, string name2) => string.Equals(name1, name2, StringComparison.CurrentCultureIgnoreCase);
 
     /// <summary>
-    /// Ak uz bol Dir element vytvoreny skor, nie je potrebne ho v metode GetElement() vytvarat znova (pretoze asi nebude kompletny).
+    ///     Ak uz bol Dir element vytvoreny skor, nie je potrebne ho v metode GetElement() vytvarat znova (pretoze asi nebude kompletny).
     /// </summary>
     public static DirectoryElement AddDirHandled { get; set; }
 
@@ -209,7 +206,7 @@ internal static class RawBankExplorer
 
         return null;
 
-        FileSystemElement GetElem(DirectoryElement de, string slice)
+        static FileSystemElement GetElem(DirectoryElement de, string slice)
         {
             foreach (var child in de.Children)
             {

@@ -259,7 +259,7 @@ partial class FMain
         }
     }
 
-    public class ChangeSoundFileInDataAction : Action
+    /*public class ChangeSoundFileInDataAction : Action
     {
         /// <inheritdoc />
         public ChangeSoundFileInDataAction(FMain form, FyzSound sound, SoundFileElement oldFile, SoundFileElement newFile) : base(form)
@@ -290,7 +290,7 @@ partial class FMain
             Sound.FileName = NewFile.Name;
             Form.dgvSounds.ResetBindings();
         }
-    }
+    }*/
 
     public class MoveSoundsAction : Action
     {
@@ -376,10 +376,11 @@ partial class FMain
 
             foreach (var sound in Sounds)
             {
-                grp.Sounds.Add(sound);
+                Form.MenuSounds.Add(sound);
                 Form.SelectSound(sound);
             }
 
+            Form.MenuGroups.ResetBindings();
             Form.dgvSounds.ResetBindings();
         }
 
@@ -388,9 +389,10 @@ partial class FMain
             var grp = Sounds.First().Group;
             Form.SelectGroup(grp);
 
-            foreach (var sound in Sounds) 
-                grp.Sounds.Remove(sound);
+            foreach (var sound in Sounds)
+                Form.MenuSounds.Remove(sound);
 
+            Form.MenuGroups.ResetBindings();
             Form.dgvSounds.ResetBindings();
         }
     }
@@ -602,9 +604,8 @@ partial class FMain
         public override void Undo()
         {
             GlobData.OpenedProject.Languages.Add(Language);
-            if (RemovedWithData)
-                if (!Utils.RecoverFileOrDirFromBin(Language.Directory.DirInfo.FullName))
-                    Utils.ShowError("Nepodarilo sa obnoviť priečinok so zvukmi jazyka z koša.\n\nPravdepodobne bol permanentne vymazaný.");
+            if (RemovedWithData && !Utils.TryRecoverFileOrDirFromBin(Language.Directory.DirInfo.FullName))
+                Utils.ShowError("Nepodarilo sa obnoviť priečinok so zvukmi jazyka z koša.\n\nPravdepodobne bol permanentne vymazaný.");
         }
 
         /// <inheritdoc />

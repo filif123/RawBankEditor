@@ -98,6 +98,7 @@ namespace RawBankEditor.Forms
             this.dgvGroups = new System.Windows.Forms.DataGridView();
             this.cGroupName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cGroupRelativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cGroupCountSounds = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuGroups = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmiAddGroup = new System.Windows.Forms.ToolStripMenuItem();
             this.cmiEditGroup = new System.Windows.Forms.ToolStripMenuItem();
@@ -205,6 +206,7 @@ namespace RawBankEditor.Forms
             this.tsbAddSound = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveSounds = new System.Windows.Forms.ToolStripButton();
             this.tsbDeleteSound = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator24 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbConvertSoundsToEwa = new System.Windows.Forms.ToolStripButton();
             this.tsbConvertSoundsToWav = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator15 = new System.Windows.Forms.ToolStripSeparator();
@@ -766,7 +768,8 @@ namespace RawBankEditor.Forms
             this.dgvGroups.AutoGenerateColumns = false;
             this.dgvGroups.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cGroupName,
-            this.cGroupRelativePath});
+            this.cGroupRelativePath,
+            this.cGroupCountSounds});
             this.dgvGroups.ContextMenuStrip = this.contextMenuGroups;
             this.dgvGroups.DataSource = this.fyzGroupBindingSource;
             this.dgvGroups.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -792,11 +795,18 @@ namespace RawBankEditor.Forms
             // 
             // cGroupRelativePath
             // 
-            this.cGroupRelativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cGroupRelativePath.DataPropertyName = "RelativePath";
             this.cGroupRelativePath.HeaderText = "Relatívna cesta";
             this.cGroupRelativePath.Name = "cGroupRelativePath";
             this.cGroupRelativePath.ReadOnly = true;
+            // 
+            // cGroupCountSounds
+            // 
+            this.cGroupCountSounds.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cGroupCountSounds.DataPropertyName = "CountSounds";
+            this.cGroupCountSounds.HeaderText = "Počet zvukov";
+            this.cGroupCountSounds.Name = "cGroupCountSounds";
+            this.cGroupCountSounds.ReadOnly = true;
             // 
             // contextMenuGroups
             // 
@@ -1190,6 +1200,7 @@ namespace RawBankEditor.Forms
             this.dgvSounds.AllowUserToOrderColumns = true;
             this.dgvSounds.AllowUserToResizeRows = false;
             this.dgvSounds.AutoGenerateColumns = false;
+            this.dgvSounds.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.Disable;
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
@@ -1235,9 +1246,9 @@ namespace RawBankEditor.Forms
             this.dgvSounds.Size = new System.Drawing.Size(785, 339);
             this.dgvSounds.TabIndex = 0;
             this.dgvSounds.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSounds_CellBeginEdit);
-            this.dgvSounds.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSounds_CellEndEdit);
             this.dgvSounds.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.DgvSounds_CellMouseDown);
             this.dgvSounds.DataError += new System.Windows.Forms.DataGridViewDataErrorEventHandler(this.dgvSounds_DataError);
+            this.dgvSounds.RowValidated += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSounds_RowValidated);
             this.dgvSounds.RowValidating += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.dgvSounds_RowValidating);
             this.dgvSounds.SelectionChanged += new System.EventHandler(this.dgvSounds_SelectionChanged);
             this.dgvSounds.MouseDown += new System.Windows.Forms.MouseEventHandler(this.DgvSounds_MouseDown);
@@ -1544,6 +1555,7 @@ namespace RawBankEditor.Forms
             this.cMsgCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cMsgCode.DataPropertyName = "Code";
             this.cMsgCode.HeaderText = "Kód";
+            this.cMsgCode.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.cMsgCode.Name = "cMsgCode";
             this.cMsgCode.ReadOnly = true;
             this.cMsgCode.Width = 32;
@@ -1604,7 +1616,7 @@ namespace RawBankEditor.Forms
             // 
             // rawBankMessageBindingSource
             // 
-            this.rawBankMessageBindingSource.DataSource = typeof(RawBankEditor.Entities.RawBankMessage);
+            this.rawBankMessageBindingSource.DataSource = typeof(RawBankEditor.Entities.IRawBankMessage);
             // 
             // tableLayoutPanel5
             // 
@@ -1701,7 +1713,7 @@ namespace RawBankEditor.Forms
             // toolStripStatusLabel1
             // 
             this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(919, 21);
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(807, 21);
             this.toolStripStatusLabel1.Spring = true;
             // 
             // tssbErrors
@@ -1740,6 +1752,7 @@ namespace RawBankEditor.Forms
             this.tsbAddSound,
             this.tsbMoveSounds,
             this.tsbDeleteSound,
+            this.toolStripSeparator24,
             this.tsbConvertSoundsToEwa,
             this.tsbConvertSoundsToWav,
             this.toolStripSeparator15,
@@ -1899,7 +1912,7 @@ namespace RawBankEditor.Forms
             this.tsmiAddLanguage.Enabled = false;
             this.tsmiAddLanguage.Image = global::ToolsCore.GlobalResources.add;
             this.tsmiAddLanguage.Name = "tsmiAddLanguage";
-            this.tsmiAddLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiAddLanguage.Size = new System.Drawing.Size(264, 22);
             this.tsmiAddLanguage.Text = "Pridať jazyk";
             this.tsmiAddLanguage.Click += new System.EventHandler(this.DoAddLanguage);
             // 
@@ -1908,7 +1921,7 @@ namespace RawBankEditor.Forms
             this.tsmiEditLanguage.Enabled = false;
             this.tsmiEditLanguage.Image = global::ToolsCore.GlobalResources.edit;
             this.tsmiEditLanguage.Name = "tsmiEditLanguage";
-            this.tsmiEditLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiEditLanguage.Size = new System.Drawing.Size(264, 22);
             this.tsmiEditLanguage.Text = "Upraviť jazyk";
             this.tsmiEditLanguage.Click += new System.EventHandler(this.DoEditLanguage);
             // 
@@ -1917,21 +1930,21 @@ namespace RawBankEditor.Forms
             this.tsmiDeleteLanguage.Enabled = false;
             this.tsmiDeleteLanguage.Image = global::ToolsCore.GlobalResources.delete;
             this.tsmiDeleteLanguage.Name = "tsmiDeleteLanguage";
-            this.tsmiDeleteLanguage.Size = new System.Drawing.Size(268, 26);
+            this.tsmiDeleteLanguage.Size = new System.Drawing.Size(264, 22);
             this.tsmiDeleteLanguage.Text = "Odstrániť jazyk";
             this.tsmiDeleteLanguage.Click += new System.EventHandler(this.DoDeleteLanguage);
             // 
             // toolStripSeparator5
             // 
             this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(265, 6);
+            this.toolStripSeparator5.Size = new System.Drawing.Size(261, 6);
             // 
             // tsmiConvertLangToEwa
             // 
             this.tsmiConvertLangToEwa.Enabled = false;
             this.tsmiConvertLangToEwa.Image = global::RawBankEditor.Properties.Resources.ewa;
             this.tsmiConvertLangToEwa.Name = "tsmiConvertLangToEwa";
-            this.tsmiConvertLangToEwa.Size = new System.Drawing.Size(268, 26);
+            this.tsmiConvertLangToEwa.Size = new System.Drawing.Size(264, 22);
             this.tsmiConvertLangToEwa.Text = "Konvertovať zvuky v jazyku na .EWA";
             this.tsmiConvertLangToEwa.Click += new System.EventHandler(this.DoConvertLangToEwa);
             // 
@@ -1940,7 +1953,7 @@ namespace RawBankEditor.Forms
             this.tsmiConvertLangToWav.Enabled = false;
             this.tsmiConvertLangToWav.Image = global::RawBankEditor.Properties.Resources.wav;
             this.tsmiConvertLangToWav.Name = "tsmiConvertLangToWav";
-            this.tsmiConvertLangToWav.Size = new System.Drawing.Size(268, 26);
+            this.tsmiConvertLangToWav.Size = new System.Drawing.Size(264, 22);
             this.tsmiConvertLangToWav.Text = "Konvertovať zvuky v jazyku na .WAV";
             this.tsmiConvertLangToWav.Click += new System.EventHandler(this.DoConvertLangToWav);
             // 
@@ -2006,6 +2019,11 @@ namespace RawBankEditor.Forms
             this.tsbDeleteSound.Size = new System.Drawing.Size(24, 24);
             this.tsbDeleteSound.Text = "Odstrániť zvuk";
             this.tsbDeleteSound.Click += new System.EventHandler(this.DoDeleteSounds);
+            // 
+            // toolStripSeparator24
+            // 
+            this.toolStripSeparator24.Name = "toolStripSeparator24";
+            this.toolStripSeparator24.Size = new System.Drawing.Size(6, 27);
             // 
             // tsbConvertSoundsToEwa
             // 
@@ -2308,8 +2326,6 @@ namespace RawBankEditor.Forms
         private ToolStripMenuItem tsmimSaveAll;
         private ToolStripButton tsbSaveAll;
         private ToolStripSeparator toolStripSeparator25;
-        private DataGridViewTextBoxColumn cGroupName;
-        private DataGridViewTextBoxColumn cGroupRelativePath;
         private Timer timerToCheck;
         private ToolStripSeparator toolStripSeparator26;
         private ToolStripMenuItem tsmimRewriteMode;
@@ -2321,12 +2337,6 @@ namespace RawBankEditor.Forms
         private ToolStripMenuItem tsmiAddLanguage;
         private ToolStripMenuItem tsmiEditLanguage;
         private ToolStripMenuItem tsmiDeleteLanguage;
-        private DataGridViewTextBoxColumn cSoundKey;
-        private DataGridViewTextBoxColumn cSoundName;
-        private DataGridViewTextBoxColumn cSoundAdditionalRelativePath;
-        private DataGridViewTextBoxColumn cSoundFileName;
-        private DataGridViewTextBoxColumn cSoundDuration;
-        private DataGridViewTextBoxColumn cSoundText;
         private ToolStripSeparator toolStripSeparator3;
         private ToolStripMenuItem tsmimShowErrors;
         private ToolStripMenuItem tsmimConvertLangToEwa;
@@ -2337,11 +2347,6 @@ namespace RawBankEditor.Forms
         private ToolStripMenuItem tsmimConvertSoundsToEwa;
         private ToolStripMenuItem tsmimConvertSoundsToWav;
         private ToolStripMenuItem cmiMoveSounds;
-        private DataGridViewImageColumn cMsgType;
-        private DataGridViewLinkColumn cMsgCode;
-        private DataGridViewTextBoxColumn cMessage;
-        private DataGridViewTextBoxColumn cMsgResolve;
-        private DataGridViewTextBoxColumn cMsgPath;
         private DataGridViewImageColumn cFileType;
         private DataGridViewTextBoxColumn cFileName;
         private DataGridViewTextBoxColumn cFileDuration;
@@ -2351,6 +2356,21 @@ namespace RawBankEditor.Forms
         private ToolStripSplitButton tsbGoBack;
         private ToolStripUndoRedoActionChooser undoActionChooser;
         private ToolStripButton tsbUndo;
+        private ToolStripSeparator toolStripSeparator24;
+        private DataGridViewTextBoxColumn cSoundKey;
+        private DataGridViewTextBoxColumn cSoundName;
+        private DataGridViewTextBoxColumn cSoundAdditionalRelativePath;
+        private DataGridViewTextBoxColumn cSoundFileName;
+        private DataGridViewTextBoxColumn cSoundDuration;
+        private DataGridViewTextBoxColumn cSoundText;
+        private DataGridViewImageColumn cMsgType;
+        private DataGridViewLinkColumn cMsgCode;
+        private DataGridViewTextBoxColumn cMessage;
+        private DataGridViewTextBoxColumn cMsgResolve;
+        private DataGridViewTextBoxColumn cMsgPath;
+        private DataGridViewTextBoxColumn cGroupName;
+        private DataGridViewTextBoxColumn cGroupRelativePath;
+        private DataGridViewTextBoxColumn cGroupCountSounds;
     }
 }
 

@@ -159,11 +159,11 @@ public static class SoundUtils
     private static void CheckWAV(BinaryReader reader)
     {
         if (Read4ByteString(reader) != "RIFF")
-            throw new FormatException("Chybný formát WAV suboru (chýba hlavička RIFF)!");
+            throw new FormatException("Chybný formát WAV súboru (chýba hlavička RIFF)!");
         if (reader.ReadInt32() != reader.BaseStream.Length - 8)
-            throw new FormatException("Chybný formát WAV suboru (chybná dĺžka súboru)");
+            throw new FormatException("Chybný formát WAV súboru (chybná dĺžka súboru)");
         if (Read4ByteString(reader) != "WAVE")
-            throw new FormatException("Chybný formát WAV suboru (nie je typu WAVE)");
+            throw new FormatException("Chybný formát WAV súboru (nie je typu WAVE)");
 
         double formatPos = -1;
         var fmtLen = 0;
@@ -181,9 +181,9 @@ public static class SoundUtils
         }
 
         if (formatPos < 0)
-            throw new FormatException("Chybný formát WAV suboru (nenalezen formát)");
+            throw new FormatException("Chybný formát WAV súboru (nenájdený formát)");
         if (fmtLen < 16)
-            throw new FormatException("Chybný formát WAV suboru (fmt chunk má délku menší než 16 bytů)");
+            throw new FormatException("Chybný formát WAV súboru (fmt chunk má dĺžku menšiu ako 16 bytov)");
 
         var formatTag = reader.ReadInt16();
         reader.ReadInt16(); //channels
@@ -199,15 +199,15 @@ public static class SoundUtils
             reader.ReadInt32();
             var b = new Guid(reader.ReadBytes(16));
             if (new Guid("00000001-0000-0010-8000-00AA00389B71") != b)
-                throw new FormatException("Chybný formát WAV suboru (neznámy subformát (GUID))");
+                throw new FormatException("Chybný formát WAV súboru (neznámy subformát (GUID))");
         }
     }
 
     private static string Read4ByteString(BinaryReader reader)
     {
         var array = new byte[4];
-        reader.Read(array, 0, array.Length);
-        return Encoding.ASCII.GetString(array, 0, array.Length);
+        var read = reader.Read(array, 0, array.Length);
+        return Encoding.ASCII.GetString(array, 0, read);
     }
 
     /// <summary>
@@ -217,8 +217,7 @@ public static class SoundUtils
     /// <returns></returns>
     public static async Task<int> GetSoundDuration(SoundFileElement file)
     {
-        if (file is null)
-            throw new ArgumentNullException(nameof(file));
+        CheckSoundDurationInput(file);
 
         try
         {
@@ -285,6 +284,12 @@ public static class SoundUtils
         }
     }
 
+    private static void CheckSoundDurationInput(SoundFileElement file)
+    {
+        if (file is null)
+            throw new ArgumentNullException(nameof(file));
+    }
+
     public static void ConvertSoundsLanguage(FyzLanguage lang, bool toEwa, ToolStripProgressBar bar)
     {
         foreach (var group in lang.Groups) 
@@ -301,9 +306,9 @@ public static class SoundUtils
         var ext = toEwa ? EWA_EXT : WAV_EXT;
         foreach (var sound in sounds)
         {
-            if (sound.File is null || sound.File.FileInfo.Extension.EqualsIgnoreCase(ext) || File.Exists(sound.File.FileInfo.FullName))
+            if (sound.File is null || sound.File.FileInfo.Extension.EqualsIgnoreCase(ext) || !File.Exists(sound.File.FileInfo.FullName))
             {
-                bar.Value++;
+                bar.Owner.Invoke(() => bar.Increment(1));
                 continue;
             }
 
@@ -312,9 +317,11 @@ public static class SoundUtils
                 ConvertWAVtoEWA(sound.File.FileInfo.FullName, newPath);
             else
                 ConvertEWAtoWAV(sound.File.FileInfo.FullName, newPath);
+            File.Delete(sound.File.FileInfo.FullName);
             sound.File.FileInfo = new FileInfo(newPath);
             sound.FileName = sound.File.FileInfo.Name;
-            bar.Value++;
+            sound.File.Name = sound.FileName;
+            bar.Owner.Invoke(() => bar.Increment(1));
         }
     }
 

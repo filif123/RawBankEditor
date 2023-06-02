@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Drawing.Imaging;
+using System.Threading.Tasks;
 using ExControls;
 using ExControls.Providers;
 using Microsoft.VisualBasic.FileIO;
@@ -15,27 +16,28 @@ namespace RawBankEditor.Forms;
 
 public partial class FMain : Form
 {
-    private readonly ExBindingList<RawBankMessage> _messages = new();
+    private readonly ExBindingList<IRawBankMessage> _messages = new();
 
     //ikony
     private readonly ShellIcon _error, _warning, _info;
 
-    //private MovePosition _lastMovePosition;
     private BackButtonElement _explorerBack;
 
     private string _cellOldValue;
+    private string _actualStatusTxt;
     private bool _langAlreadySet;
     private bool _saved = true;
     private bool _unUndoableUnsavedChanges;
     private bool _programChange;
     private bool _editingFileName;
-    private string _actualStatusTxt;
     private bool _doNotChangeExplorerSelection;
     private bool _rewriteMode;
     private bool _deletingRows;
     private bool _selectingMoreRows;
     private bool _reorderingGroups;
+    private bool _cellUserEditing;
 
+    internal bool DoNotChangeSoundsSelection { get; set; }
     internal FyzLanguage CurrentLanguage { get; private set; }
     internal FyzGroup CurrentGroup { get; private set; }
 
@@ -52,6 +54,7 @@ public partial class FMain : Form
     internal FMain()
     {
         InitializeComponent();
+        tsslStatus.Font = GlobData.Config.Fonts.StateRow;
 
         switch (GlobData.Config.DesktopMenuMode)
         {
@@ -74,12 +77,12 @@ public partial class FMain : Form
                 throw new ArgumentOutOfRangeException();
         }
 
-        var dirs = AppRegistry.GetOpenedProjects(Application.ProductName);
+        var dirs = AppRegistry.GetOpenedProjects();
 
         foreach (var recentDir in dirs)
         {
-            ToolStripItem item1 = new ToolStripMenuItem(recentDir);
-            ToolStripItem item2 = new ToolStripMenuItem(recentDir);
+            ToolStripItem item1 = new ToolStripMenuItem(recentDir.Path);
+            ToolStripItem item2 = new ToolStripMenuItem(recentDir.Path);
 
             item1.Click += RecentDirs_Click;
             item2.Click += RecentDirs_Click;
@@ -87,7 +90,7 @@ public partial class FMain : Form
             tsbRecent.DropDownItems.Add(item2);
         }
 
-        if (dirs.Count == 0 || dirs[0] == "")
+        if (dirs.Length == 0 || dirs[0].Path == "")
         {
             tsmimRecent.Enabled = false;
             tsbRecent.Enabled = false;
@@ -118,12 +121,18 @@ public partial class FMain : Form
         InitColumns();
         SetColumnsAutoWidth();
         
-        statusStripMain.Visible = GlobData.Config.ShowStateRow;
         dgvSounds.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
 
         //neviem preco niekedy umiestni stlpec s typom do stredu
         if (cFileType.DisplayIndex != 0) 
             cFileType.DisplayIndex = 0;
+
+        if (GlobData.UsingStyle.HighlightStatusBar)
+        {
+            statusStripMain.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+            tsslStatus.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tssbErrors.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+        }
     }
 
     private void InitShortcuts()
@@ -136,8 +145,11 @@ public partial class FMain : Form
         tsmimUndo.ShortcutKeys = shortcuts.Undo;
         tsmimRedo.ShortcutKeys = shortcuts.Redo;
         tsmimAddSound.ShortcutKeys = shortcuts.AddSound;
+        cmiAddSound.ShortcutKeys = shortcuts.AddSound;
         tsmimDeleteSound.ShortcutKeys = shortcuts.DeleteSounds;
+        cmiDeleteSound.ShortcutKeys = shortcuts.DeleteSounds;
         tsmimMoveSounds.ShortcutKeys = shortcuts.MoveSounds;
+        cmiMoveSounds.ShortcutKeys = shortcuts.MoveSounds;
         tsmimRewriteMode.ShortcutKeys = shortcuts.RewriteMode;
         tsmimWrapTextSoundCol.ShortcutKeys = shortcuts.WrapTextSoundCol;
         tsmimGoBack.ShortcutKeys = shortcuts.GoBack;
@@ -185,9 +197,9 @@ public partial class FMain : Form
     private void UpdateMainUI()
     {
         var menu = GlobData.Config.DesktopMenuMode;
+        tsslStatus.Font = GlobData.Config.Fonts.StateRow;
         menuStripMain.Visible = menu is DesktopMenu.MsTs or DesktopMenu.MsOnly;
         toolStripMain.Visible = menu is DesktopMenu.MsTs or DesktopMenu.TsOnly;
-        statusStripMain.Visible = GlobData.Config.ShowStateRow;
         dgvSounds.RowHeadersVisible = GlobData.Config.ShowRowsHeader;
 
         this.ApplyThemeAndFonts();
@@ -196,6 +208,12 @@ public partial class FMain : Form
         SetColumnsAutoWidth();
         Invalidate(true);
         AppInit.MsgBoxStyleInit(GlobData.UsingStyle, GlobData.Config);
+        if (GlobData.UsingStyle.HighlightStatusBar)
+        {
+            statusStripMain.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+            tsslStatus.ForeColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.ForeColor;
+            tssbErrors.BackColor = GlobData.UsingStyle.ControlsColorScheme.Highlight.BackColor;
+        }
     }
 
     private void SetColumnsAutoWidth()
@@ -246,7 +264,7 @@ public partial class FMain : Form
 
         if (GlobData.Config.Startup == StartupType.LastProject)
         {
-            var lastPr = AppRegistry.GetLastProject(Application.ProductName);
+            var lastPr = AppRegistry.GetLastProject();
             if (Directory.Exists(lastPr))
             {
                 PrepareGlobalData(lastPr);
@@ -305,15 +323,18 @@ public partial class FMain : Form
                 switch (GlobData.Config.DebugModeGUI)
                 {
                     case DebugMode.OnlyMessage:
-                        Utils.ShowError(exception.Message);
+                        FError.ShowError(exception.Message);
                         break;
                     case DebugMode.DetailInfo:
-                        Utils.ShowError(exception.ToString());
+                        FError.ShowError(exception.ToString());
                         break;
                 }
             }
         else
             GlobData.PrepareGlobalData(dirpath);
+
+        if (GlobData.OpenedProject is null)
+            return;
 
         FyzLanguage lang = null;
         
@@ -359,20 +380,21 @@ public partial class FMain : Form
         var menuText = menuItem.Text;
         
         PrepareGlobalData(menuText);
-        AppRegistry.SetLastProject(Application.ProductName, menuText);
+        AppRegistry.SetUsageOfProject(menuText);
+        AppRegistry.SetLastProject(menuText);
     }
 
     private void DoOpenDir(object sender, EventArgs e)
     {
-        var dialog = new ExFolderBrowserDialog { Title = "Vyberte priečinok s INISS.exe" };
-        if (!dialog.Show(Handle))
+        var dialog = new ExFolderBrowserDialog { Description = "Vyberte priečinok s INISS.exe" };
+        if (dialog.ShowDialog(this) == DialogResult.Cancel)
             return;
 
-        var selectedPath = dialog.FileName;
+        var selectedPath = dialog.SelectedPath;
 
         PrepareGlobalData(selectedPath);
-        AppRegistry.AddNewOpenedProject(Application.ProductName, selectedPath);
-        AppRegistry.SetLastProject(Application.ProductName, selectedPath);
+        AppRegistry.SetUsageOfProject(selectedPath);
+        AppRegistry.SetLastProject(selectedPath);
     }
 
     private void bWorkerReadDat_DoWork(object sender, DoWorkEventArgs e)
@@ -438,10 +460,10 @@ public partial class FMain : Form
             switch (GlobData.Config.DebugModeGUI)
             {
                 case DebugMode.OnlyMessage:
-                    Utils.ShowError(e.Error.Message);
+                    FError.ShowError(e.Error.Message);
                     break;
                 case DebugMode.DetailInfo:
-                    Utils.ShowError(e.Error.ToString());
+                    FError.ShowError(e.Error.ToString());
                     break;
             }
 
@@ -666,7 +688,6 @@ public partial class FMain : Form
                 firstDisplayedRow = row.Index - 1;
             }
             CurrentLanguage.Groups[dgvGroups.SelectedRows[0].Index].Sounds.RemoveAt(row.Index);
-            //MenuSounds.Remove(sound);
         }
         MenuSounds.ResetBindings();
         _deletingRows = false;
@@ -677,6 +698,7 @@ public partial class FMain : Form
         }
 
         RegisterNewAction(new RemovedSoundsAction(this, sounds));
+        MenuGroups.ResetBindings();
         CheckProjectState();
     }
 
@@ -699,14 +721,17 @@ public partial class FMain : Form
             var oldPath = CurrentGroup.GetAbsPath(pathTobank);
             var newPath = form.NewGroup.GetAbsPath(pathTobank);
 
+            RawBankExplorer.MovingSoundIsHandled = true;
             if (File.Exists(oldPath)) 
                 File.Move(oldPath, newPath);
+            RawBankExplorer.MovingSoundIsHandled = false;
         }
 
         RegisterNewAction(new MoveSoundsAction(this, sounds, CurrentGroup, form.NewGroup));
         CheckProjectState();
         dgvSounds.ResetBindings();
         SelectGroup(form.NewGroup);
+        MenuGroups.ResetBindings();
     }
 
     private void DoConvertSoundsToEwa(object sender, EventArgs e)
@@ -742,6 +767,7 @@ public partial class FMain : Form
         tspbProgress.Minimum = 0;
         tspbProgress.Maximum = sounds.Count;
         tspbProgress.Style = ProgressBarStyle.Blocks;
+        tspbProgress.Value = 0;
         await Task.Run(() =>
         {
             RawBankExplorer.ConvertSoundIsHandled = true;
@@ -889,7 +915,7 @@ public partial class FMain : Form
         if (dgvErrors.IsSelectionEmpty())
             return;
 
-        var problem = (RawBankMessage)dgvErrors.SelectedRows[0].DataBoundItem;
+        var problem = (IRawBankMessage)dgvErrors.SelectedRows[0].DataBoundItem;
         problem.Show();
     }
 
@@ -898,7 +924,7 @@ public partial class FMain : Form
         if (dgvErrors.IsSelectionEmpty())
             return;
 
-        var problem = (RawBankMessage)dgvErrors.SelectedRows[0].DataBoundItem;
+        var problem = (IRawBankMessage)dgvErrors.SelectedRows[0].DataBoundItem;
         problem.Resolve();
         CheckProjectState();
     }
@@ -1137,8 +1163,11 @@ public partial class FMain : Form
                     case SoundFileElement sfe:
                         if (sfe.Sound != null)
                         {
-                            sfe.Sound.Group.Sounds.Remove(sfe.Sound);
+                            SelectSound(sfe.Sound);
+                            MenuSounds.Remove(sfe.Sound);
+                            //sfe.Sound.Group.Sounds.Remove(sfe.Sound);
                             RegisterNewAction(new RemovedSoundsAction(this, sfe.Sound));
+                            MenuGroups.ResetBindings();
                         }
                         Utils.DeleteFileToRecycleBin(sfe.FileInfo.FullName);
                         break;
@@ -1261,7 +1290,7 @@ public partial class FMain : Form
 
     private void dgvSounds_SelectionChanged(object sender, EventArgs e)
     {
-        if (_doNotChangeExplorerSelection || _selectingMoreRows)
+        if (_doNotChangeExplorerSelection || _selectingMoreRows || DoNotChangeSoundsSelection)
             return;
 
         SwitchDeleteSoundsButtons(!dgvSounds.IsSelectionEmpty());
@@ -1583,9 +1612,12 @@ public partial class FMain : Form
 
     private async void fileSystemWatcher_Created(object sender, FileSystemEventArgs e)
     {
+        if (RawBankExplorer.ConvertSoundIsHandled || RawBankExplorer.MovingSoundIsHandled)
+            return;
+
         var newElement = RawBankExplorer.GetElement(e.FullPath, CurrentLanguage.Directory, RawBankExplorer.SearchOperation.Create);
 
-        if (!RawBankExplorer.MovingSoundIsHandled && newElement is SoundFileElement sfe && GlobData.Config.AutoInsertSoundData && sfe.Parent.Group is not null)
+        if (newElement is SoundFileElement sfe && GlobData.Config.AutoInsertSoundData && sfe.Parent.Group is not null)
         {
             var nameWoExt = Path.GetFileNameWithoutExtension(sfe.Name);
             var alreadyDefinedSound = sfe.Parent.Group.Sounds.FirstOrDefault(s => s.Key == nameWoExt && s.File == null);
@@ -1619,6 +1651,9 @@ public partial class FMain : Form
 
     private void fileSystemWatcher_Deleted(object sender, FileSystemEventArgs e)
     {
+        if (RawBankExplorer.ConvertSoundIsHandled || RawBankExplorer.MovingSoundIsHandled)
+            return;
+
         RawBankExplorer.GetElement(e.FullPath, CurrentLanguage.Directory, RawBankExplorer.SearchOperation.Delete);
 
         if (e.FullPath.StartsWith(CurrentDirectory.DirInfo.FullName, StringComparison.OrdinalIgnoreCase))
@@ -1629,7 +1664,7 @@ public partial class FMain : Form
         dgvSounds.ResetBindings();
     }
 
-    private void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
+    private async void fileSystemWatcher_Changed(object sender, FileSystemEventArgs e)
     {
         var fileElement = RawBankExplorer.GetElement(e.FullPath, CurrentLanguage.Directory);
         switch (fileElement)
@@ -1643,10 +1678,9 @@ public partial class FMain : Form
                 if (RawBankExplorer.ConvertSoundIsHandled)
                     return;
                 sfe.FileInfo = new FileInfo(e.FullPath);
-                var task = SoundUtils.GetSoundDuration(sfe);
-                sfe.Duration = task.Result;
+                sfe.Duration = await SoundUtils.GetSoundDuration(sfe);
                 if (GlobData.Config.AutoRecalculateSoundDuration && sfe.Sound is not null)
-                    sfe.Sound.Duration = task.Result;
+                    sfe.Sound.Duration = sfe.Duration;
                 break;
             case FileElement fe:
                 fe.FileInfo = new FileInfo(e.FullPath);
@@ -1737,6 +1771,14 @@ public partial class FMain : Form
 
     private void dgvSounds_RowValidating(object sender, DataGridViewCellCancelEventArgs e)
     {
+        var newAdditionalPath = (string)dgvSounds.Rows[e.RowIndex].Cells[nameof(cSoundAdditionalRelativePath)].Value;
+        if (!string.IsNullOrEmpty(newAdditionalPath) && (!newAdditionalPath.EndsWith("\\") || string.IsNullOrWhiteSpace(newAdditionalPath)))
+        {
+            Utils.ShowError("Prídavná relatívna cesta musí končiť '\\' a nesmie obsahovať iba prázdne znaky.");
+            e.Cancel = true;
+            dgvSounds.Rows[e.RowIndex].Cells[nameof(cSoundAdditionalRelativePath)].Value = "";
+            return;
+        }
         ValidateRow(e.RowIndex, true);
     }
 
@@ -1744,12 +1786,17 @@ public partial class FMain : Form
 
     private void dgvSounds_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
     {
+        _cellUserEditing = true;
         var val = dgvSounds.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
         _cellOldValue = val == null ? "" : val.ToString();
     }
 
-    private void dgvSounds_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+    private void dgvSounds_RowValidated(object sender, DataGridViewCellEventArgs e)
     {
+        if (!_cellUserEditing)
+            return;
+
+        _cellUserEditing = false;
         var newval = dgvSounds.Rows[e.RowIndex].Cells[e.ColumnIndex].Value;
         if (newval is not string s || s == _cellOldValue)
             return;
@@ -1758,10 +1805,10 @@ public partial class FMain : Form
         action.Type = dgvSounds.Columns[e.ColumnIndex].Name switch
         {
             nameof(cSoundKey) => PropertyType.Key,
+            nameof(cSoundName) => PropertyType.Name,
             nameof(cSoundAdditionalRelativePath) => PropertyType.RelativePath,
             nameof(cSoundFileName) => PropertyType.FileName,
             nameof(cSoundText) => PropertyType.Text,
-            nameof(cSoundName) => PropertyType.Name,
             _ => action.Type
         };
 
@@ -1832,14 +1879,14 @@ public partial class FMain : Form
 
     private async void ValidateRow(int row, bool userEditing = false)
     {
-        if (_deletingRows || row == dgvSounds.NewRowIndex || CurrentGroup == null)
+        if (_deletingRows || row == dgvSounds.NewRowIndex || CurrentGroup == null || CurrentLanguage is null)
             return;
 
         dgvSounds.Rows[row].Cells[nameof(cSoundFileName)].ErrorText = null;
-        var value = (string) dgvSounds.Rows[row].Cells[nameof(cSoundFileName)].Value;
+        var newFileName = (string) dgvSounds.Rows[row].Cells[nameof(cSoundFileName)].Value;
         var sound = (FyzSound) dgvSounds.Rows[row].DataBoundItem;
 
-        if (string.IsNullOrWhiteSpace(value))
+        if (string.IsNullOrWhiteSpace(newFileName) || !Utils.IsFileNameCorrect(sound.GetAbsPath(GlobData.OpenedProject.AbsPathToBank), newFileName, false))
         {
             if (sound.File is not null)
                 sound.File.Sound = null;
@@ -1851,8 +1898,8 @@ public partial class FMain : Form
         if (userEditing)
         {
             if(sound.File is not null)
-                sound.File.Name = value;
-            var newPath = Utils.CombinePath(sound.Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank), value);
+                sound.File.Name = newFileName;
+            var newPath = Utils.CombinePath(sound.Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank), newFileName);
             if (!File.Exists(newPath))
             {
                 if (sound.File is not null)
@@ -1952,7 +1999,7 @@ public partial class FMain : Form
             
         foreach (DataGridViewRow row in dgvErrors.Rows)
         {
-            if (row.DataBoundItem is RawBankMessage message)
+            if (row.DataBoundItem is IRawBankMessage message)
             {
                 if (showErrors && message.Type == MessageType.Error)
                     row.Visible = true;
@@ -1972,7 +2019,7 @@ public partial class FMain : Form
     {
         if (cMsgType.Index == e.ColumnIndex)
         {
-            if (dgvErrors.Rows[e.RowIndex].DataBoundItem is RawBankMessage msg)
+            if (dgvErrors.Rows[e.RowIndex].DataBoundItem is IRawBankMessage msg)
             {
                 switch (msg.Type)
                 {
@@ -2000,7 +2047,7 @@ public partial class FMain : Form
         if (e.RowIndex == -1)
             return;
 
-        ((RawBankMessage) dgvErrors.Rows[e.RowIndex].DataBoundItem).Show();
+        ((IRawBankMessage) dgvErrors.Rows[e.RowIndex].DataBoundItem).Show();
     }
 
     private void ChangeManager_UndoRedoStateChanged(object sender, UndoRedoStateEventArgs e)
@@ -2068,7 +2115,7 @@ public partial class FMain : Form
         tscboxLanguages.SelectedItem = language;
     }
 
-    internal void SelectGroup(FyzGroup group)
+    internal int SelectGroup(FyzGroup group)
     {
         SelectLanguage(group.Language);
         var index = MenuGroups.IndexOf(group);
@@ -2077,9 +2124,11 @@ public partial class FMain : Form
             dgvGroups.Rows[index].Selected = true;
             EnsureVisibleRow(dgvGroups, index);
         }
+        
+        return index;
     }
 
-    internal void SelectSound(FyzSound sound)
+    internal int SelectSound(FyzSound sound)
     {
         SelectGroup(sound.Group);
         var index = MenuSounds.IndexOf(sound);
@@ -2088,6 +2137,8 @@ public partial class FMain : Form
             dgvSounds.Rows[index].Selected = true;
             EnsureVisibleRow(dgvSounds, index);
         }
+
+        return index;
     }
 
     private void DgvExplorer_KeyDown(object sender, KeyEventArgs e)

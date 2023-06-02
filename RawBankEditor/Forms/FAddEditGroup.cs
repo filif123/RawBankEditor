@@ -42,6 +42,13 @@ public partial class FAddEditGroup : Form
             return;
         }
 
+        if (!relative.EndsWith("\\"))
+        {
+            Utils.ShowError("Relatívna cesta musí končiť '\\'.");
+            DialogResult = DialogResult.None;
+            return;
+        }
+
         foreach (var grp in Program.MainForm.CurrentLanguage.Groups)
         {
             if (grp.Key == key)

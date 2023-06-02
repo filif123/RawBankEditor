@@ -26,7 +26,7 @@ internal static class GlobData
             AbsPathToINISS = pathToINISS,
             AbsPathToBank = pathToBank,
             Languages = new ExBindingList<FyzLanguage>(RawBankParser.ReadFyzBankFile(pathToBank, out _)),
-            Messages = new Dictionary<FyzLanguage, List<RawBankMessage>>()
+            Messages = new Dictionary<FyzLanguage, List<IRawBankMessage>>()
         };
     }
 }

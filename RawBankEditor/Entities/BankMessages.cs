@@ -1,11 +1,13 @@
-﻿using RawBankEditor.Forms;
+﻿using System.Diagnostics.CodeAnalysis;
+using RawBankEditor.Forms;
 using ToolsCore.Entities;
 using ToolsCore.Tools;
 // ReSharper disable MemberCanBePrivate.Global
 
 namespace RawBankEditor.Entities;
 
-public abstract class RawBankMessage
+[SuppressMessage("ReSharper", "UnusedMember.Global")]
+public interface IRawBankMessage
 {
     public abstract string Code { get; }
 
@@ -29,22 +31,22 @@ public enum MessageType
     Error
 }
 
-public class LanguageDirMissing : RawBankMessage
+public class LanguageDirMissing : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "LanguageDirMissing";
+    public string Code => "LanguageDirMissing";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Error;
+    public MessageType Type => MessageType.Error;
 
     /// <inheritdoc />
-    public override string Message => $"Jazyk '{Language.Key}' je definovaný, ale neexistuje v súborovom systéme.";
+    public string Message => $"Jazyk '{Language.Key}' je definovaný, ale neexistuje v súborovom systéme.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Vytvoriť priečinok '{Language.Key}'.";
+    public string ResolveMessage => $"Vytvoriť priečinok '{Language.Key}'.";
 
     /// <inheritdoc />
-    public override string Path => Language.GetAbsPath("");
+    public string Path => Language.GetAbsPath("");
 
     public FyzLanguage Language { get; }
 
@@ -53,7 +55,7 @@ public class LanguageDirMissing : RawBankMessage
         Language = language;
     }
 
-    public override void Resolve()
+    public void Resolve()
     {
         try
         {
@@ -67,28 +69,28 @@ public class LanguageDirMissing : RawBankMessage
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         // do nothing
     }
 }
 
-public class GroupDirMissing : RawBankMessage
+public class GroupDirMissing : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "GroupDirMissing";
+    public string Code => "GroupDirMissing";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Error;
+    public MessageType Type => MessageType.Error;
 
     /// <inheritdoc />
-    public override string Message => $"Skupina '{Group.Name}' je definovaná, ale neexistuje v súborovom systéme.";
+    public string Message => $"Skupina '{Group.Name}' je definovaná, ale neexistuje v súborovom systéme.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Vytvoriť priečinok '{Group.Name}' pre jazyk '{Group.Language.Key}'.";
+    public string ResolveMessage => $"Vytvoriť priečinok '{Group.Name}' pre jazyk '{Group.Language.Key}'.";
 
     /// <inheritdoc />
-    public override string Path => Group.GetAbsPath("");
+    public string Path => Group.GetAbsPath("");
 
     public FyzGroup Group { get; }
 
@@ -97,7 +99,7 @@ public class GroupDirMissing : RawBankMessage
         Group = group;
     }
 
-    public override void Resolve()
+    public void Resolve()
     {
         try
         {
@@ -111,7 +113,7 @@ public class GroupDirMissing : RawBankMessage
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         var index = Program.MainForm.CurrentLanguage.Groups.IndexOf(Group);
         if (index != -1)
@@ -122,22 +124,22 @@ public class GroupDirMissing : RawBankMessage
     }    
 }
 
-public class SoundFileMissing : RawBankMessage
+public class SoundFileMissing : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "SoundFileMissing";
+    public string Code => "SoundFileMissing";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Error;
+    public MessageType Type => MessageType.Error;
 
     /// <inheritdoc />
-    public override string Message => $"Zvuk '{Sound.Name}' je definovaný, ale neexistuje v súborovom systéme.";
+    public string Message => $"Zvuk '{Sound.Name}' je definovaný, ale neexistuje v súborovom systéme.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Odstrániť dáta o zvuku '{Sound.FileName}'.";
+    public string ResolveMessage => $"Odstrániť dáta o zvuku '{Sound.FileName}'.";
 
     /// <inheritdoc />
-    public override string Path => Sound.GetAbsPath("");
+    public string Path => Sound.GetAbsPath("");
 
     public FyzSound Sound { get; }
 
@@ -146,40 +148,46 @@ public class SoundFileMissing : RawBankMessage
         Sound = sound;
     }
 
-    public override void Resolve()
+    public void Resolve()
     {
         Program.MainForm.RegisterNewAction(new FMain.RemovedSoundsAction(Program.MainForm, Sound));
         Sound.Group.Sounds.Remove(Sound);
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         var index = Program.MainForm.CurrentLanguage.Groups.IndexOf(Sound.Group);
         if (index == -1) 
             return;
 
         Program.MainForm.dgvGroups.ClearSelection();
-        Program.MainForm.SelectSound(Sound);
+        var i = Program.MainForm.SelectSound(Sound);
+        if (i != 0 && i != -1)
+        {
+            Program.MainForm.DoNotChangeSoundsSelection = true;
+            Program.MainForm.dgvSounds.Rows[0].Selected = false;
+            Program.MainForm.DoNotChangeSoundsSelection = false;
+        }
     }
 }
 
-public class SoundDataMissing : RawBankMessage
+public class SoundDataMissing : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "SoundDataMissing";
+    public string Code => "SoundDataMissing";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Warning;
+    public MessageType Type => MessageType.Warning;
 
     /// <inheritdoc />
-    public override string Message => $"Zvuk '{File.Name}' existuje v súborovom systéme, ale nie je definovaný.";
+    public string Message => $"Zvuk '{File.Name}' existuje v súborovom systéme, ale nie je definovaný.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Pridať dáta o zvuku '{File.Name}'.";
+    public string ResolveMessage => $"Pridať dáta o zvuku '{File.Name}'.";
 
     /// <inheritdoc />
-    public override string Path => File.FileInfo.FullName;
+    public string Path => File.FileInfo.FullName;
 
     public SoundFileElement File { get; }
 
@@ -188,7 +196,7 @@ public class SoundDataMissing : RawBankMessage
         File = file;
     }
     
-    public override void Resolve()
+    public void Resolve()
     {
         var form = new FAddSound(File);
         if (form.ShowDialog() == DialogResult.OK)
@@ -199,7 +207,7 @@ public class SoundDataMissing : RawBankMessage
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         var grp = File.Parent.Group;
         var index = Program.MainForm.CurrentLanguage.Groups.IndexOf(grp);
@@ -217,22 +225,22 @@ public class SoundDataMissing : RawBankMessage
     }
 }
 
-public class InvalidSoundFile : RawBankMessage
+public class InvalidSoundFile : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "InvalidSoundFile";
+    public string Code => "InvalidSoundFile";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Error;
+    public MessageType Type => MessageType.Error;
 
     /// <inheritdoc />
-    public override string Message => $"Zvuk '{File.Name}' je definovaný, ale obsahuje neplatný formát.";
+    public string Message => $"Zvuk '{File.Name}' je definovaný, ale obsahuje neplatný formát.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Odstrániť súbor so zvukom '{File.Name}'.";
+    public string ResolveMessage => $"Odstrániť súbor so zvukom '{File.Name}'.";
 
     /// <inheritdoc />
-    public override string Path => File.FileInfo.FullName;
+    public string Path => File.FileInfo.FullName;
 
     public SoundFileElement File { get; }
 
@@ -242,14 +250,14 @@ public class InvalidSoundFile : RawBankMessage
     }    
 
     /// <inheritdoc />
-    public override void Resolve()
+    public void Resolve()
     {
         Program.MainForm.RegisterNewAction();
         Utils.DeleteFileToRecycleBin(File.FileInfo.FullName);
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         var grp = File.Parent.Group;
         var index = Program.MainForm.CurrentLanguage.Groups.IndexOf(grp);
@@ -272,22 +280,22 @@ public class InvalidSoundFile : RawBankMessage
     }
 }
 
-public class EmptyGroup : RawBankMessage
+public class EmptyGroup : IRawBankMessage
 {
     /// <inheritdoc />
-    public override string Code => "EmptyGroup";
+    public string Code => "EmptyGroup";
 
     /// <inheritdoc />
-    public override MessageType Type => MessageType.Info;
+    public MessageType Type => MessageType.Info;
 
     /// <inheritdoc />
-    public override string Message => $"Skupina '{Group.Name}' je prázdna.";
+    public string Message => $"Skupina '{Group.Name}' je prázdna.";
 
     /// <inheritdoc />
-    public override string ResolveMessage => $"Odstrániť skupinu '{Group.Name}'.";
+    public string ResolveMessage => $"Odstrániť skupinu '{Group.Name}'.";
 
     /// <inheritdoc />
-    public override string Path => Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank);
+    public string Path => Group.GetAbsPath(GlobData.OpenedProject.AbsPathToBank);
 
     public FyzGroup Group { get; }
 
@@ -297,14 +305,14 @@ public class EmptyGroup : RawBankMessage
     }
 
     /// <inheritdoc />
-    public override void Resolve()
+    public void Resolve()
     {
         Program.MainForm.RegisterNewAction();
         Utils.DeleteDirectoryToRecycleBin(Group.Directory.DirInfo.FullName);
     }
 
     /// <inheritdoc />
-    public override void Show()
+    public void Show()
     {
         var index = Program.MainForm.CurrentLanguage.Groups.IndexOf(Group);
         if (index != -1)

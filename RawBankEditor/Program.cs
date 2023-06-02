@@ -1,6 +1,8 @@
 ﻿using RawBankEditor.Forms;
 using ToolsCore;
+using ToolsCore.Forms;
 using ToolsCore.Tools;
+using ToolsCore.XML;
 
 namespace RawBankEditor;
 
@@ -18,7 +20,23 @@ internal static class Program
         AppInit.Initialization(out GlobData.Config, out GlobData.Styles, out GlobData.UsingStyle);
 
         MainForm = new FMain();
-        Application.Run(MainForm);
+
+        if (GlobData.Config.DebugModeGUI != DebugMode.AppCrash)
+        {
+            try
+            {
+                Application.Run(MainForm);
+            }
+            catch (Exception exception)
+            {
+                Log.Exception(exception);
+                FError.ShowError(GlobData.Config.DebugModeGUI == DebugMode.OnlyMessage ? exception.Message : exception.ToString());
+            }
+        }
+        else
+        {
+            Application.Run(MainForm);
+        }
 
         Log.Info("Program sa ukončuje\r\n");
     }
